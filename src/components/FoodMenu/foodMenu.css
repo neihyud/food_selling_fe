@@ -1,0 +1,18 @@
+.menu_filter button {
+  padding: 5px 25px;
+  text-transform: capitalize;
+  color: var(--colorPrimary);
+  margin: 5px 5px 0px 5px;
+  border-radius: 30px;
+  background: none;
+  border: 1px solid var(--colorPrimary);
+  font-weight: 500;
+  font-size: 15px;
+  transition: all linear .3s;
+}
+
+.menu_filter button:hover,
+.menu_filter button.active {
+  background: var(--colorPrimary);
+  color: var(--colorWhite);
+}

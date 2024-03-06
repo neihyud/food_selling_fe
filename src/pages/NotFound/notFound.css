@@ -1,0 +1,37 @@
+.fp__404 {
+  height: 100vh;
+  padding-top: 130px;
+}
+
+.fp__404 div {
+  height: 100%;
+}
+
+.fp__404_text {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.fp__404_text img {
+  height: 270px !important;
+  width: 460px !important;
+  border-radius: 10px;
+}
+
+.fp__404_text h2 {
+  text-transform: capitalize;
+  font-size: 40px;
+  font-weight: 800;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.fp__404_text p {
+  margin: 10px 0px 20px 0px;
+  font-size: 18px;
+  text-align: center;
+}
