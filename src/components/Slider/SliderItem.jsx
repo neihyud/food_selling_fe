@@ -1,9 +1,9 @@
-import PropTypes from 'prop-types';
-import { Image } from 'react-bootstrap';
+import PropTypes from "prop-types";
+import { Image } from "react-bootstrap";
 
 const SliderItem = (props) => {
 
-  const { imgSrc, discount, title, subTitle, content, alt } = props
+  const { imgSrc, discount, title, subTitle, content, alt } = props;
 
   return (
     <div className="container">
@@ -28,8 +28,8 @@ const SliderItem = (props) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 SliderItem.propTypes = {
   imgSrc: PropTypes.string,
@@ -40,5 +40,4 @@ SliderItem.propTypes = {
   alt: PropTypes.string
 };
 
-
-export default SliderItem
+export default SliderItem;

@@ -1,5 +1,5 @@
-import routes from './router';
-import menu from './menu'
+import routes from "./router";
+import menu from "./menu"
 
 const config = {
     routes,
