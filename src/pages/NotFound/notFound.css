@@ -1,22 +1,17 @@
 .fp__404 {
-  height: 100vh;
-  padding-top: 130px;
-}
-
-.fp__404 div {
-  height: 100%;
+  height: calc(100vh - var(--heightHeader));
+  display: flex;
+  align-items: center;
 }
 
 .fp__404_text {
-  display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   overflow: hidden;
 }
 
 .fp__404_text img {
+  margin-top: calc(0px - var(--heightHeader));
   height: 270px !important;
   width: 460px !important;
   border-radius: 10px;

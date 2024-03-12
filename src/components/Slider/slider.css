@@ -2,13 +2,13 @@
   background-position: center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
-  height: 100vh;
+  height: calc(100vh - var(--heightHeader));
   position: relative;
   overflow: hidden;
 }
 
 .fp__banner_overlay {
-  padding-top: 250px;
+  padding-top: 150px;
   background: rgb(255 255 255 / 70%);
   height: 100%;
 }

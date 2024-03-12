@@ -9,6 +9,7 @@
     --headingFont: 'Jost', sans-serif;
     --cursiveFont: 'Lobster', cursive;
     --boxShadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    --heightHeader: 80px
 }
 
 body {
@@ -53,6 +54,41 @@ img {
     object-fit: cover !important;
 }
 
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px 20px;
+    outline: none;
+    resize: none;
+    border: 1px solid #eee;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.td-center {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.th-left {
+    text-align: left;
+}
+
+.transform-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .common_btn {
     background: var(--colorPrimary);
     text-transform: capitalize !important;
@@ -64,12 +100,40 @@ img {
     position: relative;
     border: none;
     transition: all linear .3s;
-    -webkit-transition: all linear .3s;
-    -moz-transition: all linear .3s;
-    -ms-transition: all linear .3s;
-    -o-transition: all linear .3s;
 }
 
 .common_btn:hover {
     background: var(--colorBlack);
 }
+
+/* 
+.comment_input {
+    overflow: hidden;
+    background: var(--colorWhite);
+    box-shadow: var(--boxShadow);
+    border-radius: 5px;
+    padding: 25px;
+}
+
+.comment_input h4 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--colorBlack);
+    text-transform: capitalize;
+}
+
+.comment_input p {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--colorBlack);
+    margin-top: 14px;
+}
+
+.comment_input label {
+    display: block;
+    text-transform: capitalize;
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--colorBlack);
+    margin-top: 20px;
+} */

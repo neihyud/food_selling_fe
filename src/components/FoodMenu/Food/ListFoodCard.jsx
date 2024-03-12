@@ -1,6 +1,6 @@
-import CardItem from './CardItem'
-import './card.css'
-const ListDish = () => {
+import FoodCard from './FoodCard'
+import './food.css'
+const ListFoodCard = () => {
   const infoCard = [
     {
       price: 10,
@@ -44,14 +44,14 @@ const ListDish = () => {
     }
   ]
 
-  const renderDish = infoCard.map((item, index) => {
-    return <CardItem key={index}  {...item} />
+  const renderFood = infoCard.map((item, index) => {
+    return <FoodCard key={index}  {...item} />
   })
   return (
     <div className='row grid'>
-      {renderDish}
+      {renderFood}
     </div>
   )
 }
 
-export default ListDish
+export default ListFoodCard

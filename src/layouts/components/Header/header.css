@@ -13,7 +13,7 @@ html {
   position: fixed !important;
   top: 0;
   width: 100%;
-  height: 80px;
+  height: var(--heightHeader);
   background: var(--colorWhite);
   border-bottom: 1px solid #eee;
   z-index: 999;

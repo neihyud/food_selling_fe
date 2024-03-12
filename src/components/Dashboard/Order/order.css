@@ -1,0 +1,345 @@
+.fp_dashboard_order table {
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0px;
+  background: #faf6f3fa;
+}
+
+.fp_dashboard_order table tr {
+  border-color: transparent;
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+
+.fp_dashboard_order table tr th {
+  background: var(--colorPrimary);
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--colorWhite) !important;
+}
+
+.fp_dashboard_order table tr th,
+.fp_dashboard_order table tr td {
+  text-align: center;
+  padding: 10px 0px;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fp_dashboard_order table tr td h5 {
+  color: var(--colorBlack);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.fp_dashboard_order table tr td p {
+  text-transform: capitalize;
+  margin: 0px;
+}
+
+.fp_dashboard_order table tr td a {
+  font-size: 13px;
+  font-weight: 400;
+  background: var(--colorPrimary);
+  color: var(--colorWhite);
+  text-transform: capitalize;
+  transition: all 0.3s linear 0s;
+  border: 1px solid var(--colorPrimary);
+  padding: 5px 10px 3px 10px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.fp_dashboard_order table tr td a:hover {
+  color: var(--colorPrimary);
+  background: var(--colorWhite);
+}
+
+.fp_dashboard_order table tr td span {
+  border-radius: 6px;
+  padding: 7px 0px;
+  width: 130px;
+  display: inline-block;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.fp_dashboard_order table tr td .complete {
+  background: rgb(0 191 140 / 9%);
+  color: rgb(0, 191, 140);
+}
+
+.fp_dashboard_order table tr td .cancel {
+  background: rgba(254, 58, 96, 0.11);
+  color: rgb(254, 58, 96);
+}
+
+.fp_dashboard_order table tr td .active {
+  background: #292b751c;
+  color: var(--colorPrimary);
+}
+
+
+.fp__invoice .go_back {
+  background: var(--colorPrimary);
+  border-radius: 30px;
+  padding: 8px 15px;
+  font-size: 14px;
+  text-transform: capitalize;
+  color: var(--colorWhite) !important;
+  font-weight: 400;
+  cursor: pointer;
+  transition: all linear .3s;
+  -webkit-transition: all linear .3s;
+  -moz-transition: all linear .3s;
+  -ms-transition: all linear .3s;
+  -o-transition: all linear .3s;
+}
+
+.fp__invoice .go_back i {
+  margin-right: 10px;
+}
+
+.fp__invoice .go_back:hover {
+  background: var(--colorBlack);
+}
+
+.fp__track_order {
+  background: var(--colorWhite);
+  border-radius: 5px;
+  padding: 30px;
+  margin-top: 30px;
+}
+
+.fp__track_order ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.fp__track_order ul li {
+  width: 20%;
+  position: relative;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--colorBlack);
+  text-transform: capitalize;
+  padding-top: 25px;
+  text-align: center;
+  margin-top: 22px;
+}
+
+.fp__track_order ul li::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 3px;
+  background: #eee;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.fp__track_order ul li::before {
+  position: absolute;
+  content: "\f1ce";
+  color: var(--colorPrimary);
+  font-family: "Font Awesome 5 Free";
+  font-size: 16px;
+  font-weight: 600;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #eee;
+  z-index: 2;
+}
+
+.fp__track_order ul li:nth-child(2)::before {
+  content: "\f00c";
+}
+
+.fp__track_order ul li:nth-child(3)::before {
+  content: "\f291";
+}
+
+.fp__track_order ul li:nth-child(4)::before {
+  content: "\f0d1";
+}
+
+.fp__track_order ul li:nth-child(5)::before {
+  content: "\f466";
+}
+
+.fp__track_order ul li.active::after {
+  background: #4caf50;
+}
+
+.fp__track_order ul li.active::before {
+  background: #4caf50;
+  color: var(--colorWhite);
+}
+
+
+.fp__invoice_header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 30px 0px;
+}
+
+.fp__invoice_header .header_address {
+  max-width: 40%;
+}
+
+.fp__invoice_header .header_address h4 {
+  text-transform: capitalize;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.fp__invoice_header .header_address b {
+  font-weight: 500;
+  font-size: 16px;
+  font-family: var(--headingFont);
+  text-transform: capitalize;
+  width: 95px;
+}
+
+.fp__invoice_header .header_address p {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.fp__invoice_header p span {
+  color: var(--colorPrimary);
+}
+
+.fp__invoice_header h5 {
+  text-transform: capitalize;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.fp__invoice table {
+  border: 0.5px solid #ddd;
+  margin: 0;
+  border-bottom: 0.5px solid #ddd;
+}
+
+.fp__invoice table tr {
+  border: transparent;
+  border-right: 0;
+}
+
+.fp__invoice table tr th {
+  background: var(--colorPrimary);
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: capitalize;
+  color: var(--colorWhite) !important;
+}
+
+.fp__invoice table tr th,
+.fp__invoice table tr td {
+  padding: 10px;
+  border-right: 0.5px solid #ddd;
+  text-align: center;
+}
+
+.fp__invoice table tr:last-child td {
+  border-bottom: .5px solid #ddd;
+}
+
+.fp__invoice table tr td {
+  color: var(--colorBlack);
+  vertical-align: middle;
+}
+
+.fp__invoice table tr td p {
+  color: var(--colorBlack);
+  margin: 0;
+  font-weight: 500;
+}
+
+.fp__invoice table tr td .size,
+.fp__invoice table tr td .coca_cola,
+.fp__invoice table tr td .coca_cola2 {
+  display: block;
+  color: var(--colorBlack);
+  text-transform: capitalize;
+}
+
+.fp__invoice table tr td .size {
+  color: var(--colorPrimary);
+}
+
+.fp__invoice table tr td b {
+  font-weight: 500;
+}
+
+.fp__invoice .sl_no {
+  min-width: 60px;
+}
+
+.fp__invoice .package {
+  width: 40%;
+  text-align: left;
+}
+
+.fp__invoice .price,
+.fp__invoice .qnty,
+.fp__invoice .total {
+  width: 20%;
+}
+
+.fp__invoice table tfoot {
+  border-bottom: .5px solid #ddd;
+}
+
+.fp__invoice table tfoot tr td {
+  border-bottom: .5px solid #ddd;
+}
+
+.fp__invoice table tfoot tr td b {
+  margin: 0;
+  border: none;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: capitalize;
+  display: block;
+  text-align: center;
+}
+
+.fp__invoice table tfoot .coupon b,
+.fp__invoice table tfoot .coast b {
+  font-weight: 500 !important;
+}
+
+.fp__invoice table tfoot .coupon b {
+  color: var(--colorPrimary);
+}
+
+.fp__invoice .print_btn {
+  padding: 10px 25px !important;
+  float: right;
+  margin-top: 35px;
+}
+
+.fp__invoice .print_btn::after,
+.fp__invoice .print_btn::before {
+  display: none;
+}
+
+.fp__invoice .print_btn i {
+  margin-right: 5px;
+}

@@ -1,0 +1,207 @@
+.fp_dashboard_new_address,
+.fp_dashboard_edit_address {
+  background: #faf6f3fa;
+  border-radius: 5px;
+  padding: 30px;
+  display: none;
+}
+
+.fp_dashboard_new_address h4,
+.fp_dashboard_edit_address h4 {
+  text-transform: capitalize;
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.fp_dashboard_new_address .fp__check_single_form,
+.fp_dashboard_edit_address .fp__check_single_form {
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.fp_dashboard_new_address .check_area,
+.fp_dashboard_edit_address .check_area {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.fp_dashboard_new_address .form-check,
+.fp_dashboard_edit_address .form-check {
+  margin-right: 20px;
+  background: var(--colorWhite);
+  border: 1px solid #ddd;
+  padding: 10px 30px 10px 40px;
+  border-radius: 5px;
+}
+
+.fp_dashboard_new_address .form-check label,
+.fp_dashboard_edit_address .form-check label {
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--colorBlack);
+  display: block;
+  width: 100%;
+}
+
+.fp_dashboard_new_address .form-check input,
+.fp_dashboard_edit_address .form-check input {
+  padding: 0;
+}
+
+.fp_dashboard_new_address .form-check input:checked,
+.fp_dashboard_edit_address .form-check input:checked {
+  background-color: var(--colorPrimary);
+  border-color: var(--colorPrimary);
+}
+
+.fp_dashboard_new_address button,
+.fp_dashboard_edit_address button {
+  padding: 8px 20px !important;
+}
+
+.fp_dashboard_new_address button::after,
+.fp_dashboard_new_address button::before,
+.fp_dashboard_edit_address button::after,
+.fp_dashboard_edit_address button::before {
+  display: none;
+}
+
+.address_body.show_new_address .fp_dashboard_existing_address {
+  display: none;
+}
+
+.address_body.show_new_address .fp_dashboard_new_address {
+  display: block;
+}
+
+.address_body.show_new_address .dash_add_new_address,
+.address_body.show_edit_address .dash_add_new_address {
+  display: none;
+}
+
+.address_body.show_edit_address .fp_dashboard_existing_address {
+  display: none;
+}
+
+.address_body.show_edit_address .fp_dashboard_edit_address {
+  display: block;
+}
+
+.fp_dashboard_existing_address .form-check {
+  padding-left: 0;
+}
+
+.fp_dashboard_existing_address .form-check label {
+  cursor: default;
+}
+
+
+.fp__checkout_single_address {
+  border: 1px solid #eeeeeea6;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background: #faf6f3;
+  position: relative;
+}
+
+.fp__checkout_single_address .form-check input {
+  padding: 0;
+  border-color: var(--colorPrimary);
+}
+
+.fp__checkout_single_address .form-check input:checked {
+  background-color: var(--colorPrimary);
+  border-color: var(--colorPrimary);
+}
+
+.fp__checkout_single_address .form-check label {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+
+.fp__checkout_single_address .form-check label .icon {
+  border: 1px solid var(--colorPrimary);
+  text-transform: capitalize;
+  padding: 2px 15px;
+  border-radius: 2px;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--colorPrimary);
+}
+
+.fp__checkout_single_address .form-check label .icon i {
+  margin-right: 5px;
+}
+
+.fp__checkout_single_address .form-check label .address {
+  text-transform: capitalize;
+  margin-top: 10px;
+  display: block;
+}
+
+.fp__check_form .fp__check_single_form {
+  margin-bottom: 20px;
+}
+
+.fp__check_form .nice-select {
+  border: 1px solid #eee !important;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+}
+
+.fp__checkout_single_address ul {
+  display: flex;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+.fp__checkout_single_address ul li a {
+  width: 25px;
+  height: 25px;
+  line-height: 23px;
+  background: var(--colorWhite);
+  color: var(--colorPrimary);
+  border: 1px solid var(--colorPrimary);
+  font-size: 12px;
+  text-align: center;
+  margin: 3px;
+  border-radius: 2px;
+  transition: all linear .3s;
+  cursor: pointer;
+  -webkit-transition: all linear .3s;
+  -moz-transition: all linear .3s;
+  -ms-transition: all linear .3s;
+  -o-transition: all linear .3s;
+}
+
+.fp__checkout_single_address ul li a:hover {
+  background: var(--colorPrimary);
+  color: var(--colorWhite);
+}
+
+.fp_dashboard_body h3 .dash_add_new_address {
+  border-radius: 30px;
+  padding: 8px 15px;
+  background: rgb(142, 142, 236);
+  color: var(--colorWhite) !important;
+  cursor: pointer;
+  font-size: 14px;
+  text-transform: capitalize;
+  transition: all linear .3s;
+  -webkit-transition: all linear .3s;
+  -moz-transition: all linear .3s;
+  -ms-transition: all linear .3s;
+  -o-transition: all linear .3s;
+}
+
+.fp_dashboard_body h3 .dash_add_new_address:hover {
+  background: rgb(125, 125, 226);
+}

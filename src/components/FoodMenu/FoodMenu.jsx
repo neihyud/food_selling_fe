@@ -1,6 +1,7 @@
 import IntroductionSection from "../Introduction/IntroductionSection"
 import WrapperSection from "../Wrapper/WrapperSection.jsx"
-import ListDish from "./Card/ListDish.jsx"
+import FoodCardDetail from "./Food/FoodCardDetail.jsx"
+import ListFoodCard from "./Food/ListFoodCard.jsx"
 import './foodMenu.css'
 
 const FoodMenu = () => {
@@ -31,7 +32,9 @@ const FoodMenu = () => {
               </div>
             </div>
           </div>
-          <ListDish />
+          <ListFoodCard />
+          <FoodCardDetail />
+
         </div>
       </section>
     </WrapperSection>

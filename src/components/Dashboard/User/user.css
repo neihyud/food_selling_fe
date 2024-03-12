@@ -1,0 +1,116 @@
+.fp__dashboard_overview_item {
+  background: #faf6f3fa;
+  padding: 30px;
+  text-align: center;
+  border-radius: 10px;
+  position: relative;
+  border: 1px solid #eee;
+  margin-bottom: 25px;
+}
+
+.fp__dashboard_overview_item .icon {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background: orange;
+  border-radius: 50%;
+  font-size: 20px;
+  color: var(--colorWhite);
+}
+
+.fp__dashboard_overview_item h4 {
+  text-transform: capitalize;
+  font-size: 16px;
+  font-weight: 600;
+  color: orange;
+  margin-top: 20px;
+  font-family: var(--paraFont);
+  text-align: center;
+}
+
+.fp__dashboard_overview_item h4 span {
+  font-size: 18px;
+  font-weight: 600;
+  color: orange;
+  font-family: var(--paraFont);
+  margin-left: 5px;
+}
+
+.fp__dashboard_overview_item.red .icon {
+  background: var(--colorPrimary);
+}
+
+.fp__dashboard_overview_item.red h4,
+.fp__dashboard_overview_item.red h4 span {
+  color: var(--colorPrimary);
+}
+
+.fp__dashboard_overview_item.green .icon {
+  background: #4caf50;
+}
+
+.fp__dashboard_overview_item.green h4,
+.fp__dashboard_overview_item.green h4 span {
+  color: #4caf50;
+}
+
+.fp_dash_personal_info {
+  background: #faf6f3fa;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.fp_dash_personal_info h4 {
+  font-size: 18px;
+  font-weight: 700;
+  text-transform: capitalize;
+  color: var(--colorBlack);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fp_dash_personal_info h4 a {
+  font-size: 14px;
+  background: var(--colorPrimary);
+  color: var(--colorWhite);
+  font-weight: 600;
+  padding: 4px 15px;
+  border-radius: 30px;
+  transition: all linear .3s;
+  -webkit-transition: all linear .3s;
+  -moz-transition: all linear .3s;
+  -ms-transition: all linear .3s;
+  -o-transition: all linear .3s;
+  cursor: pointer;
+}
+
+.fp_dash_personal_info h4 a span {
+  color: var(--colorWhite);
+}
+
+.fp_dash_personal_info h4 a:hover {
+  background: var(--colorBlack);
+}
+
+.fp_dash_personal_info h4 a .cancel {
+  display: none;
+}
+
+.fp_dash_personal_info p {
+  color: var(--colorBlack);
+  margin-top: 20px;
+  display: flex;
+  justify-content: start;
+  margin-bottom: 0 !important;
+}
+
+.fp_dash_personal_info p span {
+  display: inline-block;
+  min-width: 120px;
+  font-weight: 500;
+  color: var(--colorBlack);
+}

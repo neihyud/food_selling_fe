@@ -7,7 +7,6 @@ import {
 import Menu from '../../../components/Menu/Menu';
 import './header.css'
 import { Image } from 'react-bootstrap';
-// import { menu } from ';
 import config from '../../../config';
 const Header = () => {
 

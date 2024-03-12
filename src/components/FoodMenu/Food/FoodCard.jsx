@@ -4,10 +4,9 @@ import { faEye, faHeart, faStar, faStarHalfAlt } from '@fortawesome/free-regular
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Image } from 'react-bootstrap'
 
-import './card.css'
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
-const CardItem = ({ imgUrl, price, title }) => {
+const FoodCard = ({ imgUrl, price, title }) => {
   return (
     <div className="col-xl-3 col-sm-6 col-lg-4 wow fadeInUp" data-wow-duration="1s">
       <div className="fp__menu_item">
@@ -51,10 +50,10 @@ const CardItem = ({ imgUrl, price, title }) => {
   )
 }
 
-CardItem.propTypes = {
+FoodCard.propTypes = {
   price: PropTypes.number,
   imgUrl: PropTypes.string,
   title: PropTypes.string
 };
 
-export default CardItem
+export default FoodCard

@@ -1,0 +1,207 @@
+.fp__menu_cart_area {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: #00000066;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  transition: all linear .3s;
+}
+
+.fp__menu_cart_body {
+  width: 400px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: var(--colorWhite);
+  padding: 20px;
+  height: 100vh;
+  transform-origin: right;
+  transition: all linear .3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fp__menu_cart_header {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.fp__menu_cart_header h5 {
+  text-transform: capitalize;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.fp__menu_cart_header .close_cart {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background: var(--colorPrimary);
+  color: var(--colorWhite);
+  top: -4px;
+  right: 0;
+  border-radius: 50%;
+  font-size: 16px;
+  transition: all linear .3s;
+  cursor: pointer;
+}
+
+.fp__menu_cart_header .close_cart:hover {
+  background: var(--colorBlack);
+  color: var(--colorWhite);
+}
+
+.fp__menu_cart_area ul {
+  overflow-x: hidden;
+  flex: 1;
+}
+
+.fp__menu_cart_area ul::-webkit-scrollbar {
+  scrollbar-width: thin !important;
+  background: var(--paraColor);
+  height: 4px;
+  width: 4px;
+  border-radius: 4px;
+}
+
+.fp__menu_cart_area ul::-webkit-scrollbar-thumb {
+  background: var(--colorPrimary);
+  border-radius: 8px;
+
+}
+
+.fp__menu_cart_area ul li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: relative;
+  border: 1px solid #eee;
+  padding: 10px;
+  margin-bottom: 15px;
+  background: #f7f5f5;
+  border-radius: 5px;
+}
+
+.fp__menu_cart_area ul li:last-child {
+  margin-bottom: 0;
+}
+
+.fp__menu_cart_area ul li .menu_cart_img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  padding: 2px;
+  box-shadow: var(--boxShadow);
+}
+
+.fp__menu_cart_area ul li .menu_cart_text {
+  width: 75%;
+}
+
+.fp__menu_cart_area ul li .menu_cart_text .title {
+  font-size: 18px;
+  font-family: var(--headingFont);
+  text-transform: capitalize;
+  font-weight: 600;
+  color: var(--colorBlack);
+  overflow: hidden;
+  transition: all linear .3s;
+}
+
+.fp__menu_cart_area ul li .menu_cart_text .size {
+  text-transform: capitalize;
+  color: var(--colorPrimary);
+}
+
+.fp__menu_cart_area ul li .menu_cart_text .extra {
+  text-transform: capitalize;
+  display: block;
+  padding-left: 10px;
+  position: relative;
+}
+
+.fp__menu_cart_area ul li .menu_cart_text .extra::after {
+  position: absolute;
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: var(--paraColor);
+  border-radius: 50%;
+  top: 10px;
+  left: 0;
+}
+
+.fp__menu_cart_area ul li .menu_cart_text .price {
+  color: var(--colorPrimary);
+  font-size: 18px;
+  font-weight: 600;
+  margin-top: 3px;
+}
+
+.fp__menu_cart_area ul li .menu_cart_text .price del {
+  color: #747272;
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+.fp__menu_cart_area ul li .del_icon {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  border-radius: 50%;
+  font-size: 14px;
+  background: #ffd7de;
+  text-align: center;
+  transition: all linear .3s;
+}
+
+.fp__menu_cart_area ul li .del_icon:hover {
+  background: var(--colorPrimary);
+  color: var(--colorWhite);
+}
+
+.fp__menu_cart_area ul li .menu_cart_text .title:hover {
+  color: var(--colorPrimary);
+}
+
+.fp__menu_cart_area .subtotal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--colorBlack);
+  margin: 20px 0px 20px 0px;
+}
+
+.fp__menu_cart_area .subtotal span {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--colorBlack);
+}
+
+.fp__menu_cart_area button {
+  margin: 5px 0;
+}
+
+
+.fp__menu_cart_area.show_mini_cart {
+  opacity: 1;
+  visibility: visible;
+}
+
+.show_mini_cart .fp__menu_cart_body {
+  opacity: 1;
+  transform: scale(1);
+}
