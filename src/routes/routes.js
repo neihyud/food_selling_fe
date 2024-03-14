@@ -1,12 +1,14 @@
-import config from '../config/index';
-import Home from '../pages/Home/Home'
-import About from '../pages/About/About'
-import Cart from '../pages/Cart';
-import DefaultLayout from '../layouts/DefaultLayout/DefaultLayout';
-import Dashboard from '../components/Dashboard';
-import Checkout from '../components/Checkout';
+import config from "../config/index";
+import DefaultLayout from "../layouts/DefaultLayout/DefaultLayout";
 
-const {routes} = config
+import Home from "../pages/Home/Home";
+import About from "../pages/About/About";
+import Cart from "../pages/Cart";
+import UserDashboard from "../pages/UserDashboard";
+
+import Checkout from "../components/Checkout";
+
+const { routes } = config;
 
 const publicRoutes = [
   {
@@ -25,7 +27,7 @@ const publicRoutes = [
   }, 
   {
     path: routes.dashboard,
-    component: Dashboard,
+    component: UserDashboard,
     layout: DefaultLayout
   },
   {
@@ -34,7 +36,7 @@ const publicRoutes = [
     layout: DefaultLayout
   }
 
-]
+];
 
 const privateRoutes = [];
 

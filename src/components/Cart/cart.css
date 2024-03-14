@@ -1,4 +1,3 @@
-
 .fp__cart_view .table {
   margin-bottom: 0;
 }
@@ -100,10 +99,6 @@
   width: 100%;
   text-align: center;
   transition: all linear 0.3s;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -ms-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
 }
 
 .fp__pro_icon:hover a {
@@ -151,10 +146,6 @@
   margin-bottom: 5px;
   width: 100%;
   transition: all linear .3s;
-  -webkit-transition: all linear .3s;
-  -moz-transition: all linear .3s;
-  -ms-transition: all linear .3s;
-  -o-transition: all linear .3s;
 }
 
 .fp__cart_list table tbody tr td a:hover {
@@ -345,7 +336,7 @@
   border-radius: 3px;
 }
 
-.quantity_btn input {
+.details_quantity .quantity_btn input {
   width: 60px;
   text-align: center;
   height: 35px;

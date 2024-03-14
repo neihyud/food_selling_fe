@@ -1,25 +1,26 @@
-import Navbar from "./Menu"
-import User from './User'
-import Address from './Address'
-import Order from "./Order"
-import ChangePassword from "./ChangePassword"
+import Navbar from "./Menu";
+import User from "./User";
+import Address from "./Address";
+import Order from "./Order";
+import ChangePassword from "./ChangePassword";
 
 const Dashboard = () => {
-  const type = 'change password'
+  const type = "change password";
   const renderContent = () => {
     switch (type) {
-      case 'user':
-        return <User />
-      case 'order':
-        return <Order />
-      case 'change password':
-        return <ChangePassword />
+      case "user":
+        return <User />;
+      case "order":
+        return <Order />;
+      case "change password":
+        return <ChangePassword />;
       default:
-        return <Address />
+        return <Address />;
     }
-  }
+  };
+  
   return (
-    <section className="fp__dashboard mt_120 xs_mt_90 mb_100 xs_mb_70">
+    <section className="fp__dashboard">
       <div className="container">
         <div className="fp__dashboard_area">
           <div className="row">
@@ -38,7 +39,7 @@ const Dashboard = () => {
       </div>
     </section>
 
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

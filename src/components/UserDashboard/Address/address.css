@@ -176,10 +176,6 @@
   border-radius: 2px;
   transition: all linear .3s;
   cursor: pointer;
-  -webkit-transition: all linear .3s;
-  -moz-transition: all linear .3s;
-  -ms-transition: all linear .3s;
-  -o-transition: all linear .3s;
 }
 
 .fp__checkout_single_address ul li a:hover {
@@ -196,10 +192,6 @@
   font-size: 14px;
   text-transform: capitalize;
   transition: all linear .3s;
-  -webkit-transition: all linear .3s;
-  -moz-transition: all linear .3s;
-  -ms-transition: all linear .3s;
-  -o-transition: all linear .3s;
 }
 
 .fp_dashboard_body h3 .dash_add_new_address:hover {

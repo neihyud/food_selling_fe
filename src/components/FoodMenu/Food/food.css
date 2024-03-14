@@ -121,7 +121,7 @@
   margin-left: 5px;
 }
 
-.fp__menu_item .fp__menu_item_text ul li a {
+.fp__menu_item .fp__menu_item_text ul li {
   width: 30px;
   height: 30px;
   line-height: 30px;
@@ -131,6 +131,11 @@
   font-size: 14px;
   margin: 0px 5px;
   border-radius: 50%;
+  cursor: pointer;
+}
+
+.fp__menu_item .fp__menu_item_text ul li svg {
+  color: white;
 }
 
 .fp__menu_item:hover {
@@ -165,10 +170,6 @@
   opacity: 1;
   color: var(--colorPrimary);
   transition: all linear .3s;
-  -webkit-transition: all linear .3s;
-  -moz-transition: all linear .3s;
-  -ms-transition: all linear .3s;
-  -o-transition: all linear .3s;
 }
 
 .fp__cart_popup .btn-close:hover {

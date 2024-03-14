@@ -1,4 +1,4 @@
-import { configureStore as configureStoreRedux } from "@reduxjs/toolkit"
+import { configureStore as configureStoreRedux } from "@reduxjs/toolkit";
 // import thunk from 'redux-thunk';
 import { rootReducer } from "../reducer/RootReducer.js";
 

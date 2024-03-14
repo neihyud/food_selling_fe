@@ -1,11 +1,11 @@
-import { Image } from 'react-bootstrap'
-import DefaultLayout from '../../layouts/DefaultLayout/DefaultLayout'
+import { Image } from "react-bootstrap";
+import DefaultLayout from "../../layouts/DefaultLayout/DefaultLayout";
 
-import './notFound.css'
-import { useNavigate } from 'react-router-dom'
+import "./notFound.css";
+import { useNavigate } from "react-router-dom";
 
 const NotFound = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
     <DefaultLayout>
       <section className="fp__404">
@@ -16,14 +16,14 @@ const NotFound = () => {
                 <Image src="src/assets/images/404_img.png" alt="404" className="img-fluid w-100" />
                 <h2>{"That Page Doesn't Exist!"}</h2>
                 <p>Sorry, the page you were looking for could not be found.</p>
-                <button className="common_btn" onClick={() => navigate('/')}>home</button>
+                <button className="common_btn" onClick={() => navigate("/")}>home</button>
               </div>
             </div>
           </div>
         </div>
       </section>
     </DefaultLayout>
-  )
-}
+  );
+};
 
-export default NotFound
+export default NotFound;

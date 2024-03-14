@@ -18,10 +18,14 @@ module.exports = {
       },
     }
   },
-  settings: { react: { version: '18.2' } },
+  settings: { 
+    react: { 
+      version: '18.2' 
+    }
+  },
   plugins: [
     'react-refresh',
-    'react'
+    'react',
   ],
   rules: {
     "array-bracket-spacing": [ "error", "always" ],
@@ -77,11 +81,7 @@ module.exports = {
     "space-before-function-paren": [ "error", "never" ],
     "space-in-parens": [ "error", "never" ],
     "space-infix-ops": [ "error", { "int32Hint": false } ],
-    "space-unary-ops": [ "error", {
-        "overrides": {
-            "!": true
-        }
-    } ],
+    "space-unary-ops": [ "error"],
     "template-curly-spacing": [ "error", "always" ],
     "valid-jsdoc": [ "error", { "requireReturn": false } ],
     "valid-typeof": "error",
@@ -119,6 +119,6 @@ module.exports = {
         "always"
     ],
     "new-cap": 2,
-    "no-case-declarations": 0
-    }
+    "no-case-declarations": 0,
+  }
 }

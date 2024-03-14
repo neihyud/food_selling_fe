@@ -1,22 +1,31 @@
-import { faStar } from "@fortawesome/free-regular-svg-icons"
-import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Image } from "react-bootstrap"
+import { faStar } from "@fortawesome/free-regular-svg-icons";
+import { faMinus, faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Image } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import HomeAction from "../../../redux/action/HomeAction";
 
 const FoodCardDetail = () => {
+  const dispatch = useDispatch();
+
+  const handleCloseFoodDetail = () => { 
+    dispatch(HomeAction.setIsOpenFoodDetail(false));
+  };
+
   return (
     <div className="fp__cart_popup">
-      <div className="modal show" style={{ display: 'block' }}>
+      <div className="modal show" style={{ display: "block" }}>
         <div className="modal-dialog modal-dialog-centered">
           <div className="modal-content">
             <div className="modal-body">
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
-                className="fal fa-times"></i></button>
+              <button type="button" className="btn-close" onClick={handleCloseFoodDetail}>
+                <FontAwesomeIcon icon={faTimes}/>
+              </button>
               <div className="fp__cart_popup_img">
                 <Image src="images/menu1.png" alt="menu" className="img-fluid w-100" />
               </div>
               <div className="fp__cart_popup_text">
-                <a href="#" className="title">Maxican Pizza Test Better</a>
+                <a href="#" className="title">Pizza Test Better</a>
                 <p className="rating">
                   <FontAwesomeIcon icon={faStar} />
                   <FontAwesomeIcon icon={faStar} />
@@ -85,7 +94,7 @@ const FoodCardDetail = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default FoodCardDetail
+export default FoodCardDetail;

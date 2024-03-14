@@ -1,6 +1,6 @@
-import Slider from "../../components/Slider"
-import WhyChooseUs from '../../components/About/WhyChooseUs'
-import FoodMenu from "../../components/FoodMenu"
+import Slider from "../../components/Slider";
+import WhyChooseUs from "../../components/About/WhyChooseUs";
+import FoodMenu from "../../components/FoodMenu";
 
 const Home = () => {
   return (
@@ -9,7 +9,7 @@ const Home = () => {
       <WhyChooseUs />
       <FoodMenu />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

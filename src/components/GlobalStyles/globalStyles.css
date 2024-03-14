@@ -17,6 +17,7 @@ body {
     scroll-behavior: smooth;
     color: var(--paraColor);
     font-family: var(--paraFont);
+    height: 100vh;
 }
 
 ul,
@@ -54,7 +55,7 @@ img {
     object-fit: cover !important;
 }
 
-input,
+input:not(input[type="radio"], input[type="checkbox"]),
 textarea,
 select {
     width: 100%;

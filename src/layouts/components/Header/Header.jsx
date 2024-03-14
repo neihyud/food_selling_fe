@@ -1,14 +1,28 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMagnifyingGlass,
   faCartShopping,
   faUser
-} from '@fortawesome/free-solid-svg-icons';
-import Menu from '../../../components/Menu/Menu';
-import './header.css'
-import { Image } from 'react-bootstrap';
-import config from '../../../config';
+} from "@fortawesome/free-solid-svg-icons";
+
+import Menu from "../../../components/Menu/Menu";
+import "./header.css";
+import { Image } from "react-bootstrap";
+import config from "../../../config";
+import { useDispatch } from "react-redux";
+import HomeAction from "../../../redux/action/HomeAction";
+import { useNavigate } from "react-router-dom";
 const Header = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleOpenCartCheckout = () => {
+    dispatch(HomeAction.setIsOpenCartCheckout(true));
+  };
+
+  const handleNavToDashboard = () => { 
+    navigate("/dashboard");
+  };
 
   return (
     <>
@@ -24,10 +38,10 @@ const Header = () => {
             <li>
               <FontAwesomeIcon icon={faMagnifyingGlass} />
             </li>
-            <li>
+            <li onClick={handleOpenCartCheckout}>
               <FontAwesomeIcon icon={faCartShopping} />
             </li>
-            <li>
+            <li onClick={handleNavToDashboard}>
               <FontAwesomeIcon icon={faUser} />
             </li>
           </ul>
@@ -35,7 +49,7 @@ const Header = () => {
       </nav>
     </>
 
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

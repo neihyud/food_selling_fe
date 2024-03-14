@@ -1,4 +1,4 @@
-import AddressItem from '../Dashboard/Address/AddressItem'
+import AddressItem from '../UserDashboard/Address/AddressItem'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import TotalSummaryCart from '../Cart/CartDetail/TotalSummaryCart'

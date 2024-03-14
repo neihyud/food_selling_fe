@@ -1,18 +1,18 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import DefaultLayout from '../layouts/DefaultLayout/DefaultLayout'
-import { Fragment } from 'react';
-import { publicRoutes } from '../routes';
-import NotFound from './NotFound/NotFound';
+import DefaultLayout from "../layouts/DefaultLayout/DefaultLayout";
+import { Fragment } from "react";
+import { publicRoutes } from "../routes";
+import NotFound from "./NotFound/NotFound";
 function App() {
 
   const renderPublicRoute = () => {
     return publicRoutes.map((route, index) => {
-      const Page = route.component
-      let Layout = DefaultLayout
+      const Page = route.component;
+      let Layout = DefaultLayout;
 
       if (route.layout) {
-        Layout = route.layout
+        Layout = route.layout;
       } else {
         Layout = Fragment;
       }
@@ -27,9 +27,9 @@ function App() {
             </Layout>
           }
         />
-      )
-    })
-  }
+      );
+    });
+  };
 
   return (
     <>
@@ -40,7 +40,7 @@ function App() {
         </Routes>
       </Router>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

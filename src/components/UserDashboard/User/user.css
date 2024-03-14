@@ -81,10 +81,6 @@
   padding: 4px 15px;
   border-radius: 30px;
   transition: all linear .3s;
-  -webkit-transition: all linear .3s;
-  -moz-transition: all linear .3s;
-  -ms-transition: all linear .3s;
-  -o-transition: all linear .3s;
   cursor: pointer;
 }
 
