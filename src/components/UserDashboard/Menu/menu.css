@@ -1,3 +1,8 @@
+.fp__dashboard {
+  /* margin-top: 80px; */
+  padding: 40px;
+}
+
 .fp__dashboard_area {
   border: 1px solid rgb(233, 242, 255);
   border-radius: 5px;
@@ -108,4 +113,8 @@
   top: 0;
   right: -3px;
   transition: all 0.3s linear 0s;
+}
+
+.fp__dashboard_content {
+  padding: 25px 25px 25px 0px;
 }

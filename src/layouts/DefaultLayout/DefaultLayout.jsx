@@ -19,11 +19,9 @@ const DefaultLayout = ({ children }) => {
 		<>
 			<Header />
 			{getSideBarCart()}
-
 			<p style={{ padding: '40px 0' }}></p>
+			
 			{children}
-			<p style={{ padding: '40px 0' }}></p>
-
 		</>
 	)
 }

@@ -4,6 +4,7 @@ import DefaultLayout from '../layouts/DefaultLayout/DefaultLayout'
 import { Fragment } from 'react'
 import { publicRoutes, adminPublicRouter } from '../routes'
 import NotFound from './NotFound/NotFound'
+import AdminDefaultLayout from '../layouts/DefaultLayout/AdminDefaultLayout'
 
 function App() {
 	const renderPublicRoute = () => {
@@ -33,7 +34,7 @@ function App() {
 	const renderAdminPublicRoute = () => {
 		return adminPublicRouter.map((route, index) => {
 			const Page = route.component
-			let Layout = DefaultLayout
+			let Layout = AdminDefaultLayout
 
 			if (route.layout) {
 				Layout = route.layout
@@ -58,8 +59,11 @@ function App() {
 		<>
 			<Router>
 				<Routes>
+					<Route path="/admin">
+						{renderAdminPublicRoute()}
+						<Route path="*" element={<NotFound/>} />
+					</Route>
 					{renderPublicRoute()}
-					{renderAdminPublicRoute()}
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</Router>

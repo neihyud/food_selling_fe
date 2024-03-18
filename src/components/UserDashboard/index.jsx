@@ -20,10 +20,10 @@ const Dashboard = () => {
 	}
   
 	return (
-		<section className="fp__dashboard">
-			<div className="container">
-				<div className="fp__dashboard_area">
-					<div className="row">
+		<section className="fp__dashboard h-100">
+			<div className="container h-100">
+				<div className="fp__dashboard_area h-100">
+					<div className="row h-100">
 						<div className="col-xl-3 col-lg-4 wow fadeInUp" data-wow-duration="1s">
 							<Navbar />
 						</div>

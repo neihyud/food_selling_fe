@@ -107,6 +107,6 @@ module.exports = {
         "always"
     ],
     "new-cap": 2,
-    "no-case-declarations": 0
+    "no-case-declarations": 0,
   }
 }

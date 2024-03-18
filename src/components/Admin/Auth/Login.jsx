@@ -4,13 +4,12 @@ import Auth from './Auth.jsx'
 import './auth.css'
 
 import { createAxiosNoJwt } from '../../../../createInstance.js'
-import AuthService from '../../../services/AuthService.js'
+import AuthService from '../../../services/admin/AuthService.js'
 import LocalStorageService from '../../../services/LocalStorageService.js'
 import useFormAuth from '../../../hooks/useFormAuth.jsx'
 
 const Login = () => {
 	const axiosNoJwt = createAxiosNoJwt()
-
 	const navigate = useNavigate()
 
 	const fieldsConfig = {
@@ -77,6 +76,7 @@ const Login = () => {
 					value={credentials?.username}
 					onChange={handleChange}
 					onBlur={handleBlur}
+					autoFocus
 				/>
 				<span className="form-message">{error?.username}</span>
 			</div>
@@ -95,19 +95,12 @@ const Login = () => {
 			</div>
 
 			<button
-				className="btn w-100"
+				className="form-submit w-100"
 				onClick={handleLogin}
 				disabled={hasDisableBtnSubmit()}
 			>
 				Login
 			</button>
-			<p
-				onClick={() => {
-					navigate('/auth/register')
-				}}
-			>
-				{'Don\'t have an account? Register here'}
-			</p>
 		</Auth>
 	)
 }

@@ -24,11 +24,11 @@ const CartItemList = ({ imgUrl, detail, price, quantity, total }) => {
 
 			<td className="fp__pro_select td-center">
 				<div className="quantity_btn">
-					<button className="btn btn-danger">
+					<button className="btn-danger">
 						<FontAwesomeIcon icon={faMinus} />
 					</button>
 					<input type="text" placeholder="1" value={quantity} />
-					<button className="btn btn-success">
+					<button className="btn-success">
 						<FontAwesomeIcon icon={faPlus} />
 					</button>
 				</div>

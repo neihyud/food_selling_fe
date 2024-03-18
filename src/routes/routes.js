@@ -7,7 +7,9 @@ import UserDashboard from '../pages/UserDashboard'
 
 import DefaultLayout from '../layouts/DefaultLayout/DefaultLayout.jsx'
 import Checkout from '../components/Checkout'
-import LoginAdmin from '../pages/Admin/Auth/Login'
+import Auth from '../pages/Admin/Auth.jsx'
+import Dashboard from '../pages/Admin/Dashboard.jsx'
+import AdminDefaultLayout from '../layouts/DefaultLayout/AdminDefaultLayout.jsx'
 
 const { routes } = config
 
@@ -42,9 +44,14 @@ const privateRoutes = []
 
 const adminPublicRouter = [
 	{
-		path: routes.admin.login,
-		component: LoginAdmin,
+		path: routes.admin.auth,
+		component: Auth,
 	},
+	{
+		path: routes.admin.dashboard,
+		component: Dashboard,
+		layout: AdminDefaultLayout
+	}
 ]
 
 export { publicRoutes, privateRoutes, adminPublicRouter }

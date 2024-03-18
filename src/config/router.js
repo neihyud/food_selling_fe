@@ -6,9 +6,9 @@ const routes = {
 	checkout: 'checkout',
   
 	admin: {
-		home: '/admin',
-		login: '/admin/login',
-		register: '/admin/register'
+		home: '',
+		auth: 'login',
+		dashboard: 'dashboard'
 	}
 }
 
