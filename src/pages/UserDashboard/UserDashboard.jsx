@@ -1,9 +1,9 @@
-import Dashboard from "../../components/UserDashboard";
+import Dashboard from '../../components/UserDashboard'
 
 const UserDashboard = () => {
-  return (
-    <Dashboard />
-  );
-};
+	return (
+		<Dashboard />
+	)
+}
 
-export default UserDashboard;
+export default UserDashboard

@@ -68,6 +68,32 @@ select {
     font-weight: 300;
 }
 
+.modal-backdrop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all linear 0.3s;
+}
+
+.animation-icon {
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.animation-icon:hover {
+    background-color: var(--colorRed);
+    color: var(--colorWhite);
+    transform: scale(1.1) translateY(-3px);
+    transition: all linear 0.3s;
+}
+
 .td-center {
     text-align: center;
     vertical-align: middle;
@@ -106,35 +132,3 @@ select {
 .common_btn:hover {
     background: var(--colorBlack);
 }
-
-/* 
-.comment_input {
-    overflow: hidden;
-    background: var(--colorWhite);
-    box-shadow: var(--boxShadow);
-    border-radius: 5px;
-    padding: 25px;
-}
-
-.comment_input h4 {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--colorBlack);
-    text-transform: capitalize;
-}
-
-.comment_input p {
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--colorBlack);
-    margin-top: 14px;
-}
-
-.comment_input label {
-    display: block;
-    text-transform: capitalize;
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--colorBlack);
-    margin-top: 20px;
-} */

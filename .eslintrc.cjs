@@ -5,7 +5,7 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
-    'plugin:react-hooks/recommended',
+    'plugin:react-hooks/recommended'
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: {
@@ -25,14 +25,14 @@ module.exports = {
   },
   plugins: [
     'react-refresh',
-    'react',
+    'react'
   ],
   rules: {
-    "array-bracket-spacing": [ "error", "always" ],
+    "array-bracket-spacing": [ "error", "never" ],
     "brace-style": [ "error", "1tbs" ],
     "comma-spacing": "error",
     "comma-style": "error",
-    "computed-property-spacing": [ "error", "always" ],
+    "computed-property-spacing": [ "error", "never" ],
     "constructor-super": "error",
     "dot-notation": "error",
     "eol-last": "error",
@@ -75,36 +75,24 @@ module.exports = {
     "object-curly-spacing": [ "error", "always" ],
     "one-var": "off",
     "prefer-const": "error",
-    "semi": "error",
+    "semi": ["error", "never"],
     "semi-spacing": "error",
     "space-before-blocks": [ "error", "always" ],
     "space-before-function-paren": [ "error", "never" ],
     "space-in-parens": [ "error", "never" ],
     "space-infix-ops": [ "error", { "int32Hint": false } ],
     "space-unary-ops": [ "error"],
-    "template-curly-spacing": [ "error", "always" ],
+    "template-curly-spacing": [ "error", "never" ],
     "valid-jsdoc": [ "error", { "requireReturn": false } ],
     "valid-typeof": "error",
     "yoda": [0],
-
-    "indent": [
-      2,
-      2,
-      {
-          "SwitchCase": 1
-      }
-    ],
     "linebreak-style": [
         2,
         "unix"
     ],
     "quotes": [
         2,
-        "double"
-    ],
-    "semi": [
-        2,
-        "always"
+        "single"
     ],
     "curly": [
         2,
@@ -119,6 +107,6 @@ module.exports = {
         "always"
     ],
     "new-cap": 2,
-    "no-case-declarations": 0,
+    "no-case-declarations": 0
   }
 }

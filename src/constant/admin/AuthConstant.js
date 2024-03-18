@@ -1,0 +1,6 @@
+const AuthConstant = {
+	SET_CREDENTIALS: '[ADMIN_AUTH] SET_CREDENTIALS',
+	GET_CREDENTIALS: '[ADMIN_AUTH] GET_CREDENTIALS'
+}
+
+export default AuthConstant 

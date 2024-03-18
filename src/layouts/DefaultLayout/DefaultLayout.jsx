@@ -1,35 +1,35 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types'
 
-import Header from "../components/Header";
-import SideBarCart from "../../components/Cart/SidebarCart";
-import { useSelector } from "react-redux";
+import Header from '../components/Header'
+import SideBarCart from '../../components/Cart/SidebarCart'
+import { useSelector } from 'react-redux'
 
 const DefaultLayout = ({ children }) => {
-  const { isOpenCartCheckout } = useSelector((state) => state.homeReducer);
+	const { isOpenCartCheckout } = useSelector((state) => state.homeReducer)
   
-  const getSideBarCart = () => {
-    if (!isOpenCartCheckout) {
-      return null;
-    }
+	const getSideBarCart = () => {
+		if (!isOpenCartCheckout) {
+			return null
+		}
 
-    return <SideBarCart />;
-  };
+		return <SideBarCart />
+	}
 
-  return (
-    <>
-      <Header />
-      {getSideBarCart()}
+	return (
+		<>
+			<Header />
+			{getSideBarCart()}
 
-      <p style={{ padding: "40px 0" }}></p>
-      {children}
-      <p style={{ padding: "40px 0" }}></p>
+			<p style={{ padding: '40px 0' }}></p>
+			{children}
+			<p style={{ padding: '40px 0' }}></p>
 
-    </>
-  );
-};
+		</>
+	)
+}
 
 DefaultLayout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+	children: PropTypes.node.isRequired,
+}
 
-export default DefaultLayout;
+export default DefaultLayout

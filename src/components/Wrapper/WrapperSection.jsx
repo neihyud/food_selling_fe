@@ -1,15 +1,15 @@
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 const WrapperSection = ({ children }) => {
-  return (
-    <div style={{ padding: "100px 0 0" }}>
-      {children}
-    </div>
-  )
+	return (
+		<div style={{ padding: '100px 0 0' }}>
+			{children}
+		</div>
+	)
 }
 
 WrapperSection.propTypes = {
-  children: PropTypes.node
+	children: PropTypes.node
 }
 
 export default WrapperSection
