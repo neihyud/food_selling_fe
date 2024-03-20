@@ -10,6 +10,10 @@ import Checkout from '../components/Checkout'
 import Auth from '../pages/Admin/Auth.jsx'
 import Dashboard from '../pages/Admin/Dashboard.jsx'
 import AdminDefaultLayout from '../layouts/DefaultLayout/AdminDefaultLayout.jsx'
+import Category from '../components/Admin/ManageProduct/Category/index.jsx'
+import CategoryManagement from '../components/Admin/ManageProduct/Category/CategoryManagement.jsx'
+import Product from '../components/Admin/ManageProduct/Product/index.jsx'
+import ProductManagement from '../components/Admin/ManageProduct/Product/ProductManagement.jsx'
 
 const { routes } = config
 
@@ -50,6 +54,36 @@ const adminPublicRouter = [
 	{
 		path: routes.admin.dashboard,
 		component: Dashboard,
+		layout: AdminDefaultLayout
+	},
+	{
+		path: routes.admin.category,
+		component: Category,
+		layout: AdminDefaultLayout
+	},
+	{ 
+		path: routes.admin.categoryEdit,
+		component: CategoryManagement,
+		layout: AdminDefaultLayout
+	},
+	{ 
+		path: routes.admin.categoryCreate,
+		component: CategoryManagement,
+		layout: AdminDefaultLayout
+	},
+	{
+		path: routes.admin.product,
+		component: Product,
+		layout: AdminDefaultLayout
+	},
+	{ 
+		path: routes.admin.productEdit,
+		component: ProductManagement,
+		layout: AdminDefaultLayout
+	},
+	{ 
+		path: routes.admin.productCreate,
+		component: ProductManagement,
 		layout: AdminDefaultLayout
 	}
 ]

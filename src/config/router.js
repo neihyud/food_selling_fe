@@ -8,7 +8,13 @@ const routes = {
 	admin: {
 		home: '',
 		auth: 'login',
-		dashboard: 'dashboard'
+		dashboard: 'dashboard',
+		category: 'category',
+		categoryEdit: 'category/:id/edit',
+		categoryCreate: 'category/create',
+		product: 'product',
+		productEdit: 'product/:id/edit',
+		productCreate: 'product/create'
 	}
 }
 

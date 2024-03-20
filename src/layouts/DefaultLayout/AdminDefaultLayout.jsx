@@ -8,7 +8,7 @@ const AdminDefaultLayout = ({ children }) => {
 			<div style={{ with: '250px' }}>
 				<Menu/>
 			</div>
-			<div style={{ paddingLeft: '250px' }}>
+			<div style={{ marginLeft: '250px', flex: 1, padding: '50px' }}>
 				{children}
 			</div>
 		</div>
