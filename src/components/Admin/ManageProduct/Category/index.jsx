@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import DataTable from './DataTable'
+import WrapperContent from '../WrapperContent'
 
 const columns = [
 	{
@@ -29,26 +30,20 @@ const data = [
 
 const Category = () => {
 	const navigate = useNavigate()
+	const action = (
+		<button className="btn btn-primary" onClick={() => navigate('/admin/category/create')}>
+			Create new
+		</button>
+	)
 	return (
-		<section className="section">
-			<div className="section-header">
-				<h1>Product Categories</h1>
-			</div>
+		<WrapperContent
+			title='Product Categories'
+			subTitle='All Categories'
+			action={action}
+		>
+			<DataTable columns={columns} data={data} />
 
-			<div className="card card-primary">
-				<div className="card-header">
-					<h4>All Categories</h4>
-					<div className="card-header-action">
-						<button className="btn btn-primary" onClick={() => navigate('/admin/category/create')}>
-							Create new
-						</button>
-					</div>
-				</div>
-				<div className="card-body">
-					<DataTable columns={columns} data={data} />
-				</div>
-			</div>
-		</section>
+		</WrapperContent>
 	)
 }
 

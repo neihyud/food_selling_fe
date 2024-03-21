@@ -12,9 +12,7 @@ const AddressItem = () => {
               home
 						</span>
 
-						<span className="address">house, road, block,
-              A
-              B.</span>
+						<span className="address"> xuan thuy,	 cau giay</span>
 					</label>
 				</div>
 				<ul>

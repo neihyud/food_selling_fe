@@ -1,10 +1,19 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types'
+import { useDispatch } from 'react-redux'
 
-const MenuItem = ({ icon, name }) => {
+import DashboardAction from '../../../redux/action/DashboardAction'
+
+const MenuItem = ({ icon, name, type }) => {
+	const dispatch = useDispatch()
+
+	const handleChangeComponent = () => {
+		dispatch(DashboardAction.setTypeContentComponent(type))
+	}
+
 	return (
 		<>
-			<button className="nav-link" >
+			<button className="nav-link" onClick={handleChangeComponent}>
 				<span>
 					<FontAwesomeIcon icon={icon} />
 				</span>
@@ -16,7 +25,8 @@ const MenuItem = ({ icon, name }) => {
 
 MenuItem.propTypes = {
 	icon: PropTypes.object,
-	name: PropTypes.string
+	name: PropTypes.string,
+	type: PropTypes.string
 }
 
 export default MenuItem

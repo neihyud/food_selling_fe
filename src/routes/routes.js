@@ -1,19 +1,21 @@
 import config from '../config/index'
 
-import Home from '../pages/Home/Home'
 import About from '../pages/About/About'
 import Cart from '../pages/Cart'
+import Home from '../pages/Home/Home'
 import UserDashboard from '../pages/UserDashboard'
 
-import DefaultLayout from '../layouts/DefaultLayout/DefaultLayout.jsx'
 import Checkout from '../components/Checkout'
+import DefaultLayout from '../layouts/DefaultLayout/DefaultLayout.jsx'
 import Auth from '../pages/Admin/Auth.jsx'
 import Dashboard from '../pages/Admin/Dashboard.jsx'
-import AdminDefaultLayout from '../layouts/DefaultLayout/AdminDefaultLayout.jsx'
-import Category from '../components/Admin/ManageProduct/Category/index.jsx'
+
 import CategoryManagement from '../components/Admin/ManageProduct/Category/CategoryManagement.jsx'
-import Product from '../components/Admin/ManageProduct/Product/index.jsx'
+import Category from '../components/Admin/ManageProduct/Category/index.jsx'
 import ProductManagement from '../components/Admin/ManageProduct/Product/ProductManagement.jsx'
+import Product from '../components/Admin/ManageProduct/Product/index.jsx'
+import Overview from '../components/Admin/Overview/Overview.jsx'
+import AdminDefaultLayout from '../layouts/DefaultLayout/AdminDefaultLayout.jsx'
 
 const { routes } = config
 
@@ -52,6 +54,11 @@ const adminPublicRouter = [
 		component: Auth,
 	},
 	{
+		path: routes.admin.home,
+		component: Overview,
+		layout: AdminDefaultLayout
+	},
+	{
 		path: routes.admin.dashboard,
 		component: Dashboard,
 		layout: AdminDefaultLayout
@@ -88,4 +95,5 @@ const adminPublicRouter = [
 	}
 ]
 
-export { publicRoutes, privateRoutes, adminPublicRouter }
+export { adminPublicRouter, privateRoutes, publicRoutes }
+

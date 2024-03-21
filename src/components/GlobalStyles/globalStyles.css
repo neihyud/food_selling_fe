@@ -29,7 +29,7 @@ body {
 }
 
 #root {
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
 }
@@ -67,7 +67,8 @@ img {
     object-fit: cover !important;
 }
 
-input:not(input[type="radio"], input[type="checkbox"], .input-primary),
+input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not(.input-primary),
+input[type='password']:not(.input-primary),
 textarea,
 select {
     width: 100%;

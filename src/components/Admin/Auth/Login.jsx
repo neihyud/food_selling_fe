@@ -56,7 +56,7 @@ const Login = () => {
 				LocalStorageService.setToken(response.accessToken)
 				LocalStorageService.setUser(response.user)
 
-				navigate('/')
+				navigate('/admin')
 			} else if (response.errors) {
 				setError(response.errors)
 			}
@@ -72,7 +72,7 @@ const Login = () => {
 					name="username"
 					type="text"
 					placeholder="User name"
-					className="form-control"
+					className="form-control input-primary"
 					value={credentials?.username}
 					onChange={handleChange}
 					onBlur={handleBlur}
@@ -86,7 +86,7 @@ const Login = () => {
 					name="password"
 					type="password"
 					placeholder="Password"
-					className="form-control"
+					className="form-control input-primary"
 					value={credentials?.password}
 					onChange={handleChange}
 					onBlur={handleBlur}

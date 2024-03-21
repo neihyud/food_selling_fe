@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
+import WrapperContent from '../WrapperContent'
 
 const CategoryManagement = () => {
 	const { id } = useParams()
@@ -12,30 +13,35 @@ const CategoryManagement = () => {
 	}, [])
 
 	return (
-		<form>
-			<div className="form-group">
-				<label>Name</label>
-				<input type="text" name="name" className="form-control input-primary" / >
-			</div>
+		<WrapperContent
+			title='Category'
+			subTitle='Create Category'
+		>
+			<form>
+				<div className="form-group">
+					<label>Name</label>
+					<input type="text" name="name" className="form-control input-primary" / >
+				</div>
 
-			<div className="form-group">
-				<label>Description</label>
-			
-				<textarea>
+				<div className="form-group">
+					<label>Description</label>
+					<textarea className='form-control input-primary'>
 
-				</textarea>
-			</div>
+					</textarea>
+				</div>
 
-			<div className="form-group">
-				<label>Status</label>
-				<select name="status" className="form-control">
-					<option value="1">Active</option>
-					<option value="0">Inactive</option>
-				</select>
-			</div>
+				<div className="form-group">
+					<label>Status</label>
+					<select name="status" className="form-control">
+						<option value="1">Active</option>
+						<option value="0">Inactive</option>
+					</select>
+				</div>
 
-			<button type="submit" className="btn btn-primary">Create</button>
-		</form>
+				<button type="submit" className="btn btn-primary">Create</button>
+			</form>
+		</WrapperContent>
+	
 	)
 }
 

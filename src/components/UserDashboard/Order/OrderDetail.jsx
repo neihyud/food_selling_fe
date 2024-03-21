@@ -35,7 +35,7 @@ const OrderDetail = () => {
 
 	return (
 		<div className="fp__invoice">
-			<a className="go_back"><i className="fas fa-long-arrow-alt-left"></i> go back</a>
+			{/* <a className="go_back"><i className="fas fa-long-arrow-alt-left"></i> go back</a> */}
 			{/* <div className="fp__track_order">
         <ul>
           <li className="active">order pending</li>
@@ -123,8 +123,7 @@ const OrderDetail = () => {
 				</div>
 			</div>
 			<span className="print_btn common_btn">
-				<FontAwesomeIcon icon={faPrint} />
-        print PDF</span>
+				<FontAwesomeIcon icon={faPrint} />print PDF</span>
 		</div>
 	)
 }

@@ -9,27 +9,27 @@ const MenuDashboard = () => {
 		{
 			imgUrl: '',
 			icon: faUser,
-			name: 'personal info'
+			name: 'personal info',
+			type: 'user'
 		},
 		{
 			imgUrl: '',
 			icon: faUser,
-			name: 'address'
+			name: 'address',
+			type: 'address'
 		},
 		{
 			imgUrl: '',
 			icon: faBagShopping,
-			name: 'order'
+			name: 'order',
+			type: 'order'
 		},
 		{
 			imgUrl: '',
 			icon: faBagShopping,
-			name: 'Reviews'
-		},
-		{
-			imgUrl: '',
-			icon: faBagShopping,
-			name: 'change password'
+			name: 'change password',
+			type: 'change_password'
+
 		},
 		{
 			imgUrl: '',

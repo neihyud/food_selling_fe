@@ -41,8 +41,8 @@ function DataTable({ columns, data }) {
 								if (cell.column.id === 'icon') {
 									return (
 										<td key={id} {...cell.getCellProps()}>
-											<FontAwesomeIcon icon={faEdit} onClick={() => navigate(`/admin/category/${productId}/edit`) }/>
-											<FontAwesomeIcon icon={faTrash} />
+											<FontAwesomeIcon icon={faEdit} onClick={() => navigate(`/admin/category/${productId}/edit`)} className='animation-icon'/>
+											<FontAwesomeIcon icon={faTrash} className='animation-icon' />
 										</td>
 									)
 								} 

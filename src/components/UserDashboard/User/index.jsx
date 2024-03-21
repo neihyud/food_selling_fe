@@ -15,11 +15,10 @@ const User = () => {
 				</h4>
 
 				<div className="personal_info_text">
-					<p><span>Name:</span> Hasib Ahmed</p>
-					<p><span>Email:</span> hasibahmed@gmail.com</p>
-					<p><span>Phone:</span> 023 434 54354</p>
-					<p><span>Address:</span> 7232 Broadway Suite 308, Jackson Heights,
-            11372, NY, United States </p>
+					<p><span>Name:</span> a</p>
+					<p><span>Email:</span> a@gmail.com</p>
+					<p><span>Phone:</span> 0123456789</p>
+					<p><span>Address:</span> Xuan Thuy</p>
 				</div>
 			</div>
 		)
@@ -50,7 +49,7 @@ const User = () => {
 										<span className="icon">
 											<FontAwesomeIcon icon={faShoppingBasket} />
 										</span>
-										<h4>total order <span>(76)</span></h4>
+										<h4>total order <span>(50)</span></h4>
 									</div>
 								</div>
 								<div className="col-xl-4 col-sm-6 col-md-4">
@@ -59,7 +58,7 @@ const User = () => {
 											<FontAwesomeIcon icon={faShoppingBasket} />
 
 										</span>
-										<h4>Completed <span>(71)</span></h4>
+										<h4>Completed <span>(50)</span></h4>
 									</div>
 								</div>
 								<div className="col-xl-4 col-sm-6 col-md-4">
@@ -67,7 +66,7 @@ const User = () => {
 										<span className="icon">
 											<FontAwesomeIcon icon={faShoppingBasket} />
 										</span>
-										<h4>cancel <span>(05)</span></h4>
+										<h4>cancel <span>(50)</span></h4>
 									</div>
 								</div>
 							</div>

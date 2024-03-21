@@ -22,7 +22,7 @@ const FoodCardDetail = () => {
 								<FontAwesomeIcon icon={faTimes}/>
 							</button>
 							<div className="fp__cart_popup_img">
-								<Image src="images/menu1.png" alt="menu" className="img-fluid w-100" />
+								<Image src="src/assets/images/menu2_img_1.jpg" className="img-fluid w-100" />
 							</div>
 							<div className="fp__cart_popup_text">
 								<a href="#" className="title">Pizza Test Better</a>
@@ -40,21 +40,21 @@ const FoodCardDetail = () => {
 									<h5>select size</h5>
 									<div className="form-check">
 										<input className="form-check-input" type="radio" name="flexRadioDefault" />
-                    checked
+                    
 										<label className="form-check-label" htmlFor="large">
-                      large <span>+ $350</span>
+                      large <span>+ $50</span>
 										</label>
 									</div>
 									<div className="form-check">
 										<input className="form-check-input" type="radio" name="flexRadioDefault" />
 										<label className="form-check-label" htmlFor="medium">
-                      medium <span>+ $250</span>
+                      medium <span>+ $50</span>
 										</label>
 									</div>
 									<div className="form-check">
 										<input className="form-check-input" type="radio" name="flexRadioDefault" />
 										<label className="form-check-label" htmlFor="small">
-                      small <span>+ $150</span>
+                      small <span>+ $50</span>
 										</label>
 									</div>
 								</div>

@@ -9,17 +9,17 @@ const ListFoodCard = () => {
 		},
 		{
 			price: 20,
-			imgUrl: 'src/assets/images/menu2_img_2.jpg',
+			imgUrl: 'src/assets/images/menu2_img_1.jpg',
 			title: 'T1'
 		},
 		{
 			price: 30,
-			imgUrl: 'src/assets/images/menu2_img_3.jpg',
+			imgUrl: 'src/assets/images/menu2_img_1.jpg',
 			title: 'T1'
 		},
 		{
 			price: 40,
-			imgUrl: 'src/assets/images/menu2_img_4.jpg',
+			imgUrl: 'src/assets/images/menu2_img_1.jpg',
 			title: 'T1'
 		},
 		{
@@ -29,17 +29,17 @@ const ListFoodCard = () => {
 		},
 		{
 			price: 20,
-			imgUrl: 'src/assets/images/menu2_img_2.jpg',
+			imgUrl: 'src/assets/images/menu2_img_1.jpg',
 			title: 'T1'
 		},
 		{
 			price: 30,
-			imgUrl: 'src/assets/images/menu2_img_3.jpg',
+			imgUrl: 'src/assets/images/menu2_img_1.jpg',
 			title: 'T1'
 		},
 		{
 			price: 40,
-			imgUrl: 'src/assets/images/menu2_img_4.jpg',
+			imgUrl: 'src/assets/images/menu2_img_1.jpg',
 			title: 'T1'
 		}
 	]

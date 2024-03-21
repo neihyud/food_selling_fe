@@ -31,8 +31,8 @@ const SideBarCart = () => {
 	})
 
 	return (
-		<div className="fp__menu_cart_area">
-			<div className="fp__menu_cart_body">
+		<div className="fp__menu_cart_area" onClick={handleCloseCartCheckout}>
+			<div className="fp__menu_cart_body" onClick={(event) => event.stopPropagation()}>
 				<div className="fp__menu_cart_header">
 					<h5>total item (05)</h5>
 					<span className="close_cart" onClick={handleCloseCartCheckout}>

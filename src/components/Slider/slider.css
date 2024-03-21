@@ -2,7 +2,9 @@
   background-position: center !important;
   background-repeat: no-repeat !important;
   background-size: cover !important;
-  height: calc(100vh - var(--heightHeader));
+  /* height: calc(100vh - var(--heightHeader)); */
+  height: 100vh;
+  width: 100%;
   position: relative;
   overflow: hidden;
 }

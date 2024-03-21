@@ -16,7 +16,7 @@ const SliderComponent = () => {
 
 	const config = [
 		{
-			imgSrc: 'src/assets/images/slider_img_1.png',
+			imgSrc: 'src/assets/images/menu2_img_1.jpg	',
 			discount: 10,
 			title: 'Different spice for a Different taste',
 			subTitle: 'Fast Food & Restaurants',
@@ -41,7 +41,7 @@ const SliderComponent = () => {
 	})
 
 	return (
-		<section className="fp__banner" style={{ backgroundImage: `url(${'src/assets/images/banner_bg.jpg'})` }}>
+		<section className="fp__banner" style={{ backgroundImage: `url(${'/src/assets/images/banner_bg.jpg'})` }}>
 			<div className="fp__banner_overlay">
 				<div className='test'>
 					<Slider {...settings}>

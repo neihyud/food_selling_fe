@@ -20,7 +20,7 @@ const FoodCard = ({ imgUrl, price, title }) => {
 			<div className="fp__menu_item">
 				<div className="fp__menu_item_img">
 					<Image src={imgUrl} alt="menu" className="img-fluid w-100" rounded />
-					<a className="category" href="#">Biryani</a>
+					<a className="category" href="#">Burger</a>
 				</div>
 				<div className="fp__menu_item_text">
 					<p className="rating">

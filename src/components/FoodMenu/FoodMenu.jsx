@@ -36,10 +36,10 @@ const FoodMenu = () => {
 						<div className="col-12">
 							<div className="menu_filter d-flex flex-wrap justify-content-center">
 								<button className=" active" data-filter="*">all menu</button>
-								<button data-filter=".burger">burger</button>
-								<button data-filter=".chicken">chicken</button>
-								<button data-filter=".pizza">pizza</button>
-								<button data-filter=".dresserts">dresserts</button>
+								<button data-filter=".burger">A</button>
+								<button data-filter=".chicken">A</button>
+								<button data-filter=".pizza">A</button>
+								<button data-filter=".dresserts">A</button>
 							</div>
 						</div>
 					</div>

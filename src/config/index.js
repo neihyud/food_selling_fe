@@ -1,9 +1,11 @@
 import routes from './router'
 import menu from './menu'
+import menuAdmin from './admin/menu'
 
 const config = {
 	routes,
-	menu
+	menu,
+	menuAdmin
 }
 
 export default config

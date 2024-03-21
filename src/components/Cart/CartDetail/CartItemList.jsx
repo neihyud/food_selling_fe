@@ -12,7 +12,7 @@ const CartItemList = ({ imgUrl, detail, price, quantity, total }) => {
 			</td>
 
 			<td className="fp__pro_name">
-				<a href="#">Hyderabadi Biryani</a>
+				<a href="#">A </a>
 				<span>medium</span>
 				<p>coca-cola</p>
 				<p>{detail.sub}</p>
@@ -24,13 +24,13 @@ const CartItemList = ({ imgUrl, detail, price, quantity, total }) => {
 
 			<td className="fp__pro_select td-center">
 				<div className="quantity_btn">
-					<button className="btn-danger">
+					{/* <button className="btn-danger">
 						<FontAwesomeIcon icon={faMinus} />
-					</button>
+					</button> */}
 					<input type="text" placeholder="1" value={quantity} />
-					<button className="btn-success">
+					{/* <button className="btn-success">
 						<FontAwesomeIcon icon={faPlus} />
-					</button>
+					</button> */}
 				</div>
 			</td>
 
