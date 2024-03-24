@@ -1,9 +1,23 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import WrapperContent from '../WrapperContent'
 
 const ProductManagement = () => {
 	const { id } = useParams()
+
+	const infoComponent = useMemo(() => {
+		if (id) {
+			return {
+				title: 'Edit Product',
+				btnTitle: 'Edit'
+			}
+		}
+
+		return {
+			title: 'Create Product',
+			btnTitle: 'Create'
+		}
+	}, [id])
 
 	useEffect(() => {
 		if (id) {
@@ -15,7 +29,7 @@ const ProductManagement = () => {
 	return (
 		<WrapperContent
 			title='Product'
-			subTitle='Create Product'
+			subTitle={infoComponent.title}
 		>
 			<div>
 				<div className="form-group">
@@ -78,7 +92,7 @@ const ProductManagement = () => {
 					</select>
 				</div>
 
-				<button type="submit" className="btn btn-primary">Create</button>
+				<button type="submit" className="btn btn-primary">{infoComponent.btnTitle}</button>
 			</div>
 		</WrapperContent>
 	

@@ -25,7 +25,6 @@
 }
 
 .main-sidebar .sidebar-menu li div:hover>span {
-  /* color: rgb(124, 232, 247); */
   cursor: pointer;
 }
 
@@ -34,7 +33,6 @@
   display: flex;
   align-items: center;
   height: 50px;
-  padding: 0 20px;
   width: 100%;
   letter-spacing: .3px;
   color: #868e96;
@@ -42,8 +40,16 @@
 }
 
 .main-sidebar .sidebar-menu li div span {
-  margin-top: 3px;
   width: 100%;
+}
+
+
+.dropdown {
+  padding: 0 0 0 20px;
+}
+
+.dropdown .dropdown {
+  padding: 0 0 0 20px;
 }
 
 .main-sidebar .sidebar-menu li.active ul.dropdown-menu {
@@ -73,18 +79,21 @@
 
 .dropdown-menu {
   width: 200px;
-  transition: all linear 1s;
   overflow: hidden;
-  padding-left: 40px !important;
   border: none !important;
-  max-height: 0
+  max-height: 0;
+  transition: all linear 0.5s;
+}
+
+.dropdown>.dropdown-menu {
+  overflow: hidden;
 }
 
 .dropdown.open>.dropdown-menu {
-  height: auto;
   max-height: 500px;
   overflow: hidden;
 }
+
 
 .main-sidebar .sidebar-menu .dropdown.open div>span.open {
   color: rgb(124, 232, 247) !important;
@@ -92,6 +101,19 @@
 
 .main-sidebar .sidebar-menu li svg {
   width: 28px;
-  margin-right: 20px;
   text-align: center;
+}
+
+.nav-name {
+  margin-left: 10px;
+}
+
+.dropdown-menu .nav-name {
+  margin-left: 20px;
+}
+
+.dropdown.active div.open,
+.dropdown.active div.open>span {
+  transition: all linear 0.2s;
+  color: #78bcf0 !important;
 }

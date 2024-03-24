@@ -1,8 +1,4 @@
-import { faEdit } from '@fortawesome/free-regular-svg-icons'
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types'
-import { useNavigate } from 'react-router-dom'
 import { useTable } from 'react-table'
 
 function DataTable({ columns, data }) {
@@ -11,13 +7,11 @@ function DataTable({ columns, data }) {
 		getTableBodyProps,
 		headerGroups,
 		rows,
-		prepareRow,
+		prepareRow
 	} = useTable({
 		columns,
-		data,
+		data
 	})
-
-	const navigate = useNavigate()
 
 	return (
 		<table {...getTableProps()} className="table">
@@ -35,16 +29,19 @@ function DataTable({ columns, data }) {
 					prepareRow(row)
 
 					const productId = row.original.id
+					
 					return (
 						<tr key={index} {...row.getRowProps()}>
 							{row.cells.map((cell, id) => {
-								if (cell.column.id === 'icon') {
+								if (cell.column.id === 'action') {
+
 									return (
 										<td key={id} {...cell.getCellProps()}>
-											<FontAwesomeIcon icon={faEdit} onClick={() => navigate(`/admin/category/${productId}/edit`)} className='animation-icon'/>
-											<FontAwesomeIcon icon={faTrash} className='animation-icon' />
+											{cell.column.getComponent(productId)} 
+											
 										</td>
 									)
+									
 								} 
 
 								return <td key={id} {...cell.getCellProps()}>{cell.render('Cell')}</td>

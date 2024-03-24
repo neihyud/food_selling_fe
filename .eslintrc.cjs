@@ -78,12 +78,15 @@ module.exports = {
     "semi": ["error", "never"],
     "semi-spacing": "error",
     "space-before-blocks": [ "error", "always" ],
-    "space-before-function-paren": [ "error", "never" ],
+    "space-before-function-paren": ["error", {
+      "anonymous": "always",
+      "named": "never",
+      "asyncArrow": "always"
+    }],
     "space-in-parens": [ "error", "never" ],
     "space-infix-ops": [ "error", { "int32Hint": false } ],
     "space-unary-ops": [ "error"],
     "template-curly-spacing": [ "error", "never" ],
-    "valid-jsdoc": [ "error", { "requireReturn": false } ],
     "valid-typeof": "error",
     "yoda": [0],
     "linebreak-style": [
@@ -108,5 +111,6 @@ module.exports = {
     ],
     "new-cap": 2,
     "no-case-declarations": 0,
+    "comma-dangle": ["error", "never"]
   }
 }

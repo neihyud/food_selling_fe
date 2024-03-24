@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-const useFormAuth = (fieldsConfig) => {
+const useForm = (fieldsConfig) => {
 	const [error, setError] = useState({})
-	const [credentials, setCredentials] = useState({})
+	const [dataForm, setDataForm] = useState({})
 
 	const validateField = (field, value, object) => {
 		let errorMessage = ''
@@ -36,8 +36,8 @@ const useFormAuth = (fieldsConfig) => {
 		const field = event.target.name
 		const value = event.target.value
 
-		setCredentials({ 
-			...credentials,
+		setDataForm({ 
+			...dataForm,
 			[field]: value 
 		})
 	}
@@ -46,7 +46,7 @@ const useFormAuth = (fieldsConfig) => {
 		const field = event.target.name
 		const value = event.target.value
 
-		const errorMessage = validateField(field, value, credentials)
+		const errorMessage = validateField(field, value, dataForm)
 
 		const valueField = errorMessage ? errorMessage : ''
 
@@ -59,11 +59,11 @@ const useFormAuth = (fieldsConfig) => {
 	const hasDisableBtnSubmit = () => {
 		return Object.keys(fieldsConfig).some((field) => {
 			
-			if (!Object.prototype.hasOwnProperty.call(credentials, field)) {
+			if (!Object.prototype.hasOwnProperty.call(dataForm, field)) {
 				return true
 			}
 
-			if (!credentials[field].trim()) {
+			if (!dataForm[field].trim()) {
 				return true
 			}
 
@@ -71,7 +71,11 @@ const useFormAuth = (fieldsConfig) => {
 		})
 	}
 
-	return { credentials, handleBlur, handleChange, error, setError, validateForm, hasDisableBtnSubmit, setCredentials }
+	const handleSetDataForm = (data) => {
+		setDataForm(data)
+	}
+
+	return { dataForm, handleSetDataForm, handleBlur, handleChange, error, setError, validateForm, hasDisableBtnSubmit }
 }
 
-export default useFormAuth
+export default useForm

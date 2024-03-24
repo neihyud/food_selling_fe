@@ -43,7 +43,7 @@ const SliderComponent = () => {
 	return (
 		<section className="fp__banner" style={{ backgroundImage: `url(${'/src/assets/images/banner_bg.jpg'})` }}>
 			<div className="fp__banner_overlay">
-				<div className='test'>
+				<div className=''>
 					<Slider {...settings}>
 						{renderSlider}
 					</Slider>

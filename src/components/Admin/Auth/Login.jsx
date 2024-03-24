@@ -46,17 +46,17 @@ const Login = () => {
 		}
 	}
 
-	const { credentials, validateForm, handleChange, handleBlur, error, setError, hasDisableBtnSubmit } = useFormAuth(fieldsConfig)
+	const { credentials, validateForm, handleChange, handleBlur, error, setError, hasDisableBtnSubmit, setCredentials } = useFormAuth(fieldsConfig)
 
 	const handleLogin = async() => {
 		if (validateForm(credentials)) {
 			const response = await AuthService.handleLogin(axiosNoJwt, credentials)
 
 			if (response.success) {
-				LocalStorageService.setToken(response.accessToken)
-				LocalStorageService.setUser(response.user)
-
-				navigate('/admin')
+				// LocalStorageService.setToken(response.accessToken)
+				// LocalStorageService.setUser(response.user)
+				setCredentials({})
+				// navigate('/admin')
 			} else if (response.errors) {
 				setError(response.errors)
 			}

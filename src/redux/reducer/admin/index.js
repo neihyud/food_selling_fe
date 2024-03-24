@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import authReducer from './AuthReducer'
+import pageReducer from './PageReducer'
+import manageProductReducer from './ManageProductReducer'
 
 export const rootAdminReducer = combineReducers({
-	authReducer
+	pageReducer,
+	manageProductReducer
 })

@@ -13,10 +13,17 @@ const Menu = () => {
 				<ul className='sidebar-menu'>
 					{
 						LIST_MENU.map((item, index) => {
-							return <SubMenu key={index} item={item}/>
+							return (
+								<SubMenu 
+									key={index} 
+									item={item} 
+									id={item.key} 
+									keyPath={[item.key]}
+								/>
+							)
 						})
 					}
-				
+					
 				</ul>
 			</div>
 		

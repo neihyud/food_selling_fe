@@ -4,7 +4,7 @@ const WrapperContent = (props) => {
 	const { children, title, subTitle, action } = props
 
 	return (
-		<section className="section">
+		<section className="section wrapper-content">
 			<div className="section-header">
 				<h1>{title}</h1>
 			</div>

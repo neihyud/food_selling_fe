@@ -11,7 +11,8 @@
     --cursiveFont: 'Lobster', cursive;
     --boxShadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     --colorBg: #e7e7f5;
-    --heightHeader: 80px
+    --heightHeader: 80px;
+    --fontSize: 14px
 }
 
 * {
@@ -94,6 +95,8 @@ select {
     transition: all linear 0.3s;
 }
 
+/* ANIMATION */
+
 .animation-icon {
     padding: 5px;
     border-radius: 50%;
@@ -104,8 +107,47 @@ select {
     background-color: var(--colorRed);
     color: var(--colorWhite);
     transform: scale(1.1) translateY(-3px);
-    transition: all linear 0.3s;
+    transition: all linear 0.2s;
 }
+
+
+.icon-arrow {
+    position: absolute;
+    top: 50%;
+    inset-inline-end: 16px;
+    width: calc(var(--fontSize) / 7* 5);
+    color: black;
+    transform: translateY(-50%);
+}
+
+.icon-arrow::before,
+.icon-arrow::after {
+    position: absolute;
+    width: calc(calc(var(--fontSize) / 7* 5)* 0.6);
+    height: calc(calc(var(--fontSize) / 7* 5)* 0.15);
+    background-color: black;
+    border-radius: 6px;
+    content: "";
+    transition: all linear 0.4s;
+}
+
+.icon-arrow::before {
+    transform: rotate(-45deg) translateX(calc(calc(var(--fontSize) / 7* 5)* 0.25));
+}
+
+.icon-arrow::after {
+    transform: rotate(45deg) translateX(calc(calc(calc(var(--fontSize) / 7* 5)* 0.25)* -1));
+}
+
+.icon-arrow.open::before {
+    transform: rotate(45deg) translateY(calc(calc(calc(var(--fontSize) / 7* 5)* 0.25)* -1));
+}
+
+.icon-arrow.open::after {
+    transform: rotate(-45deg) translateY(calc(calc(calc(var(--fontSize) / 7* 5)* 0.25)* -1));
+}
+
+/* ================= END ANIMATION======================= */
 
 .td-center {
     text-align: center;

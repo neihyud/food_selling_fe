@@ -1,45 +1,151 @@
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import WrapperContent from '../WrapperContent'
-
+import useForm from '../../../../hooks/useForm'
+import { createAxiosJwt } from '../../../../../createInstance'
+import ManageProductService from '../../../../services/admin/ManageProductService'
+import { Button } from 'react-bootstrap'
+import { showToast } from '../../../../helper/toast'
 const CategoryManagement = () => {
 	const { id } = useParams()
+	const axiosJwt = createAxiosJwt()
+
+	const infoComponent = useMemo(() => {
+		if (id) {
+			return {
+				title: 'Edit Category',
+				btnTitle: 'Edit'
+			}
+		}
+
+		return {
+			title: 'Create Category',
+			btnTitle: 'Create'
+		}
+	}, [id])
+
+	const fieldsConfig = {
+		name: {
+			validates: [
+				(value) => {
+					if (value) {
+						return ''
+					}
+
+					return 'Field is required'
+				}
+			]
+		}
+	}
+
+	const { dataForm, handleBlur, handleChange, handleSetDataForm, error, setError, validateForm, hasDisableBtnSubmit } = useForm(fieldsConfig)
+	
+	const getCurrentCategory = async () => {
+		const response = await ManageProductService.getCategory(axiosJwt, id)
+
+		if (response.success) {
+			handleSetDataForm(response.data)
+		}
+	}
 
 	useEffect(() => {
 		if (id) {
 			// to do load current category
+			getCurrentCategory()
 		}
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
+	const handleCreateCategory = async () => { 
+		if (validateForm(dataForm)) {
+			const response = await ManageProductService.createCategory(axiosJwt, dataForm)
+			if (response.success) {
+				handleSetDataForm({})
+				showToast('success')
+			} else if (response.errors) {
+				setError(response.errors)
+			}
+		}
+	}
+
+	const handleUpdateCategory = async () => {
+		if (validateForm(dataForm)) {
+			const response = await ManageProductService.updateCategory(axiosJwt, id, dataForm)
+			if (response.success) {
+				showToast('success')
+				
+			} else if (response.errors) {
+				setError(response.errors)
+			}
+		}
+	}
+
+	const handleAction = () => {
+		if (id) {
+			handleUpdateCategory()
+		} else {
+			handleCreateCategory()
+		}
+	}
+
+	const isDisableBtn = hasDisableBtnSubmit()
+
 	return (
 		<WrapperContent
 			title='Category'
-			subTitle='Create Category'
+			subTitle={infoComponent.title}
 		>
-			<form>
+			<div>
 				<div className="form-group">
 					<label>Name</label>
-					<input type="text" name="name" className="form-control input-primary" / >
+					<input 
+						type="text" 
+						name="name" 
+						className="form-control input-primary"
+						value={dataForm?.name || ''}
+						onChange={handleChange}
+						onBlur={handleBlur}
+						autoFocus
+					/>
+					<span className="form-message">{error?.name}</span>
 				</div>
 
 				<div className="form-group">
 					<label>Description</label>
-					<textarea className='form-control input-primary'>
+					<textarea 
+						name='description'
+						className='form-control input-primary'
+						value={dataForm?.description || ''}
+						onChange={handleChange}
+					>
 
 					</textarea>
 				</div>
 
 				<div className="form-group">
 					<label>Status</label>
-					<select name="status" className="form-control">
+					<select 
+						name="status" 
+						className="form-control"
+						value={dataForm?.status || ''}
+						onChange={handleChange}
+					>
 						<option value="1">Active</option>
 						<option value="0">Inactive</option>
 					</select>
 				</div>
 
-				<button type="submit" className="btn btn-primary">Create</button>
-			</form>
+				<Button 
+					type="button" 
+					className="btn btn-primary" 
+					onClick={handleAction}
+					disabled={isDisableBtn}
+					variant={ isDisableBtn ? 'secondary' : 'primary'}
+					
+				>
+					{infoComponent.btnTitle}
+				</Button>
+			</div>
 		</WrapperContent>
 	
 	)
