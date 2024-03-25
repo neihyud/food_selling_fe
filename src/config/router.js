@@ -14,7 +14,11 @@ const routes = {
 		categoryCreate: 'category/create',
 		product: 'product',
 		productEdit: 'product/:id/edit',
-		productCreate: 'product/create'
+		productCreate: 'product/create',
+		profile: 'profile',
+		staff: 'account',
+		staffCreate: 'account/create',
+		staffEdit: 'account/:id/edit'
 	}
 }
 

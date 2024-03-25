@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
-import WrapperContent from '../WrapperContent'
+import WrapperContent from '../../WrapperContent'
 import useForm from '../../../../hooks/useForm'
 import { createAxiosJwt } from '../../../../../createInstance'
 import ManageProductService from '../../../../services/admin/ManageProductService'

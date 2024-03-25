@@ -1,4 +1,5 @@
-import { faCartShopping, faHome } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping, faHome, faUser } from '@fortawesome/free-solid-svg-icons'
+import routes from '../router'
 
 const LIST_MENU = [
 	{
@@ -14,46 +15,34 @@ const LIST_MENU = [
 		children: [
 			{
 				title: 'Product Categories',
-				path: '/admin/category',
+				path: `/admin/${routes.admin.category}`,
 				key: '2'
 			},
 			{
 				title: 'Products',
-				path: '/admin/product',
+				path: `/admin/${routes.admin.product}`,
 				key: '3'
 			}
 		]
 	},
 	{
-		title: 'Test',
-		icon: faCartShopping,	
+		title: 'Account',
+		icon: faUser,	
 		key: 'sub2',
 		children: [
 			{
-				title: 'test1',
-				path: '/admin/category',
-				key: 'sub3',
-				children: [
-					{
-						title: 'test2',
-						path: '/admin/category',
-						key: '4'
-					},
-					{
-						title: 'Products',
-						path: '/admin/product',
-						key: '5'
-					}
-				]
+				title: 'Profile',
+				path: `/admin/${routes.admin.profile}`,
+				key: '4'
 			},
 			{
-				title: 'Products',
-				path: '/admin/product',
-				key: '6'
+				title: 'Staff',
+				path: `/admin/${routes.admin.staff}`,
+				key: '5'
 			}
 		]
 		
-	},
+	}
 
 ]
 

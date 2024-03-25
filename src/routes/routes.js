@@ -16,6 +16,7 @@ import ProductManagement from '../components/Admin/ManageProduct/Product/Product
 import Product from '../components/Admin/ManageProduct/Product/index.jsx'
 import Overview from '../components/Admin/Overview/Overview.jsx'
 import AdminDefaultLayout from '../layouts/DefaultLayout/AdminDefaultLayout.jsx'
+import Staff from '../components/Admin/Account/Staff/index.jsx'
 
 const { routes } = config
 
@@ -27,7 +28,7 @@ const publicRoutes = [
 	},
 	{
 		path: routes.about,
-		component: About,
+		component: About
 	},
 	{
 		path: routes.cart,
@@ -43,7 +44,7 @@ const publicRoutes = [
 		path: routes.checkout,
 		component: Checkout,
 		layout: DefaultLayout
-	},
+	}
 ]
 
 const privateRoutes = []
@@ -51,7 +52,7 @@ const privateRoutes = []
 const adminPublicRouter = [
 	{
 		path: routes.admin.auth,
-		component: Auth,
+		component: Auth
 	},
 	{
 		path: routes.admin.home,
@@ -90,6 +91,26 @@ const adminPublicRouter = [
 	},
 	{ 
 		path: routes.admin.productCreate,
+		component: ProductManagement,
+		layout: AdminDefaultLayout
+	},
+	{
+		path: routes.admin.profile,
+		component: Product,
+		layout: AdminDefaultLayout
+	},
+	{ 
+		path: routes.admin.staff,
+		component: Staff,
+		layout: AdminDefaultLayout
+	},
+	{ 
+		path: routes.admin.staffCreate,
+		component: Staff,
+		layout: AdminDefaultLayout
+	},
+	{ 
+		path: routes.admin.staffEdit,
 		component: ProductManagement,
 		layout: AdminDefaultLayout
 	}

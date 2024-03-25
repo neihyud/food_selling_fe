@@ -32,10 +32,18 @@ const useForm = (fieldsConfig) => {
 		return !(errors && Object.keys(errors).length)
 	}
 
-	const handleChange = (event) => {
+	const handleChange = (event, type) => {
 		const field = event.target.name
-		const value = event.target.value
+		let value = ''
 
+		switch (type) {
+			case 'file': 
+				value = event.target.files
+				break
+			default: 
+				value = event.target.value
+		}
+		
 		setDataForm({ 
 			...dataForm,
 			[field]: value 

@@ -24,7 +24,7 @@ const Menu = ({ items }) => {
 }
 
 Menu.propTypes = {
-	items: PropTypes.array,
+	items: PropTypes.arrayOf(PropTypes.object)
 }
 
 export default Menu

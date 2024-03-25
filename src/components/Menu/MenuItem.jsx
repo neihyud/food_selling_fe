@@ -13,7 +13,7 @@ const MenuItem = ({ title, to }) => {
 
 MenuItem.propTypes = {
 	title: PropTypes.string,
-	to: PropTypes.string,
+	to: PropTypes.string
 }
 
 export default MenuItem
