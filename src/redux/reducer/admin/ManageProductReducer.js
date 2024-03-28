@@ -2,7 +2,8 @@ import MangeProductConstant from '../../../constant/admin/MangeProductConstant'
 
 const initState = {
 	currentData: null,
-	listData: []
+	listCategory: [],
+	listProduct: []
 }
 
 const ManageProductReducer = (state = initState, action) => {
@@ -10,14 +11,26 @@ const ManageProductReducer = (state = initState, action) => {
 		case MangeProductConstant.GET_CATEGORY_SUCCESS:
 			return {
 				...state,
-				listData: action.listData
+				listCategory: action.listCategory
 			}
 		case MangeProductConstant.DELETE_CATEGORY_SUCCESS:
-			const newListData = state?.listData.filter((item) => item.id !== action.id)
+			const newListDataCategory = state?.listCategory.filter((item) => item.id !== action.id)
 			
 			return {
 				...state,
-				listData: newListData
+				listCategory: newListDataCategory
+			}
+		case MangeProductConstant.GET_PRODUCT_SUCCESS: 
+			return {
+				...state,
+				listProduct: action.listProduct
+			}
+		case MangeProductConstant.DELETE_PRODUCT_SUCCESS:
+			const newListDataProduct = state?.listProduct.filter((item) => item.id !== action.id)
+			
+			return {
+				...state,
+				listProduct: newListDataProduct
 			}
 		
 		default:

@@ -24,7 +24,7 @@ const ManageProductAction = {
 	getListCategorySuccess(data) {
 		return {
 			type: MangeProductConstant.GET_CATEGORY_SUCCESS,
-			listData: data
+			listCategory: data
 		}
 	},
 
@@ -43,6 +43,40 @@ const ManageProductAction = {
 	deleteCategorySuccess(id) {
 		return {
 			type: MangeProductConstant.DELETE_CATEGORY_SUCCESS,
+			id
+		} 
+	},
+
+	getListProduct(axiosJwt) {
+		return async dispatch => {
+			const response = await ManageProductService.getListProduct(axiosJwt)
+
+			dispatch(this.getListProductSuccess(response))
+		}
+	},
+
+	getListProductSuccess(data) {
+		return {
+			type: MangeProductConstant.GET_PRODUCT_SUCCESS,
+			listProduct: data
+		}
+	},
+
+	deleteProduct(axiosJwt, id) {
+		return async (dispatch) => {
+			const response = await ManageProductService.deleteProduct(axiosJwt, id)
+
+			if (response.success) {
+				dispatch(this.deleteProductSuccess(id))
+				showToast('success', `Delete product '${response.data?.name}' success?`)
+			}
+			
+		}
+	},
+
+	deleteProductSuccess(id) {
+		return {
+			type: MangeProductConstant.DELETE_PRODUCT_SUCCESS,
 			id
 		} 
 	}

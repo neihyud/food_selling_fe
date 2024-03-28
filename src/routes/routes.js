@@ -17,6 +17,7 @@ import Product from '../components/Admin/ManageProduct/Product/index.jsx'
 import Overview from '../components/Admin/Overview/Overview.jsx'
 import AdminDefaultLayout from '../layouts/DefaultLayout/AdminDefaultLayout.jsx'
 import Staff from '../components/Admin/Account/Staff/index.jsx'
+import StaffManagement from '../components/Admin/Account/Staff/StaffManagement.jsx'
 
 const { routes } = config
 
@@ -106,12 +107,12 @@ const adminPublicRouter = [
 	},
 	{ 
 		path: routes.admin.staffCreate,
-		component: Staff,
+		component: StaffManagement,
 		layout: AdminDefaultLayout
 	},
 	{ 
 		path: routes.admin.staffEdit,
-		component: ProductManagement,
+		component: StaffManagement,
 		layout: AdminDefaultLayout
 	}
 ]

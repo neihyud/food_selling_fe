@@ -64,7 +64,7 @@ const Category = () => {
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []) 
 
-	const { listData } = useSelector((state) => state.admin.manageProductReducer)
+	const { listCategory } = useSelector((state) => state.admin.manageProductReducer)
 
 	useEffect(() => {
 		dispatch(ManageProductAction.getListCategory(axiosJwt))
@@ -87,7 +87,7 @@ const Category = () => {
 			subTitle='All Categories'
 			action={action}
 		>
-			<DataTable columns={columns} data={listData} />
+			<DataTable columns={columns} data={listCategory} />
 
 			<ModalCustom 
 				handleActionPrimary={handleRemoveCategory}

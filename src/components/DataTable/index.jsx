@@ -13,6 +13,39 @@ function DataTable({ columns, data }) {
 		data
 	})
 
+	// const handleGetIdImg = (pathGDrive) => {
+	// 	const idIndex = pathGDrive.indexOf('id=')
+	// 	if (idIndex !== -1) {
+	// 		const ampersandIndex = pathGDrive.indexOf('&', idIndex)
+    
+	// 		return pathGDrive.substring(idIndex + 3, ampersandIndex !== -1 ? ampersandIndex : undefined)
+	// 	} 
+
+	// 	return pathGDrive.replace('file/d', 'thumbnail?id=')
+	// }
+
+	const getRow = (cell, id, productId) => {
+		switch (cell.column.id) {
+			case 'action':
+				return (
+					<td key={id} {...cell.getCellProps()}>
+						{cell.column.getComponent(productId)} 
+					</td>
+				)
+			case 'image':
+				// const idImg = handleGetIdImg(cell.value)
+
+				return (
+					<td key={id} {...cell.getCellProps()} width={80}>
+						{/* <img src={`https://drive.google.com/thumbnail?id=${idImg}`} alt="Not found image"></img> */}
+						<img src={cell.value} alt="Not found image" className='no-default' width={80} height={80} ></img>
+					</td>
+				)
+			default:
+				return <td key={id} {...cell.getCellProps()}>{cell.render('Cell')}</td>
+
+		}
+	}
 	return (
 		<table {...getTableProps()} className="table">
 			<thead>
@@ -32,19 +65,8 @@ function DataTable({ columns, data }) {
 					
 					return (
 						<tr key={index} {...row.getRowProps()}>
-							{row.cells.map((cell, id) => {
-								if (cell.column.id === 'action') {
-
-									return (
-										<td key={id} {...cell.getCellProps()}>
-											{cell.column.getComponent(productId)} 
-											
-										</td>
-									)
-									
-								} 
-
-								return <td key={id} {...cell.getCellProps()}>{cell.render('Cell')}</td>
+							{row.cells.map((cell, id) => {	
+								{return getRow(cell, id, productId)}
 							})}
 						</tr>
 					)

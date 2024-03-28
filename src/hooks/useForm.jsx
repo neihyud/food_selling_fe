@@ -37,8 +37,8 @@ const useForm = (fieldsConfig) => {
 		let value = ''
 
 		switch (type) {
-			case 'file': 
-				value = event.target.files
+			case 'file':
+				value = event.target.files[0]
 				break
 			default: 
 				value = event.target.value
@@ -71,9 +71,9 @@ const useForm = (fieldsConfig) => {
 				return true
 			}
 
-			if (!dataForm[field].trim()) {
-				return true
-			}
+			// if (!dataForm[field].trim()) {
+			// 	return true
+			// }
 
 			return (Object.prototype.hasOwnProperty.call(error, field) && error[field])
 		})

@@ -14,7 +14,6 @@ const WrapperContent = (props) => {
 					<h4>{subTitle}</h4>
 					<div className="card-header-action">
 						{action}
-					
 					</div>
 				</div>
 				<div className="card-body">
