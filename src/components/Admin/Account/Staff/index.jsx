@@ -4,14 +4,29 @@ import DataTable from '../../../DataTable'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
 import { faEdit } from '@fortawesome/free-regular-svg-icons'
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import AccountAction from '../../../../redux/action/admin/AccountAction'
+import { createAxiosJwt } from '../../../../../createInstance'
+import ModalCustom from '../../../Modal/ModalCustom'
 
 const Staff = () => {
 	const navigate = useNavigate()
+	const dispatch = useDispatch()
+	const axiosJwt = createAxiosJwt()
+	const [isShowModal, setIsShowModal] = useState(false)
+	const [currentIdAccount, setCurrentIdAccount] = useState()
+
+	const handleOpenModal = (accountId) => {
+		setIsShowModal(true)
+		setCurrentIdAccount(accountId)
+	}
+	const { listStaff } = useSelector(state => state.admin.accountReducer)
 	
 	const columns = [
 		{
 			Header: 'Name',
-			accessor: 'name'
+			accessor: 'username'
 		},
 		{
 			Header: 'Status',
@@ -21,26 +36,36 @@ const Staff = () => {
 			Header: 'Action',
 			accessor: 'action',
 			id: 'action',
-			getComponent: (productId) => {
+			getComponent: (accountId) => {
 				return (
 					<>
 						<FontAwesomeIcon 
 							icon={faEdit} 
 							className='animation-icon'
-							onClick={() => navigate(`/admin/account/${productId}/edit`)} 
+							onClick={() => navigate(`/admin/account/${accountId}/edit`)} 
 						/>
 		
 						<FontAwesomeIcon 
 							icon={faTrash	} 
 							className='animation-icon' 
-							// onClick={() => handleOpenModal(productId)}
+							onClick={() => handleOpenModal(accountId)}
 						/>
 					</>
 				)
 			}
 		}
 	]
-	const data = [{ name: '1', status: 1, id: 1 }]
+		
+	useEffect(() => {
+		dispatch(AccountAction.getListStaff(axiosJwt))
+
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
+	
+	const handleRemoveAccount = () => { 
+		dispatch(AccountAction.deleteAccount(axiosJwt, currentIdAccount))
+		setIsShowModal(false)
+	}
 
 	const action = (
 		<button className="btn btn-primary" onClick={() => navigate('/admin/account/create')}>
@@ -53,8 +78,15 @@ const Staff = () => {
 			subTitle='All Staff'
 			action={action}
 		>
-			<DataTable columns={columns} data={data} />
-	
+			<DataTable columns={columns} data={listStaff} />
+
+			<ModalCustom 
+				handleActionPrimary={handleRemoveAccount}
+				handleActionSecondary={() => setIsShowModal(false)}
+				isShow={isShowModal}
+				content={'Do you want remove?'} 
+				title={'Remove Category'}
+			/>
 		</WrapperContent>
 	)
 }

@@ -50,7 +50,6 @@ const CategoryManagement = () => {
 
 	useEffect(() => {
 		if (id) {
-			// to do load current category
 			getCurrentCategory()
 		}
 	// eslint-disable-next-line react-hooks/exhaustive-deps

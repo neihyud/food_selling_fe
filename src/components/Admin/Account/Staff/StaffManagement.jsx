@@ -1,32 +1,33 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import WrapperContent from '../../WrapperContent'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import useForm from '../../../../hooks/useForm'
 import { Button } from 'react-bootstrap'
 import { createAxiosJwt } from '../../../../../createInstance'
 import { showToast } from '../../../../helper/toast'
-import ManageProductService from '../../../../services/admin/ManageProductService'
+import AccountService from '../../../../services/admin/AccountService'
 
 const StaffManagement = () => {
 	const { id } = useParams()
 	const axiosJwt = createAxiosJwt()
+	const navigate = useNavigate()
 
 	const infoComponent = useMemo(() => {
 		if (id) {
 			return {
-				title: 'Edit Account',
+				title: 'Edit Account Staff',
 				btnTitle: 'Edit'
 			}
 		}
 
 		return {
-			title: 'Create Account',
+			title: 'Create Account Staff',
 			btnTitle: 'Create'
 		}
 	}, [id])
 
 	const fieldsConfig = {
-		name: {
+		username: {
 			validates: [
 				(value) => {
 					if (value) {
@@ -38,13 +39,23 @@ const StaffManagement = () => {
 			]
 		},
 		password: {
+			noValidate: Boolean(id),
 			validates: [
 				(value) => {
-					if (value) {
-						return ''
+					const alphabeticRegExp = /(?=.*?[a-zA-Z])/
+					const digitsRegExp = /(?=.*?[0-9])/
+					const minLengthRegExp = /.{7,}/
+					const alphabeticPassword = alphabeticRegExp.test(value)
+					const digitsPassword = digitsRegExp.test(value)
+					const minLengthPassword = minLengthRegExp.test(value)
+					if (!alphabeticPassword ||
+						!digitsPassword ||
+						!minLengthPassword
+					) {
+						return 'Please enter 7 or more characters, using both numeric and alphabetic'
 					}
 
-					return 'Field is required'
+					return ''
 				}
 			]
 		}
@@ -61,24 +72,40 @@ const StaffManagement = () => {
 		hasDisableBtnSubmit 
 	} = useForm(fieldsConfig)
 
+	const getCurrentStaff = async () => {
+		const response = await AccountService.getAccount(axiosJwt, id)
+
+		if (response.success) {	
+			handleSetDataForm(response.data)
+		}
+	}
+
+	useEffect(() => {
+		if (id) {
+			getCurrentStaff()
+		}
+
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
+
 	const handleCreateAccount = async () => { 
 		if (validateForm(dataForm)) {
-			const response = await ManageProductService.createProduct(axiosJwt, dataForm)
+			const response = await AccountService.createAccount(axiosJwt, dataForm)
 			if (response.success) {
 				handleSetDataForm({})
 				showToast('success')
+				navigate('/admin/account')
 			} else if (response.errors) {
 				setError(response.errors)
 			}
 		}
-	}
+	}	
 
 	const handleUpdateAccount = async () => {
 		if (validateForm(dataForm)) {
-			const response = await ManageProductService.updateProduct(axiosJwt, id, dataForm)
+			const response = await AccountService.updateAccount(axiosJwt, id, dataForm)
 			if (response.success) {
 				showToast('success')
-				
 			} else if (response.errors) {
 				setError(response.errors)
 			}
@@ -93,7 +120,33 @@ const StaffManagement = () => {
 		}
 	}
 
-	const isDisableBtn = hasDisableBtnSubmit()		
+	const isDisableBtn = () => {
+		if (id) {
+			return false
+		}
+
+		return hasDisableBtnSubmit()
+	}
+
+	const getPassword = () => {
+		if (id) {
+			return null
+		}
+		return (
+			<div className="form-group">
+				<label>Password</label>
+				<input 
+					type="password" 
+					name="password" 
+					className="form-control input-primary"
+					value={dataForm?.password || ''}
+					onChange={handleChange}
+					onBlur={handleBlur}
+				/>
+				<span className="form-message">{error?.password}</span>
+			</div>
+		)
+	}
 
 	return (
 		<WrapperContent
@@ -105,9 +158,9 @@ const StaffManagement = () => {
 					<label>Name</label>
 					<input 
 						type="text" 
-						name="name" 
+						name="username" 
 						className="form-control input-primary"
-						value={dataForm?.name || ''}
+						value={dataForm?.username || ''}
 						onChange={handleChange}
 						onBlur={handleBlur}
 						autoFocus
@@ -115,7 +168,7 @@ const StaffManagement = () => {
 					<span className="form-message">{error?.name}</span>
 				</div>
 
-				<div className="form-group">
+				{/* <div className="form-group">
 					<label>Password</label>
 					<input 
 						type="password" 
@@ -123,11 +176,11 @@ const StaffManagement = () => {
 						className="form-control input-primary"
 						value={dataForm?.password || ''}
 						onChange={handleChange}
-						onBlur={handleBlur}
-						autoFocus
+						onBlur={handleBlurHasCondition()}
 					/>
-					<span className="form-message">{error?.name}</span>
-				</div>
+					<span className="form-message">{error?.password}</span>
+				</div> */}
+				{getPassword()}
 
 				<div className="form-group">
 					<label>Status</label>
@@ -146,9 +199,8 @@ const StaffManagement = () => {
 					type="button" 
 					className="btn btn-primary" 
 					onClick={handleAction}
-					disabled={isDisableBtn}
-					variant={ isDisableBtn ? 'secondary' : 'primary'}
-					
+					disabled={isDisableBtn()}
+					variant={isDisableBtn() ? 'secondary' : 'primary'}
 				>
 					{infoComponent.btnTitle}
 				</Button>

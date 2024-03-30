@@ -1,12 +1,43 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import DefaultLayout from '../layouts/DefaultLayout/DefaultLayout'
-import { Fragment } from 'react'
+import { Fragment, useEffect } from 'react'
 import { publicRoutes, adminPublicRouter } from '../routes'
 import NotFound from './NotFound/NotFound'
 import AdminDefaultLayout from '../layouts/DefaultLayout/AdminDefaultLayout'
+import LIST_MENU from '../config/admin/menu'
+import PageAction from '../redux/action/admin/PageAction'
+import { useDispatch } from 'react-redux'
 
 function App() {
+	const dispatch = useDispatch()
+
+	function findPathByKey(listMenu, targetPath, currentPath = []) {
+		for (const item of listMenu) {
+			if (item.path === targetPath) {
+				return currentPath.concat(item.key)
+			} else 
+				if (item.children) {
+					const foundPath = findPathByKey(item.children, targetPath, currentPath.concat(item.key))
+					if (foundPath) {
+						return foundPath
+					}
+				}  
+		}
+		return null
+	}
+	useEffect(() => {
+
+		const currentPath = window.location.pathname
+
+		const keyPath = findPathByKey(LIST_MENU, currentPath, [])
+
+		if (keyPath) {
+			dispatch(PageAction.setKeyPathMenu([...keyPath]))
+		}
+		
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
 	const renderPublicRoute = () => {
 		return publicRoutes.map((route, index) => {
 			const Page = route.component

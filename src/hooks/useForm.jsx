@@ -7,6 +7,10 @@ const useForm = (fieldsConfig) => {
 	const validateField = (field, value, object) => {
 		let errorMessage = ''
 
+		if (fieldsConfig[field].noValidate) {
+			return ''
+		}
+
 		for (const validateFunction of fieldsConfig[field].validates) {
 			errorMessage = validateFunction(value, object)
 			if (errorMessage) {
