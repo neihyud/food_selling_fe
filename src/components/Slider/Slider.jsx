@@ -11,7 +11,7 @@ const SliderComponent = () => {
 		autoplaySpeed: 2000,
 		cssEase: 'linear',
 		dots: true,
-		arrows: false,
+		arrows: false
 	}
 
 	const config = [

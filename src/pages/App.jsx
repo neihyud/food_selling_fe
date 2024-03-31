@@ -38,6 +38,7 @@ function App() {
 		
 	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
+	
 	const renderPublicRoute = () => {
 		return publicRoutes.map((route, index) => {
 			const Page = route.component

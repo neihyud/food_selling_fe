@@ -155,9 +155,9 @@
   right: 0;
   transform: translate(-50%, -50%);
   cursor: pointer;
-  width: 25px;
-  height: 25px;
-  line-height: 25px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
   border-radius: 50%;
   font-size: 14px;
   background: #ffd7de;
@@ -204,4 +204,27 @@
 .show_mini_cart .fp__menu_cart_body {
   opacity: 1;
   transform: scale(1);
+}
+
+.menu_cart_amount .btn-quantity {
+  display: inline-block;
+  border: none;
+  width: 20px;
+  height: 20px;
+  line-height: 18px;
+  text-align: center;
+  background-color: #f3adad;
+  border-radius: 50%;
+  cursor: pointer;
+  color: white;
+}
+
+.menu_cart_amount .quantity {
+  max-width: 50px;
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  padding: 0 5px;
+  text-align: center;
+  margin: 0 8px;
 }

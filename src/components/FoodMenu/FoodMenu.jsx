@@ -45,7 +45,8 @@ const FoodMenu = () => {
 					</div>
 					<ListFoodCard />
 					{/* <FoodCardDetail /> */}
-					{getFoodCartDetail()}
+					{/* to do  */}
+					{/* {getFoodCartDetail()} */}
 
 				</div>
 			</section>

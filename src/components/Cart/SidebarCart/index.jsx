@@ -3,19 +3,30 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import Dish from './Dish'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import HomeAction from '../../../redux/action/HomeAction'
 import { useNavigate } from 'react-router-dom'
+import { useEffect, useMemo } from 'react'
+import CartAction from '../../../redux/action/CartAction'
 
 const SideBarCart = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
+	
+	const { listCartItem } = useSelector((state) => state.cartReducer)
 
-	const listDish = [
-		{}, {},
-		{}, {},
-		{}, {},
-	]
+	useEffect(() => {
+		dispatch(CartAction.getListCartItem())
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
+
+	const subTotal = useMemo(() => {
+		return listCartItem.reduce((total, curr) => {
+			const currentPrice = curr.offer_price ? curr.offer_price : curr.price
+			return total + (curr.quantity * currentPrice)
+		}, 0)
+
+	}, [listCartItem])
 
 	const handleCloseCartCheckout = () => { 
 		dispatch(HomeAction.setIsOpenCartCheckout(false))
@@ -26,8 +37,8 @@ const SideBarCart = () => {
 		dispatch(HomeAction.setIsOpenCartCheckout(false))
 	}
 
-	const renderList = listDish.map((item, index) => {
-		return <Dish key={index} {...item} />
+	const renderList = listCartItem.map((item, index) => {
+		return <Dish key={index} {...item} id={item.id.toString()}/>
 	})
 
 	return (
@@ -43,7 +54,7 @@ const SideBarCart = () => {
 					{renderList}
 				</ul>
 				<div>
-					<p className="subtotal">subtotal <span>$1220.00</span></p>
+					<p className="subtotal">subtotal <span>${subTotal}</span></p>
 					<button className="common_btn w-100" onClick={() => handleNavToPath('/cart')}>view cart</button>
 					<button className="common_btn w-100" onClick={() => handleNavToPath('/checkout')}>checkout</button>
 				</div>
