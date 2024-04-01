@@ -1,31 +1,27 @@
-import { faEdit, faHome, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const AddressItem = () => {
+	// to do: get list address user and TH no have user
 	return (
 		<div className="col-md-6">
 			<div className="fp__checkout_single_address">
 				<div className="form-check">
-					<label className="form-check-label">
-						<span className="icon">
-							<FontAwesomeIcon icon={faHome} />
-              home
-						</span>
-
-						<span className="address"> xuan thuy,	 cau giay</span>
-					</label>
+					<p>Name | Phone</p>
+					<p>Address</p>
+					<p>Area</p>
 				</div>
 				<ul>
 					<li>
-						<a className="dash_edit_btn">
+						<span className="animation-icon">
 							<FontAwesomeIcon
 								icon={faEdit} />
-						</a>
+						</span>
 					</li>
 					<li>
-						<a className="dash_del_icon">
+						<span className="animation-icon">
 							<FontAwesomeIcon icon={faTrashAlt} />
-						</a>
+						</span>
 					</li>
 				</ul>
 			</div>

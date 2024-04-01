@@ -3,35 +3,108 @@ import PropTypes from 'prop-types'
 import { faMinus, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Image } from 'react-bootstrap'
+import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import CartAction from '../../../redux/action/CartAction'
+import '../SidebarCart/sidebarCart.css'
 
-const CartItemList = ({ imgUrl, detail, price, quantity, total }) => {
+const CartItemList = (props) => {
+	const { 
+		id, 
+		imgUrl: thumb_img, 
+		price = 1, 
+		quantity: defaultQuantity, 
+		offer_price = 1, 
+		name 
+	} = props
+
+	const dispatch = useDispatch()
+
+	const [quantity, setQuantity] = useState(defaultQuantity)
+
+	const updateQuantity = (type) => {
+		const data = { id }
+		let newQuantity = 0 
+		switch (type) {
+			case 'increase':
+				newQuantity = quantity + 1
+				break
+			case 'decrease':
+				if (quantity < 2) {
+					return 1
+				}
+
+				newQuantity = quantity - 1
+				break
+		}
+
+		data.quantity = newQuantity
+		setQuantity(newQuantity)
+
+		dispatch(CartAction.updateQuantity(data))
+	}
+
+	const handleChangeQuantity = (event) => {
+		setQuantity(event.target.value)
+	}
+
+	const handleBlurQuantity = () => { 
+		let newQuantity = quantity 
+
+		if (Number(quantity) < 2 && Number(quantity) !== 1) {
+			newQuantity = 1
+			setQuantity(1)
+		}
+
+		if (Number(quantity) > 100) {
+			newQuantity = 100
+			setQuantity(100)
+		}
+
+		dispatch(CartAction.updateQuantity({
+			id,
+			quantity: newQuantity
+		}))
+	}
+
+	const handleRemoveCartItem = () => {
+		dispatch(CartAction.removeCartItem(id))
+	}
+
+	const total = quantity * offer_price || 0
+
 	return (
 		<tr>
 			<td className="fp__pro_img">
-				<Image src={imgUrl} alt="product" className="img-fluid" />
+				<Image src={thumb_img} className="img-fluid" />
 			</td>
 
 			<td className="fp__pro_name">
-				<a href="#">A </a>
-				<span>medium</span>
-				<p>coca-cola</p>
-				<p>{detail.sub}</p>
+				{name}
 			</td>
 
 			<td className="fp__pro_status td-center">
-				<h6>{price}</h6>
+				<p className="price" style={{ color: 'var(--colorPrimary)' }}>
+					${offer_price}
+					<del style={{ marginLeft: '10px', color: '#747272' }}>${price}</del>
+				</p>
 			</td>
 
-			<td className="fp__pro_select td-center">
-				<div className="quantity_btn">
-					{/* <button className="btn-danger">
-						<FontAwesomeIcon icon={faMinus} />
-					</button> */}
-					<input type="text" placeholder="1" value={quantity} />
-					{/* <button className="btn-success">
-						<FontAwesomeIcon icon={faPlus} />
-					</button> */}
-				</div>
+			<td className="fp__pro_select td-center menu_cart_amount">
+				<span className='btn-quantity' onClick={() => updateQuantity('decrease')}>
+					<FontAwesomeIcon icon={faMinus} style={{ fontSize: '10px' }}/>
+				</span>
+				<input className='quantity not-default' 
+					type='number'
+					min={1}
+					max={100}
+					value={quantity}
+					onChange={handleChangeQuantity}
+					onBlur={handleBlurQuantity}
+				/>
+				<span className='btn-quantity' onClick={() => updateQuantity('increase')}>
+					<FontAwesomeIcon icon={faPlus} style={{ fontSize: '10px' }}/>
+				</span>
 			</td>
 
 			<td className="fp__pro_tk td-center">
@@ -39,20 +112,23 @@ const CartItemList = ({ imgUrl, detail, price, quantity, total }) => {
 			</td>
 
 			<td className="fp__pro_icon td-center">
-				<a href="#">
+				<span className='del_icon' onClick={handleRemoveCartItem}>
 					<FontAwesomeIcon icon={faTrash} />
-				</a>
+				</span>
 			</td>
 		</tr>
 	)
 }
 
 CartItemList.propTypes = {
+	id: PropTypes.string,
 	imgUrl: PropTypes.string,
 	price: PropTypes.number,
 	quantity: PropTypes.number,
 	total: PropTypes.number,
-	detail: PropTypes.object
+	detail: PropTypes.object,
+	offer_price: PropTypes.number,
+	name: PropTypes.string
 }
 
 export default CartItemList

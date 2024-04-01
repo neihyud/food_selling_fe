@@ -1,6 +1,6 @@
 let request = null
 let db = null
-let version = 1
+const version = 1
 
 const Stores = {
 	Cart: 'cart'
@@ -21,17 +21,17 @@ request.onerror = () => {
 	console.error('Why didn\'t you allow my web app to use IndexedDB?!')
 }
 
-request.onsuccess = () => {
-	db = request.result
+// request.onsuccess = () => {
+// 	db = request.result
 
-	version = db.version
-}
+// 	version = db.version
+// }
 
 const handleAddProductToCart = async (storeName = 'cart', data) => {
-	return new Promise((resolve) => { 
-		if (!db) {
-			return 'IndexedDB connection is not initialized.'
-		}
+	return new Promise((resolve, reject) => { 
+		// if (!db) {
+		// 	return 'IndexedDB connection is not initialized.'
+		// }
 
 		request = indexedDB.open('food_sell', version)
 
@@ -39,8 +39,32 @@ const handleAddProductToCart = async (storeName = 'cart', data) => {
 			db = request.result
 			const tx = db.transaction(storeName, 'readwrite')
 			const store = tx.objectStore(storeName)
-			store.add(data)
-			resolve(data)
+
+			const getRequest = store.get(data.id)
+
+			getRequest.onsuccess = () => {
+				const existingItem = getRequest.result
+
+				if (existingItem) {
+					const updatedItem = { ...existingItem, quantity: existingItem.quantity + 1 }
+
+					store.put(updatedItem)
+
+					const countRequest = store.count()	
+		
+					countRequest.onsuccess = () => {
+						resolve(countRequest.result)
+					}
+				} else {
+					store.add(data)
+
+					const countRequest = store.count()	
+		
+					countRequest.onsuccess = () => {
+						resolve(countRequest.result)
+					}
+				}
+			}
 		}
 
 		request.onerror = () => {
@@ -56,9 +80,9 @@ const handleAddProductToCart = async (storeName = 'cart', data) => {
 }
 
 const getListCartItem = (storeName = 'cart') => {
-	if (!db) {
-		return 'IndexedDB connection is not initialized.'
-	}
+	// if (!db) {
+	// 	return 'IndexedDB connection is not initialized.'
+	// }
 
 	return new Promise((resolve) => {
 		
@@ -69,7 +93,6 @@ const getListCartItem = (storeName = 'cart') => {
 			const tx = db.transaction(storeName, 'readonly')
 			const store = tx.objectStore(storeName)
 			const res = store.getAll()
-
 			res.onsuccess = () => {
 				resolve(res.result)
 			}
@@ -130,11 +153,29 @@ const deleteCartItem = (storeName = 'cart', id) => {
 	})
 }
 
+const countCartItem = (storeName = 'cart') => { 
+	return new Promise((resolve) => {
+		request = indexedDB.open('food_sell', version)
+
+		request.onsuccess = () => {
+			db = request.result
+			const tx = db.transaction(storeName, 'readonly')
+			const store = tx.objectStore(storeName)
+			const countRequest = store.count()	
+
+			countRequest.onsuccess = () => {
+				resolve(countRequest.result)
+			}
+		}
+	})
+}
+
 const IndexDBService = {
 	handleAddProductToCart,
 	getListCartItem,
 	updateCartItem,
-	deleteCartItem
+	deleteCartItem,
+	countCartItem
 }
 
 export default IndexDBService

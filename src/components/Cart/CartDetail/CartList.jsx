@@ -1,51 +1,46 @@
+import { useDispatch, useSelector } from 'react-redux'
 import CartItemList from './CartItemList'
+import { useEffect } from 'react'
+import CartAction from '../../../redux/action/CartAction'
 
 const CartList = () => {
-	const cartItemList = [
-		{
-			imgUrl: 'src/assets/images/blog_details_slider_img_1.jpg',
-			detail: 'test',
-			price: 80,
-			quantity: 3,
-			total: 200
-		},
-		{
-			imgUrl: 'src/assets/images/blog_details_slider_img_1.jpg',
-			detail: 'test',
-			price: 80,
-			quantity: 3,
-			total: 200
-		},
-		{
-			imgUrl: 'src/assets/images/blog_details_slider_img_1.jpg',
-			detail: 'test',
-			price: 80,
-			quantity: 3,
-			total: 200
-		},
-		{
-			imgUrl: 'src/assets/images/blog_details_slider_img_1.jpg',
-			detail: 'test',
-			price: 80,
-			quantity: 3,
-			total: 200
+	const dispatch = useDispatch()
+	
+	const { listCartItem } = useSelector((state) => state.cartReducer)
+
+	useEffect(() => {
+		if (listCartItem.length) {
+			return undefined
 		}
-	]
+		
+		dispatch(CartAction.getListCartItem())
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
+	const totalItem = listCartItem.length !== 0 ? listCartItem.length.toString().padStart(2, '0') : 0 
 
-	const renderCartItem = cartItemList.map((item, index) => {
-		return <CartItemList key={index} {...item} />
-	})
+	const renderList = () => {
+		if (!totalItem) {
+			return <h3 className='center' style={{ height: '95%' }}>Cart Empty</h3>
+		}
 
+		if (!Array.isArray(listCartItem)) {
+			return undefined
+		}
+
+		return listCartItem.map((item, index) => {
+			return <CartItemList key={index} {...item} />
+		})
+	}
 	return (
 		<div className="table-responsive">
 			<table className="table fp__cart_list">
 				<thead>
 					<tr className="text-center">
 						<th scope="col" className="th-left border-0 bg-light">
-							<div className="p-2 text-uppercase">Product</div>
+							<div className="p-2 text-uppercase">Image</div>
 						</th>
-						<th scope="col" className="border-0 bg-light">
-							<div className="p-2 text-uppercase"></div>
+						<th scope="col" className="th-left border-0 bg-light">
+							<div className="p-2 text-uppercase">Name</div>
 						</th>
 						<th scope="col" className="border-0 bg-light">
 							<div className="py-2 text-uppercase">Price</div>
@@ -62,7 +57,7 @@ const CartList = () => {
 					</tr>
 				</thead>
 				<tbody>
-					{renderCartItem}
+					{renderList()}
 				</tbody>
 			</table>
 		</div>

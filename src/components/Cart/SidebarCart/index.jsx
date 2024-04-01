@@ -36,27 +36,39 @@ const SideBarCart = () => {
 		navigate(path)
 		dispatch(HomeAction.setIsOpenCartCheckout(false))
 	}
+	
+	const totalItem = listCartItem.length !== 0 ? listCartItem.length.toString().padStart(2, '0') : 0 
 
-	const renderList = listCartItem.map((item, index) => {
-		return <Dish key={index} {...item} id={item.id.toString()}/>
-	})
+	const renderList = () => {
+		if (!totalItem) {
+			return <h3 className='center' style={{ height: '95%' }}>Cart Empty</h3>
+		}
 
+		return listCartItem.map((item, index) => {
+			return <Dish key={index} {...item} id={item.id.toString()}/>
+		})
+	}
 	return (
 		<div className="fp__menu_cart_area" onClick={handleCloseCartCheckout}>
 			<div className="fp__menu_cart_body" onClick={(event) => event.stopPropagation()}>
 				<div className="fp__menu_cart_header">
-					<h5>total item (05)</h5>
+					<h5>total item ({totalItem})</h5>
 					<span className="close_cart" onClick={handleCloseCartCheckout}>
 						<FontAwesomeIcon icon={faTimes} />
 					</span>
 				</div>
 				<ul>
-					{renderList}
+					{renderList()}
 				</ul>
 				<div>
 					<p className="subtotal">subtotal <span>${subTotal}</span></p>
-					<button className="common_btn w-100" onClick={() => handleNavToPath('/cart')}>view cart</button>
-					<button className="common_btn w-100" onClick={() => handleNavToPath('/checkout')}>checkout</button>
+					<button 
+						className="common_btn w-100" 
+						onClick={() => handleNavToPath('/checkout')}
+						disabled={!totalItem}
+					>
+						checkout
+					</button>
 				</div>
 			</div>
 		</div>

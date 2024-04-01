@@ -1,7 +1,8 @@
 import CartConstant from '../../constant/CartConstant'
 
 const initState = {
-	listCartItem: []
+	listCartItem: [],
+	countCartItem: 0
 }
 
 const CartReducer = (state = initState, action) => {
@@ -9,7 +10,8 @@ const CartReducer = (state = initState, action) => {
 		case CartConstant.GET_LIST_CART_ITEM_SUCCESS:
 			return {
 				...state,
-				listCartItem: action.listCartItem
+				listCartItem: action.listCartItem,
+				countCartItem: action.listCartItem.length
 			}
 		case CartConstant.UPDATE_QUANTITY_CART_SUCCESS:
 
@@ -22,14 +24,22 @@ const CartReducer = (state = initState, action) => {
 		
 			return {
 				...state,
-				listCartItem: newListCartItem
+				listCartItem: newListCartItem,
+				countCartItem: newListCartItem.length
+
 			}
 		case CartConstant.REMOVE_CART_ITEM_SUCCESS:
 			const newCartAfterRemove = state.listCartItem.filter((item) => item.id !== action.id)
 			
 			return {
 				...state,
-				listCartItem: newCartAfterRemove
+				listCartItem: newCartAfterRemove,
+				countCartItem: newCartAfterRemove.length
+			}
+		case CartConstant.SET_COUNT_CART_ITEM:
+			return {
+				...state,
+				countCartItem: action.count
 			}
 		default:
 			return state

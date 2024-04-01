@@ -98,3 +98,13 @@ html {
 .main_menu .menu_icon li svg.active {
   color: var(--colorPrimary);
 }
+
+.badge {
+  position: absolute;
+  top: -8px;
+  left: 18px;
+  background-color: rgb(233, 108, 108);
+  border-radius: 50% !important;
+  color: black !important;
+  cursor: pointer;
+}

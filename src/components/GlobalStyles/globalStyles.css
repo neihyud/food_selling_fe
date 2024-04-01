@@ -27,6 +27,7 @@ body {
     color: var(--paraColor);
     font-family: var(--paraFont);
     height: 100vh;
+    background-color: #efefefef;
 }
 
 #root {
@@ -53,6 +54,10 @@ h6 {
     color: var(--colorBlack);
 }
 
+button:disabled {
+    background-color: #bbbbbbef;
+}
+
 p,
 a,
 span {
@@ -70,7 +75,7 @@ img:not(.no-default) {
 
 input:not([type="radio"]):not([type="checkbox"]):not([type="file"]):not(.input-primary):not(.not-default),
 input[type='password']:not(.input-primary),
-textarea,
+textarea:not(.not-default),
 select {
     width: 100%;
     padding: 12px 20px;

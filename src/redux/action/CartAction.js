@@ -40,6 +40,19 @@ const CartAction = {
 			type: CartConstant.REMOVE_CART_ITEM_SUCCESS,
 			id
 		}
+	},
+	countCartItem() {
+		return async dispatch => {
+			const count = await IndexDBService.countCartItem()
+
+			dispatch(this.updateCountCartItem(count))
+		}
+	},
+	updateCountCartItem(count) {
+		return {
+			type: CartConstant.SET_COUNT_CART_ITEM,
+			count
+		}
 	}
 	
 }

@@ -1,3 +1,7 @@
+.fp__cart_view {
+  padding: 50px 0
+}
+
 .fp__cart_view .table {
   margin-bottom: 0;
 }
@@ -314,19 +318,6 @@
   font-size: 18px;
 }
 
-.fp__cart_list_footer_button a {
-  display: inline-block;
-  width: 100%;
-  text-align: center;
-  margin-top: 20px;
-  padding: 10px 20px !important;
-}
-
-.fp__cart_list_footer_button a::after,
-.fp__cart_list_footer_button a::before {
-  display: none;
-}
-
 .quantity_btn button {
   width: 35px;
   height: 35px;
@@ -353,4 +344,16 @@
   font-weight: 600;
   margin-left: 10px;
   margin-top: 0;
+}
+
+.img-payment {
+  border-radius: 8px !important;
+}
+
+.fp__single_payment {
+  display: inline-block;
+  width: 60px !important;
+  height: 40px !important;
+  padding-right: 10px;
+  /* object-fit: contain; */
 }

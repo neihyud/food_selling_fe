@@ -1,0 +1,46 @@
+.fp__checkout_form h5 {
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-bottom: 15px;
+  color: #0b2c3d;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.fp__checkout_form h5 a {
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--colorPrimary);
+  border: 1px solid var(--colorPrimary);
+  padding: 5px 10px;
+  font-family: var(--paraFont);
+  background: var(--colorWhite);
+  transition: all linear .3s;
+  -webkit-transition: all linear .3s;
+  -moz-transition: all linear .3s;
+  -ms-transition: all linear .3s;
+  -o-transition: all linear .3s;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+
+.fp__checkout_form h5 a i {
+  margin-right: 5px;
+}
+
+.fp__checkout_form h5 a:hover {
+  background: var(--colorPrimary);
+  color: var(--colorWhite);
+}
+
+.fp__check_form {
+  background: #fff;
+  padding: 25px 25px 5px 25px;
+  border-radius: 5px;
+  box-shadow: rgb(50 50 93 / 15%) 0px 0px 5px 0px;
+}

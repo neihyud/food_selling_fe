@@ -62,7 +62,6 @@ const Dish = (props) => {
 
 	const handleRemoveCartItem = () => {
 		dispatch(CartAction.removeCartItem(id))
-
 	}
 	
 	return (
@@ -72,9 +71,6 @@ const Dish = (props) => {
 			</div>
 			<div className="menu_cart_text">
 				<a className="title">{name}</a>
-				{/* <p className="size">small</p> */}
-				{/* <span className="extra">coca-cola</span>
-				<span className="extra">7up</span> */}
 				<p className="price">
 					${offer_price} 
 					<del>${price}</del>
@@ -93,7 +89,6 @@ const Dish = (props) => {
 					<span className='btn-quantity' onClick={() => updateQuantity('increase')}>
 						<FontAwesomeIcon icon={faPlus} style={{ fontSize: '10px' }}/>
 					</span>
-					
 				</div>
 			</div>
 			<span className="del_icon" onClick={handleRemoveCartItem}>

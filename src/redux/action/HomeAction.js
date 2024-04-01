@@ -1,6 +1,8 @@
 import HomeConstant from '../../constant/HomeConstant'
 import { showToast } from '../../helper/toast'
 import IndexDBService from '../../services/IndexDbService'
+import CartAction from './CartAction'
+
 const HomeAction = {
 	setIsOpenCartCheckout(isOpenCartCheckout) {
 		return {
@@ -16,11 +18,13 @@ const HomeAction = {
 		}
 	},
 
-	addToCart(data) {
+	addToCart(data) {	
 		return async dispatch => {
 			try {
-				await IndexDBService.handleAddProductToCart('cart', data)
+				const result = await IndexDBService.handleAddProductToCart('cart', data) || 0
+
 				dispatch(this.addToCartSuccess())
+				dispatch(CartAction.updateCountCartItem(result))
 			} catch (error) {
 				throw new Error(error)
 			}

@@ -9,12 +9,16 @@ import Menu from '../../../components/Menu/Menu'
 import './header.css'
 import { Image } from 'react-bootstrap'
 import config from '../../../config'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import HomeAction from '../../../redux/action/HomeAction'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import CartAction from '../../../redux/action/CartAction'
 const Header = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
+	
+	const { countCartItem } = useSelector((state) => state.cartReducer)
 
 	const handleOpenCartCheckout = () => {
 		dispatch(HomeAction.setIsOpenCartCheckout(true))
@@ -23,6 +27,12 @@ const Header = () => {
 	const handleNavToDashboard = () => { 
 		navigate('/dashboard')
 	}
+
+	useEffect(() => {
+		dispatch(CartAction.countCartItem())
+
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
 
 	return (
 		<>
@@ -35,11 +45,13 @@ const Header = () => {
 					<Menu items={config.menu} />
 
 					<ul className="menu_icon d-flex flex-wrap">
-						<li>
+						<li >
 							<FontAwesomeIcon icon={faMagnifyingGlass} />
+							
 						</li>
 						<li onClick={handleOpenCartCheckout}>
-							<FontAwesomeIcon icon={faCartShopping} />
+							<FontAwesomeIcon icon={faCartShopping}/>
+							<span className='badge'>{countCartItem}</span>
 						</li>
 						<li onClick={handleNavToDashboard}>
 							<FontAwesomeIcon icon={faUser} />

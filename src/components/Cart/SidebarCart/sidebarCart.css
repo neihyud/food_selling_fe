@@ -213,10 +213,14 @@
   height: 20px;
   line-height: 18px;
   text-align: center;
-  background-color: #f3adad;
+  background-color: #ff7a7a;
   border-radius: 50%;
   cursor: pointer;
   color: white;
+}
+
+.menu_cart_amount .btn-quantity:hover {
+  opacity: 0.5;
 }
 
 .menu_cart_amount .quantity {
