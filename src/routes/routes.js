@@ -4,6 +4,7 @@ import About from '../pages/About/About'
 import Cart from '../pages/Cart'
 import Home from '../pages/Home/Home'
 import UserDashboard from '../pages/UserDashboard'
+import ProductDetails from '../pages/ProductDetails'
 
 import Checkout from '../components/Checkout'
 import DefaultLayout from '../layouts/DefaultLayout/DefaultLayout.jsx'
@@ -44,6 +45,11 @@ const publicRoutes = [
 	{
 		path: routes.checkout,
 		component: Checkout,
+		layout: DefaultLayout
+	},
+	{
+		path: routes.productdetails,
+		component: ProductDetails,
 		layout: DefaultLayout
 	}
 ]
