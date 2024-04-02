@@ -2,7 +2,8 @@ import CartConstant from '../../constant/CartConstant'
 
 const initState = {
 	listCartItem: [],
-	countCartItem: 0
+	countCartItem: 0,
+	infoCheckout: {}
 }
 
 const CartReducer = (state = initState, action) => {
@@ -40,6 +41,23 @@ const CartReducer = (state = initState, action) => {
 			return {
 				...state,
 				countCartItem: action.count
+			}
+		case CartConstant.SET_INFO_CHECKOUT:
+			let newInfoCheckout = {}
+			switch (action.typeAdd) {
+				case 'all':
+					newInfoCheckout = action.data
+					break
+				default:
+					newInfoCheckout = {
+						...state.infoCheckout,
+						...action.data
+					}
+			}
+
+			return {
+				...state,
+				infoCheckout: newInfoCheckout
 			}
 		default:
 			return state

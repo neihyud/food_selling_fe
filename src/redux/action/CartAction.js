@@ -53,6 +53,13 @@ const CartAction = {
 			type: CartConstant.SET_COUNT_CART_ITEM,
 			count
 		}
+	},
+	setInfoCheckout(data, typeAdd = 'part') {
+		return {
+			type: CartConstant.SET_INFO_CHECKOUT,
+			typeAdd,
+			data
+		}
 	}
 	
 }

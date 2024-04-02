@@ -140,7 +140,6 @@ const CategoryManagement = () => {
 					onClick={handleAction}
 					disabled={isDisableBtn}
 					variant={ isDisableBtn ? 'secondary' : 'primary'}
-					
 				>
 					{infoComponent.btnTitle}
 				</Button>

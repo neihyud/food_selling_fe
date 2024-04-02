@@ -87,6 +87,10 @@ select {
     font-weight: 300;
 }
 
+textarea:not(.not-default) {
+    border-radius: 10px;
+}
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;

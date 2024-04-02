@@ -4,15 +4,44 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import TotalSummaryCart from '../Cart/CartDetail/TotalSummaryCart'
 import './checkout.css'
 import CartDetail from '../Cart/CartDetail'
+import { useDispatch, useSelector } from 'react-redux'
+import CartAction from '../../redux/action/CartAction'
 
 const Checkout = () => {
+	const dispatch = useDispatch()
+
 	const listAddress = [
-		{}, {}, {}, {}
+		{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }
 	]
 
+	const { infoCheckout } = useSelector((state) => state.cartReducer)
+
+	const handleSelectedAddress = (item) => {
+		dispatch(CartAction.setInfoCheckout({ address: item }))
+	}
+
 	const renderAddress = listAddress.map((item, index) => {
-		return <AddressItem key={index} {...item} type='no-action' />
+		let selected = false
+
+		// to do check selected
+		if (infoCheckout?.address?.id === item.id) {
+			selected = true
+		}
+
+		return (
+			<AddressItem 
+				key={index} 
+				{...item} 
+				handleAction={() => handleSelectedAddress(item)}
+				selected={selected}
+			/>
+		)
 	})
+
+	const handleChangeNote = (event) => { 
+		dispatch(CartAction.setInfoCheckout({ note: event.target.value }))
+	}
+	
 	return (
 		<>
 			<section className="fp__cart_view mt_125 xs_mt_95 mb_100 xs_mb_70" >
@@ -41,12 +70,15 @@ const Checkout = () => {
 											<h5>Additional Information</h5>
 											<textarea 
 												rows="2"
-												className='not-default w-100'
-												placeholder="Notes about your order, e.g. special notes for delivery"></textarea>
+												className='w-100'
+												placeholder="Notes about your order, e.g. special notes for delivery"
+												onChange={handleChangeNote}
+											/>
 										</div>
 									</div>
 								</div>
 							</div>
+
 							<CartDetail />
 						</div>
 	

@@ -103,10 +103,14 @@
 .fp__checkout_single_address {
   border: 1px solid #eeeeeea6;
   padding: 20px 0;
-  border-radius: 5px;
+  border-radius: 10px;
   margin-bottom: 20px;
   background: #faf6f3;
   position: relative;
+}
+
+.fp__checkout_single_address.selected {
+  border: 2px solid rgb(129, 129, 255);
 }
 
 .fp__checkout_single_address .form-check input {

@@ -1,11 +1,15 @@
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const AddressItem = () => {
+import PropTypes from 'prop-types'
+
+const AddressItem = (props) => {
+	const { handleAction, selected } = props
+
 	// to do: get list address user and TH no have user
 	return (
-		<div className="col-md-6">
-			<div className="fp__checkout_single_address">
+		<div className={'col-md-6'} >
+			<div className={`fp__checkout_single_address ${selected ? 'selected' : ''}`} onClick={handleAction}>
 				<div className="form-check">
 					<p>Name | Phone</p>
 					<p>Address</p>
@@ -28,6 +32,15 @@ const AddressItem = () => {
 		</div>
 
 	)
+}
+
+AddressItem.defaultProps = {
+	handleAction: () => {}
+}
+
+AddressItem.propTypes = {
+	handleAction: PropTypes.func,
+	selected: PropTypes.bool
 }
 
 export default AddressItem
