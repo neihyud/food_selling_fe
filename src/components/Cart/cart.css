@@ -263,14 +263,11 @@
   border-radius: 10px;
   margin-top: 20px;
   border: none;
+  background-color: #7494ff;
 }
 
-.fp__cart_list_footer_button button:hover {
-  background: var(--colorBlack);
-}
-
-.fp__cart_list_footer_button .common_btn i {
-  margin-right: 5px;
+.fp__cart_list_footer_button button:not(:disabled):hover {
+  opacity: 0.5;
 }
 
 .fp__cart_list_footer_button {

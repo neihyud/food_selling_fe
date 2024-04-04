@@ -2,7 +2,8 @@ import PageConstant from '../../../constant/admin/PageConstant'
 
 const initState = {
 	loading: false,
-	keyPathMenu: ['1']
+	keyPathMenu: ['1'],
+	prevPage: ''
 }
 
 const PageReducer = (state = initState, action) => {
@@ -11,6 +12,11 @@ const PageReducer = (state = initState, action) => {
 			return {
 				...state,
 				keyPathMenu: action.keyPathMenu
+			}
+		case PageConstant.SET_PREV_PAGE:
+			return {
+				...state,
+				prevPage: ''
 			}
 		default:
 			return state

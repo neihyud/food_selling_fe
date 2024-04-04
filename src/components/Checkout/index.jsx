@@ -20,7 +20,7 @@ const Checkout = () => {
 		dispatch(CartAction.setInfoCheckout({ address: item }))
 	}
 
-	const renderAddress = listAddress.map((item, index) => {
+	const renderAddress = listAddress?.map((item, index) => {
 		let selected = false
 
 		// to do check selected

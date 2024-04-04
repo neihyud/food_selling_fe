@@ -17,8 +17,10 @@ const Dashboard = () => {
 				return <Order />
 			case DashboardConstant.TYPE_CONTENT_COMPONENT.CHANGE_PASSWORD:
 				return <ChangePassword />
-			default:
+			case DashboardConstant.TYPE_CONTENT_COMPONENT.ADDRESS:
 				return <Address />
+			default:
+				return <User />
 		}
 	}
   

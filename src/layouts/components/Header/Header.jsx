@@ -14,6 +14,7 @@ import HomeAction from '../../../redux/action/HomeAction'
 import { useNavigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import CartAction from '../../../redux/action/CartAction'
+import LocalStorageService from '../../../services/LocalStorageService'
 const Header = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate()
@@ -25,7 +26,11 @@ const Header = () => {
 	}
 
 	const handleNavToDashboard = () => { 
-		navigate('/dashboard')
+		if (LocalStorageService.getToken()) {
+			navigate('/dashboard')
+		} else {
+			navigate('/login')
+		}	
 	}
 
 	useEffect(() => {

@@ -16,7 +16,7 @@ html {
   height: var(--heightHeader);
   background: var(--colorWhite);
   border-bottom: 1px solid #eee;
-  z-index: 999;
+  z-index: 9999;
   transition: all linear .3s;
 }
 

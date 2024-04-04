@@ -1,29 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux'
 import CartAction from '../../../redux/action/CartAction'
 import { useMemo } from 'react'
+import { cloneDeep } from 'lodash'
+import config from '../../../config'
+import { createAxiosJwt } from '../../../../createInstance'
 
 const TotalSummaryCart = () => {
 	const dispatch = useDispatch()
+	const axiosJwt = createAxiosJwt()
 	
 	const { infoCheckout, listCartItem } = useSelector((state) => state.cartReducer)
 
-	const listPayment = [
-		{
-			img: 'src/assets/images/payment_paypal.png',
-			name: 'paypal',
-			id: 1
-		},
-		{
-			img: 'src/assets/images/payment_stripe.png',
-			name: 'stripe',
-			id: 2
-		},
-		{
-			img: 'src/assets/images/payment_stripe.png',
-			name: 'cash',
-			id: 3
-		}
-	]
+	const listPayment = config.paymentMethod
 
 	const subTotal = useMemo(() => {
 		return listCartItem.reduce((total, curr) => {
@@ -61,7 +49,44 @@ const TotalSummaryCart = () => {
 
 	// to do
 	const isDisableCheckout = () => {
-		return null
+		const fieldCheck = ['address', 'payment', 'listCartItem']
+		const tempInfoCheckout = cloneDeep(infoCheckout)
+		tempInfoCheckout.listCartItem = cloneDeep(listCartItem)
+
+		for (const field of fieldCheck) {
+
+			if (!tempInfoCheckout[field]) {
+				return true
+			}
+
+			// to do verify each field
+
+			// switch (tempInfoCheckout[field]) {
+			// 	case Array.isArray(field):
+			// 		if (!field.length) {
+			// 			return true
+			// 		}
+			// 		break
+			// 	case (typeof field === 'object' && field !== null):
+			// 		if (!Object.keys(field).length) {
+			// 			return true
+			// 		}
+			// 		break
+			// 	case typeof field === 'string':
+			// 		if (!field) {
+			// 			return true
+			// 		}
+			// 		break
+			// 	default:
+			// 		return true
+			// }
+		}
+
+		return false
+	}
+
+	const handleCheckout = () => { 
+		dispatch(CartAction.handleCheckout(axiosJwt))
 	}
 
 	return (
@@ -81,9 +106,10 @@ const TotalSummaryCart = () => {
 						{getListMethodPayment()}
 					</div>
 					<button 
-						className="w-100" 
-						style={{ backgroundColor: '#eee' }}
+						className="w-100 btn-checkout" 
+						// style={{ backgroundColor: '#eee' }}
 						disabled={isDisableCheckout()}
+						onClick={handleCheckout}
 					>
 						checkout
 					</button>

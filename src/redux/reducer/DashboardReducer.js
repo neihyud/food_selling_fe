@@ -1,7 +1,8 @@
 import DashboardConstant from '../../constant/DashboardConstant'
 
 const initState = {
-	typeContentComponent: ''
+	typeContentComponent: '',
+	listAddress: []
 }
 
 const DashboardReducer = (state = initState, action) => {
@@ -10,6 +11,11 @@ const DashboardReducer = (state = initState, action) => {
 			return {
 				...state,
 				typeContentComponent: action.typeContentComponent
+			}
+		case DashboardConstant.GET_LIST_ADDRESS_SUCCESS:
+			return {
+				...state,
+				listAddress: action.listAddress
 			}
 		default:
 			return state

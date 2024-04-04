@@ -17,6 +17,14 @@ const LocalStorageService = {
 
 	getUser() {
 		return JSON.parse(localStorage.getItem('user'))
+	},
+
+	setSessionIdQuery(session_id) {
+		localStorage.setItem('session_id', JSON.stringify(session_id))
+	},
+	
+	getSessionIdQuery() {
+		localStorage.getItem('session_id')
 	}
 }
 

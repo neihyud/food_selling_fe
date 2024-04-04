@@ -1,7 +1,6 @@
 import config from '../config/index'
 
 import About from '../pages/About/About'
-import Cart from '../pages/Cart'
 import Home from '../pages/Home/Home'
 import UserDashboard from '../pages/UserDashboard'
 
@@ -18,6 +17,9 @@ import Overview from '../components/Admin/Overview/Overview.jsx'
 import AdminDefaultLayout from '../layouts/DefaultLayout/AdminDefaultLayout.jsx'
 import Staff from '../components/Admin/Account/Staff/index.jsx'
 import StaffManagement from '../components/Admin/Account/Staff/StaffManagement.jsx'
+import OrderStatus from '../components/Order/OrderStatus.jsx'
+import Login from '../components/Auth/Login.jsx'
+import Register from '../components/Auth/Register.jsx'
 
 const { routes } = config
 
@@ -32,11 +34,6 @@ const publicRoutes = [
 		component: About
 	},
 	{
-		path: routes.cart,
-		component: Cart,
-		layout: DefaultLayout
-	},
-	{
 		path: routes.dashboard,
 		component: UserDashboard,
 		layout: DefaultLayout
@@ -44,6 +41,21 @@ const publicRoutes = [
 	{
 		path: routes.checkout,
 		component: Checkout,
+		layout: DefaultLayout
+	},
+	{
+		path: routes.order,
+		component: OrderStatus,
+		layout: DefaultLayout
+	},
+	{
+		path: routes.login,
+		component: Login,
+		layout: DefaultLayout
+	},
+	{
+		path: routes.register,
+		component: Register,
 		layout: DefaultLayout
 	}
 ]

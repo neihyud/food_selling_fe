@@ -8,6 +8,7 @@ import AdminDefaultLayout from '../layouts/DefaultLayout/AdminDefaultLayout'
 import LIST_MENU from '../config/admin/menu'
 import PageAction from '../redux/action/admin/PageAction'
 import { useDispatch } from 'react-redux'
+import ProtectedRoute from './ProtectRouter'
 
 function App() {
 	const dispatch = useDispatch()
@@ -54,9 +55,15 @@ function App() {
 					key={index}
 					path={route.path}
 					element={
-						<Layout>
-							<Page />
-						</Layout>
+						<ProtectedRoute 
+							path={route.path} 
+							element={
+								<Layout>
+									<Page />
+								</Layout>
+							} 
+						/>
+						
 					}
 				/>
 			)

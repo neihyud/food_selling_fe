@@ -27,7 +27,7 @@ body {
     color: var(--paraColor);
     font-family: var(--paraFont);
     height: 100vh;
-    background-color: #efefefef;
+    /* background-color: #efefefef; */
 }
 
 #root {

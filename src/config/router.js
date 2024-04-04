@@ -1,9 +1,11 @@
 const routes = {
 	home: '/',
 	about: '/about',
-	cart: '/cart',
 	dashboard: '/dashboard',
 	checkout: 'checkout',
+	order: 'order',
+	login: 'login',
+	register: 'register',
   
 	admin: {
 		home: '',

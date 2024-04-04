@@ -48,7 +48,7 @@ const MenuDashboard = () => {
 		<div className="fp__dashboard_menu">
 			<div className="dashboard_header">
 				<div className="dashboard_header_img">
-					<Image src="src/assets/images/comment_img_2.png" alt="user" class="img-fluid w-100" />
+					<Image src="src/assets/images/comment_img_2.png" alt="user" className="img-fluid w-100" />
 					<label htmlFor="upload">
 						<FontAwesomeIcon icon={faCamera} />
 					</label>

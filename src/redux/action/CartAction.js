@@ -1,4 +1,5 @@
 import CartConstant from '../../constant/CartConstant'
+import CartService from '../../services/CartService'
 import IndexDBService from '../../services/IndexDbService'
 
 const CartAction = {
@@ -59,6 +60,27 @@ const CartAction = {
 			type: CartConstant.SET_INFO_CHECKOUT,
 			typeAdd,
 			data
+		}
+	},
+	handleCheckout(axiosJwt) {
+		return async (dispatch, getState) =>{ 
+			const { listCartItem, infoCheckout } = getState().cartReducer
+
+			const data = await CartService.handleCheckout(axiosJwt, { ...infoCheckout, items: listCartItem })
+
+			window.location = data?.url
+			
+			return data
+		}
+	},
+	handleCheckoutSuccess(axiosJwt) {
+		// to do
+		return async (dispatch, getState) => {
+			const { listCartItem, infoCheckout } = getState().cartReducer
+
+			const data = await CartService.handleCheckout(axiosJwt, { ...infoCheckout, items: listCartItem })
+
+			return data
 		}
 	}
 	
