@@ -1,37 +1,95 @@
-const EditUser = () => {
+import PropTypes from 'prop-types'
+import useForm from '../../../hooks/useForm'
+import { useEffect } from 'react'
+
+import { useDispatch, useSelector } from 'react-redux'
+import { createAxiosJwt } from '../../../../createInstance'
+import DashboardAction from '../../../redux/action/DashboardAction'
+
+const EditUser = ({ user }) => {
+	const dispatch = useDispatch()
+
+	const axiosJwt = createAxiosJwt()
+
+	const fieldsConfig = {
+		username: {
+			validates: [
+				(value) => {
+					if (value) {
+						return ''
+					}
+
+					return 'Field is required'
+				}
+			]
+		}
+	}
+	
+	const { 
+		dataForm, 
+		handleBlur, 
+		handleChange, 
+		handleSetDataForm, 
+		error, 
+		setError, 
+		validateForm, 
+		hasDisableBtnSubmit 
+	} = useForm(fieldsConfig)
+
+	useEffect(() => {
+		handleSetDataForm({ ...user })
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
+
+	const handleSubmit = () => {
+		if (validateForm(dataForm)) {
+			dispatch(DashboardAction.updateUser(axiosJwt, dataForm))
+		}
+	}
+
 	return (
-		<div className="fp_dash_personal_info_edit comment_input p-0">
-			<form>
-				<div className="row">
-					<div className="col-12">
-						<div className="fp__comment_imput_single">
-							<label>name</label>
-							<input type="text" placeholder="Name" />
-						</div>
-					</div>
-					<div className="col-xl-6 col-lg-6">
-						<div className="fp__comment_imput_single">
-							<label>email</label>
-							<input type="email" placeholder="Email" />
-						</div>
-					</div>
-					<div className="col-xl-6 col-lg-6">
-						<div className="fp__comment_imput_single">
-							<label>phone</label>
-							<input type="text" placeholder="Phone" />
-						</div>
-					</div>
-					<div className="col-xl-12">
-						<div className="fp__comment_imput_single">
-							<label>address</label>
-							<textarea rows="4" placeholder="Address"></textarea>
-						</div>
-						<button type="submit" className="common_btn">submit</button>
+		<div>
+			<div className="row">
+				<div className="col-12">
+					<div className="form-group">
+						<label className='form-label' style={{ marginBottom: 0 }}>User Name</label>
+						<input 
+							className="form-control"
+							type="text" 
+							placeholder="User Name" 
+							style={{ marginBottom: '10px' }}
+							cname='username'
+							value={dataForm.username}
+							onBlur={handleBlur}
+							onChange={handleChange}
+						/>
+						<span className="form-message">{error?.username}</span>
 					</div>
 				</div>
-			</form>
+				<div className="col-12">
+					<div className="form-group" >
+						<label className='form-label' style={{ marginBottom: 0 }}></label>
+						<input 
+							type="email" 
+							placeholder="Email" 
+							style={{ marginBottom: '10px' }}
+							name='email'
+							value={dataForm.email}
+							onChange={handleChange}
+						/>
+					</div>
+				</div>
+				<div className="col-xl-12">
+					<button className="common_btn" onClick={handleSubmit}>submit</button>
+				</div>
+			</div>
 		</div>
 	)
+}
+
+EditUser.propTypes = {
+	setIsEdit: PropTypes.func,
+	user: PropTypes.object
 }
 
 export default EditUser

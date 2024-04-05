@@ -5,7 +5,6 @@ module.exports = {
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:react/jsx-runtime',
-    'plugin:react-hooks/recommended'
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parserOptions: {
@@ -25,7 +24,8 @@ module.exports = {
   },
   plugins: [
     'react-refresh',
-    'react'
+    'react',
+    'prettier'
   ],
   rules: {
     "array-bracket-spacing": [ "error", "never" ],

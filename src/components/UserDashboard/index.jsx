@@ -11,16 +11,16 @@ const Dashboard = () => {
 	
 	const renderContent = () => {
 		switch (typeContentComponent) {
-			case DashboardConstant.TYPE_CONTENT_COMPONENT.USER:
-				return <User />
-			case DashboardConstant.TYPE_CONTENT_COMPONENT.ORDER:
-				return <Order />
-			case DashboardConstant.TYPE_CONTENT_COMPONENT.CHANGE_PASSWORD:
-				return <ChangePassword />
-			case DashboardConstant.TYPE_CONTENT_COMPONENT.ADDRESS:
-				return <Address />
-			default:
-				return <User />
+		case DashboardConstant.TYPE_CONTENT_COMPONENT.USER:
+			return (<User />)
+		case DashboardConstant.TYPE_CONTENT_COMPONENT.ORDER:
+			return <Order />
+		case DashboardConstant.TYPE_CONTENT_COMPONENT.CHANGE_PASSWORD:
+			return <ChangePassword />
+		case DashboardConstant.TYPE_CONTENT_COMPONENT.ADDRESS:
+			return <Address />
+		default:
+			return <User />
 		}
 	}
   

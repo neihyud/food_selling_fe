@@ -2,35 +2,63 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './user.css'
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons'
 import EditUser from './EditUser'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect, useState } from 'react'
+import DashboardAction from '../../../redux/action/DashboardAction'
+import { createAxiosJwt } from '../../../../createInstance'
+import PropTypes from 'prop-types'
+
+const DefaultUser = ({ children, handleActionChange, isEdit }) => {
+	return (
+		<div className="fp_dash_personal_info">
+			<h4>Personal Information
+				<button className="dash_info_btn common_btn" onClick={handleActionChange}>
+					
+					<span style={{ color: 'white' }}>
+						{isEdit ? 'edit' : 'save' }
+					</span>
+				</button>
+			</h4>
+			{children}
+		</div>
+	)
+}
 
 const User = () => {
-	const defaultUser = () => {
-		return (
-			<div className="fp_dash_personal_info">
-				<h4>Personal Information
-					<a className="dash_info_btn">
-						<span className="edit">edit</span>
-						<span className="cancel">cancel</span>
-					</a>
-				</h4>
+	const axiosJwt = createAxiosJwt()
+	const dispatch = useDispatch()
 
-				<div className="personal_info_text">
-					<p><span>Name:</span> a</p>
-					<p><span>Email:</span> a@gmail.com</p>
-					<p><span>Phone:</span> 0123456789</p>
-					<p><span>Address:</span> Xuan Thuy</p>
-				</div>
-			</div>
-		)
+	const [isEdit, setIsEdit] = useState(false)
+
+	const { infoUser } = useSelector((state) => state.dashboardReducer)
+
+	useEffect(() => {
+		dispatch(DashboardAction.getInfoUser(axiosJwt))
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
+
+	const handleActionChange = () => { 
+		setIsEdit(!isEdit)
 	}
 
 	// to do
 	const getPersonalInfo = () => {
 		switch (true) {
-			case false:
-				return <EditUser />
+			case !!isEdit:
+				return (
+					<DefaultUser handleActionChange={handleActionChange} isEdit={isEdit}>
+						<EditUser user={infoUser}/>
+					</DefaultUser>
+				)
 			default:
-				return defaultUser()
+				return (
+					<DefaultUser handleActionChange={handleActionChange} isEdit={isEdit}>
+						<div className="personal_info_text">
+							<p><span>Name:</span> {infoUser?.username}</p>
+							<p><span>Email:</span> {infoUser?.email ? infoUser.email : '<empty>'}</p>
+						</div>
+					</DefaultUser>
+				)
 		}
 	}
 
@@ -79,6 +107,12 @@ const User = () => {
 			</div>
 		</div>
 	)
+}
+
+DefaultUser.propTypes = {
+	children: PropTypes.node,
+	handleActionChange: PropTypes.func,
+	isEdit: PropTypes.bool
 }
 
 export default User

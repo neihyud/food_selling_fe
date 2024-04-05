@@ -35,7 +35,7 @@ const MenuDashboard = () => {
 			imgUrl: '',
 			icon: faSignOutAlt,
 			name: 'log out'
-		},
+		}
 
 		// to do log out -> icon
 	]
