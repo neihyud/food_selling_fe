@@ -19,6 +19,7 @@ request.onupgradeneeded = () => {
 } 
 
 request.onerror = () => {
+	// eslint-disable-next-line no-console
 	console.error('Why didn\'t you allow my web app to use IndexedDB?!')
 }
 

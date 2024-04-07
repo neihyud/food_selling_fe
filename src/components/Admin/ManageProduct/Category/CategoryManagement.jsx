@@ -52,7 +52,6 @@ const CategoryManagement = () => {
 		if (id) {
 			getCurrentCategory()
 		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	const handleCreateCategory = async () => { 

@@ -84,8 +84,6 @@ const StaffManagement = () => {
 		if (id) {
 			getCurrentStaff()
 		}
-
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	const handleCreateAccount = async () => { 

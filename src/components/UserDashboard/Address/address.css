@@ -1,12 +1,12 @@
-.fp_dashboard_new_address,
+.fp_dashboard_manage_address,
 .fp_dashboard_edit_address {
   background: #faf6f3fa;
   border-radius: 5px;
   padding: 30px;
-  display: none;
+  /* display: none; */
 }
 
-.fp_dashboard_new_address h4,
+.fp_dashboard_manage_address h4,
 .fp_dashboard_edit_address h4 {
   text-transform: capitalize;
   font-size: 20px;
@@ -14,21 +14,21 @@
   margin-bottom: 15px;
 }
 
-.fp_dashboard_new_address .fp__check_single_form,
+.fp_dashboard_manage_address .fp__check_single_form,
 .fp_dashboard_edit_address .fp__check_single_form {
   margin-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
 }
 
-.fp_dashboard_new_address .check_area,
+.fp_dashboard_manage_address .check_area,
 .fp_dashboard_edit_address .check_area {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
 }
 
-.fp_dashboard_new_address .form-check,
+.fp_dashboard_manage_address .form-check,
 .fp_dashboard_edit_address .form-check {
   margin-right: 20px;
   background: var(--colorWhite);
@@ -37,7 +37,7 @@
   border-radius: 5px;
 }
 
-.fp_dashboard_new_address .form-check label,
+.fp_dashboard_manage_address .form-check label,
 .fp_dashboard_edit_address .form-check label {
   text-transform: capitalize;
   font-size: 16px;
@@ -47,24 +47,24 @@
   width: 100%;
 }
 
-.fp_dashboard_new_address .form-check input,
+.fp_dashboard_manage_address .form-check input,
 .fp_dashboard_edit_address .form-check input {
   padding: 0;
 }
 
-.fp_dashboard_new_address .form-check input:checked,
+.fp_dashboard_manage_address .form-check input:checked,
 .fp_dashboard_edit_address .form-check input:checked {
   background-color: var(--colorPrimary);
   border-color: var(--colorPrimary);
 }
 
-.fp_dashboard_new_address button,
+.fp_dashboard_manage_address button,
 .fp_dashboard_edit_address button {
   padding: 8px 20px !important;
 }
 
-.fp_dashboard_new_address button::after,
-.fp_dashboard_new_address button::before,
+.fp_dashboard_manage_address button::after,
+.fp_dashboard_manage_address button::before,
 .fp_dashboard_edit_address button::after,
 .fp_dashboard_edit_address button::before {
   display: none;
@@ -74,7 +74,7 @@
   display: none;
 }
 
-.address_body.show_new_address .fp_dashboard_new_address {
+.address_body.show_new_address .fp_dashboard_manage_address {
   display: block;
 }
 
@@ -91,14 +91,9 @@
   display: block;
 }
 
-.fp_dashboard_existing_address .form-check {
-  padding-left: 0;
-}
-
 .fp_dashboard_existing_address .form-check label {
   cursor: default;
 }
-
 
 .fp__checkout_single_address {
   border: 1px solid #eeeeeea6;
@@ -165,26 +160,6 @@
   position: absolute;
   top: 5px;
   right: 5px;
-}
-
-.fp__checkout_single_address ul li a {
-  width: 25px;
-  height: 25px;
-  line-height: 23px;
-  background: var(--colorWhite);
-  color: var(--colorPrimary);
-  border: 1px solid var(--colorPrimary);
-  font-size: 12px;
-  text-align: center;
-  margin: 3px;
-  border-radius: 2px;
-  transition: all linear .3s;
-  cursor: pointer;
-}
-
-.fp__checkout_single_address ul li a:hover {
-  background: var(--colorPrimary);
-  color: var(--colorWhite);
 }
 
 .fp_dashboard_body h3 .dash_add_new_address {

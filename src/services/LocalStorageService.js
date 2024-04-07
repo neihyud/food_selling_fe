@@ -1,6 +1,16 @@
+import DashboardConstant from '../constant/DashboardConstant'
+
 const LocalStorageService = {
 	setToken(token) {
 		localStorage.setItem('token', JSON.stringify(token))
+	},
+
+	setTokenAdmin(token) {
+		localStorage.setItem('token_ad', JSON.stringify(token))
+	},
+
+	getTokenAdmin() {
+		return localStorage.getItem('token_ad', JSON.parse('toke_ad'))
 	},
 
 	removeToken() {
@@ -24,7 +34,16 @@ const LocalStorageService = {
 	},
 	
 	getSessionIdQuery() {
-		localStorage.getItem('session_id')
+		return JSON.parse(localStorage.getItem('session_id'))
+	},
+
+	getUserName() {
+		return JSON.parse(localStorage.getItem('user'))?.username
+	},
+	
+	getUserImage() {
+		return JSON.parse(localStorage.getItem('user'))?.thumb_img || DashboardConstant.IMG_USER_DEFAULT
+ 
 	}
 }
 

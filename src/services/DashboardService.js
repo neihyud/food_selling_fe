@@ -27,6 +27,37 @@ const DashboardService = {
 		} catch (error) {
 			return error.response.data
 		}
+	},
+	async addAddress(axiosJwt, data) {
+		try {
+			const response = await axiosJwt.post('/user/address', {
+				...data
+			})
+
+			return response.data
+		} catch (error) {
+			return error.response.data
+		}
+	},
+	async removeAddress(axiosJwt, id) {
+		try {
+			const response = await axiosJwt.delete(`/user/address/${id}`)
+
+			return response.data
+		} catch (error) {
+			return error.response.data
+		}
+	},
+	async editAddress(axiosJwt, data) {
+		try {
+			const response = await axiosJwt.put(`/user/address/${data.id}`, {
+				...data
+			})
+
+			return response.data
+		} catch (error) {
+			return error.response.data
+		} 
 	}
 }
 

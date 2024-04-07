@@ -3,7 +3,7 @@ import './user.css'
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons'
 import EditUser from './EditUser'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import DashboardAction from '../../../redux/action/DashboardAction'
 import { createAxiosJwt } from '../../../../createInstance'
 import PropTypes from 'prop-types'
@@ -15,7 +15,7 @@ const DefaultUser = ({ children, handleActionChange, isEdit }) => {
 				<button className="dash_info_btn common_btn" onClick={handleActionChange}>
 					
 					<span style={{ color: 'white' }}>
-						{isEdit ? 'edit' : 'save' }
+						{isEdit ? 'cancel' : 'edit' }
 					</span>
 				</button>
 			</h4>
@@ -28,17 +28,14 @@ const User = () => {
 	const axiosJwt = createAxiosJwt()
 	const dispatch = useDispatch()
 
-	const [isEdit, setIsEdit] = useState(false)
-
-	const { infoUser } = useSelector((state) => state.dashboardReducer)
+	const { infoUser, isEdit } = useSelector((state) => state.dashboardReducer)
 
 	useEffect(() => {
 		dispatch(DashboardAction.getInfoUser(axiosJwt))
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	const handleActionChange = () => { 
-		setIsEdit(!isEdit)
+		dispatch(DashboardAction.setIsEdit(!isEdit))
 	}
 
 	// to do

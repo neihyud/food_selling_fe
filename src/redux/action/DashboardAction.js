@@ -1,6 +1,7 @@
 import DashboardConstant from '../../constant/DashboardConstant'
 import DashboardService from '../../services/DashboardService'
 
+import { showToast } from '../../helper/toast'
 const DashboardAction = {
 	setTypeContentComponent(typeContentComponent) {
 		return {
@@ -40,10 +41,73 @@ const DashboardAction = {
 
 			if (response.success) {
 				showToast('success')
+				dispatch(this.updateUserSuccess(data))
+				dispatch(this.setIsEdit(false))
 			}
 
 		}
+	},
+	updateUserSuccess(data) {
+		return {
+			type: DashboardConstant.UPDATE_USER_SUCCESS,
+			data
+		}
+	},
+	setIsEdit(isEdit) {
+		return {
+			type: DashboardConstant.SET_IS_EDIT,
+			isEdit
+		}
+	},
+	setTypeUIAddress(type) {
+		return {
+			type: DashboardConstant.SET_TYPE_UI_ADDRESS,
+			typeUIAddress: type
+		}
+	},
+	addAddress(axiosJwt, data) {
+		return async dispatch => {
+			const response = await DashboardService.addAddress(axiosJwt, data)
+
+			if (response.success) {
+				dispatch({
+					type: DashboardConstant.SET_ADD_ADDRESS_SUCCESS,
+					data
+				})
+
+				dispatch(this.setTypeUIAddress(''))
+				showToast('success')
+			}
+		}
+	},
+	removeAddress(axiosJwt, id) {
+		return async dispatch => {
+			const response = await DashboardService.removeAddress(axiosJwt, id)
+
+			if (response.success) {
+				dispatch({
+					type: DashboardConstant.SET_REMOVE_ADDRESS_SUCCESS,
+					id
+				})
+				showToast('success')
+			}
+		}
+	},
+	editAddress(axiosJwt, data) {
+		return async dispatch => {
+			const response = await DashboardService.editAddress(axiosJwt, data)
+
+			if (response.success) {
+				dispatch({
+					type: DashboardConstant.SET_UPDATE_ADDRESS_SUCCESS,
+					data
+				})
+				dispatch(this.setTypeUIAddress(''))
+				showToast('success')
+			}
+		}
 	}
+	
 }
 
 export default DashboardAction

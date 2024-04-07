@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import useForm from '../../../hooks/useForm'
 import { useEffect } from 'react'
 
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { createAxiosJwt } from '../../../../createInstance'
 import DashboardAction from '../../../redux/action/DashboardAction'
 
@@ -38,7 +38,7 @@ const EditUser = ({ user }) => {
 
 	useEffect(() => {
 		handleSetDataForm({ ...user })
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		
 	}, [])
 
 	const handleSubmit = () => {
@@ -58,7 +58,7 @@ const EditUser = ({ user }) => {
 							type="text" 
 							placeholder="User Name" 
 							style={{ marginBottom: '10px' }}
-							cname='username'
+							name='username'
 							value={dataForm.username}
 							onBlur={handleBlur}
 							onChange={handleChange}
@@ -88,7 +88,6 @@ const EditUser = ({ user }) => {
 }
 
 EditUser.propTypes = {
-	setIsEdit: PropTypes.func,
 	user: PropTypes.object
 }
 
