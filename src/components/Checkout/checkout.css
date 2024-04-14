@@ -44,3 +44,17 @@
   border-radius: 5px;
   box-shadow: rgb(50 50 93 / 15%) 0px 0px 5px 0px;
 }
+
+.wrapper-content-modal {
+  width: 800px;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--colorWhite);
+  transition: all linear .3s;
+}
+
+.wrapper-content-modal .fp_dashboard_manage_address {
+  border-radius: 20px;
+}

@@ -63,8 +63,8 @@ const CartAction = {
 		}
 	},
 	handleCheckout(axiosJwt) {
-		return async (dispatch, getState) =>{ 
-			const { listCartItem, infoCheckout } = getState().cartReducer
+		return async (dispatch, getState) => { 
+			const { listCartItem, infoCheckout } = getState().cartReducer 
 
 			const data = await CartService.handleCheckout(axiosJwt, { ...infoCheckout, items: listCartItem })
 
@@ -73,14 +73,20 @@ const CartAction = {
 			return data
 		}
 	},
-	handleCheckoutSuccess(axiosJwt) {
+	handleCheckoutSuccess(axiosJwt, data) {
 		// to do
 		return async (dispatch, getState) => {
 			const { listCartItem, infoCheckout } = getState().cartReducer
 
-			const data = await CartService.handleCheckout(axiosJwt, { ...infoCheckout, items: listCartItem })
+			// const data = await CartService.handleCheckout(axiosJwt, { ...infoCheckout, items: listCartItem })
+			const response = await CartService.handleCheckoutSuccess(axiosJwt, data)
+			await	IndexDBService.clearData('cart')
 
-			return data
+			dispatch({
+				type: CartConstant.HANDLE_CHECKOUT_SUCCESS
+			})
+
+			// return data
 		}
 	}
 	

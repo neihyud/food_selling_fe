@@ -3,7 +3,9 @@ import HomeConstant from '../../constant/HomeConstant'
 const initState = {
 	isOpenCartCheckout: null,
 	isOpenFoodDetail: null,
-	foodDetail: null
+	foodDetail: null,
+	listCategory: [],
+	listProduct: []
 }
 
 const HomeReducer = (state = initState, action) => {
@@ -17,6 +19,16 @@ const HomeReducer = (state = initState, action) => {
 			return {
 				...state,
 				isOpenFoodDetail: action.isOpenFoodDetail
+			}
+		case HomeConstant.GET_CATEGORY_SUCCESS:
+			return {
+				...state,
+				listCategory: action.listCategory
+			}
+		case HomeConstant.GET_LIST_PRODUCT_SUCCESS: 
+			return {
+				...state,
+				listProduct: action.listProduct
 			}
 		default:
 			return state

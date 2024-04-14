@@ -159,7 +159,7 @@ const countCartItem = (storeName = 'cart') => {
 
 		request.onsuccess = () => {
 			db = request.result
-			const tx = db.transaction(storeName, 'readonly')
+			const tx = db.transaction(storeName, 'readonly')	
 			const store = tx.objectStore(storeName)
 			const countRequest = store.count()	
 
@@ -170,12 +170,30 @@ const countCartItem = (storeName = 'cart') => {
 	})
 }
 
+const clearData = (storeName = 'cart') => {
+	return new Promise((resolve) => {
+		request = indexedDB.open('food_sell', version)
+
+		request.onsuccess = () => {
+			db = request.result
+			const tx = db.transaction(storeName, 'readwrite')
+			const store = tx.objectStore(storeName)
+			const clearRequest = store.clear()	
+
+			clearRequest.onsuccess = () => {
+				resolve('Clear success !!!')
+			}
+		}
+	})
+}
+
 const IndexDBService = {
 	handleAddProductToCart,
 	getListCartItem,
 	updateCartItem,
 	deleteCartItem,
-	countCartItem
+	countCartItem,
+	clearData
 }
 
 export default IndexDBService

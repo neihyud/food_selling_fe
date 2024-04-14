@@ -6,13 +6,22 @@ import './checkout.css'
 import CartDetail from '../Cart/CartDetail'
 import { useDispatch, useSelector } from 'react-redux'
 import CartAction from '../../redux/action/CartAction'
+import { useEffect, useState } from 'react'
+import DashboardAction from '../../redux/action/DashboardAction'
+import { createAxiosJwt } from '../../../createInstance'
+import AddNewAddress from './AddNewAddress'
 
 const Checkout = () => {
 	const dispatch = useDispatch()
+	const axiosJwt = createAxiosJwt()
 
-	const listAddress = [
-		{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }
-	]
+	const [isOpenAddAddress, setIsOpenAddAddress] = useState() 
+
+	const { listAddress } = useSelector((state) => state.dashboardReducer)
+
+	useEffect(() => {
+		dispatch(DashboardAction.getListAddress(axiosJwt))
+	}, [])
 
 	const { infoCheckout } = useSelector((state) => state.cartReducer)
 
@@ -20,26 +29,37 @@ const Checkout = () => {
 		dispatch(CartAction.setInfoCheckout({ address: item }))
 	}
 
-	const renderAddress = listAddress?.map((item, index) => {
-		let selected = false
-
-		// to do check selected
-		if (infoCheckout?.address?.id === item.id) {
-			selected = true
+	const renderAddress = () => {
+		if (!listAddress || !listAddress.length) {
+			return <p style={{ margin: '20px 0 40px', color: 'red' }}>No have address, please add new address to checkout !!!</p>
 		}
 
-		return (
-			<AddressItem 
-				key={index} 
-				{...item} 
-				handleAction={() => handleSelectedAddress(item)}
-				selected={selected}
-			/>
-		)
-	})
+		return listAddress?.map((item, index) => {
+			let selected = false
+	
+			// to do check selected
+			if (infoCheckout?.address?.id === item.id) {
+				selected = true
+			}
+	
+			return (
+				<AddressItem 
+					key={index} 
+					{...item} 
+					handleAction={() => handleSelectedAddress(item)}
+					selected={selected}
+					type='checkout'
+				/>
+			)
+		})
+	}
 
 	const handleChangeNote = (event) => { 
 		dispatch(CartAction.setInfoCheckout({ note: event.target.value }))
+	}
+	
+	const handleOpenAddNewAddress = () => {
+		setIsOpenAddAddress(true)
 	}
 	
 	return (
@@ -56,13 +76,14 @@ const Checkout = () => {
 											background: '#ff8f8f', 
 											height: '20px', 
 											width: '20px'
-											
-										}}>
+										}}
+										onClick={handleOpenAddNewAddress}
+										>
 											<FontAwesomeIcon icon={faPlus} />
 										</span>
 									</h5>
 									<div className="row">
-										{renderAddress}
+										{renderAddress()}
 									</div>
 	
 									<div className="col-md-12 col-lg-12 col-xl-12">
@@ -88,6 +109,9 @@ const Checkout = () => {
 					</div>
 				</div>
 			</section>
+
+			{isOpenAddAddress ? <AddNewAddress handleClose={() => setIsOpenAddAddress(false)}/> : undefined}
+		
 		</>
 	)
 }

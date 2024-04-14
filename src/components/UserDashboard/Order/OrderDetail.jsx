@@ -1,37 +1,58 @@
 import { faPrint } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import PropTypes from 'prop-types'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import DashboardAction from '../../../redux/action/DashboardAction'
+import { createAxiosJwt } from '../../../../createInstance'
 
-const OrderDetail = () => {
+const OrderDetail = (props) => {
+	const { item, handleCloseOrder } = props
+	const dispatch = useDispatch()
+	const { listOrderItem } = useSelector((state) => state.dashboardReducer)
 
-	const listItem = [
-		{},
-		{},
-		{},
-		{},
-	]
+	useEffect(() => {
+		dispatch(DashboardAction.getListOrderItem(createAxiosJwt(), item.id))
+	}, [])
 
-	const renderItem = listItem.map((item, index) => {
+	let subTotal = 0
+	let quantity = 0
+	const renderItem = listOrderItem?.map((orderItem, index) => {
+		subTotal += orderItem.qty * orderItem.price 
+		quantity += orderItem.qty
 		return (
 			<tr key={index}>
-				<td className="sl_no">01</td>
+				<td className="sl_no">{index}</td>
 				<td className="package">
-					<p>Nb</p>
-					<span className="size">small</span>
-					<span className="coca_cola">coca-cola</span>
-					<span className="coca_cola2">7up</span>
+					<span className="">{orderItem.product_name}</span>
 				</td>
 				<td className="price">
-					<b>$120</b>
+					<b>${orderItem.price}</b>
 				</td>
 				<td className="qnty">
-					<b>2</b>
+					<b>{orderItem.qty}</b>
 				</td>
 				<td className="total">
-					<b>$240</b>
+					<b>${orderItem.qty * orderItem.price}</b>
 				</td>
 			</tr>
 		)
 	})
+
+	const area = JSON.parse(item.address)
+
+	const getName = () => {
+		let name = ''
+		if (area.firs_name) {
+			name += area.last_name
+		}
+
+		if (area.last_name) {
+			name += ' ' + area.last_name
+		}
+
+		return name.trim()
+	}
 
 	return (
 		<div className="fp__invoice">
@@ -48,13 +69,12 @@ const OrderDetail = () => {
 			<div className="fp__invoice_header">
 				<div className="header_address">
 					<h4>invoice to</h4>
-					<p>a</p>
-					<p>123456789</p>
+					<p>{getName()}</p>
+					<p>{area.phone}</p>
 				</div>
 				<div className="header_address">
 					<p><b>invoice no: </b><span>123</span></p>
-					<p><b>Order ID:</b> <span> #23</span></p>
-					<p><b>date:</b> <span>10-11-2024</span></p>
+					<p><b>date:</b> <span>{item.createdAt}</span></p>
 				</div>
 			</div>
 			<div className="fp__invoice_body">
@@ -62,8 +82,8 @@ const OrderDetail = () => {
 					<table className="table table-striped">
 						<thead>
 							<tr className="border_none">
-								<th className="sl_no">SL</th>
-								<th className="package">item description</th>
+								<th className="sl_no">STT</th>
+								<th className="package">item name</th>
 								<th className="price">Price</th>
 								<th className="qnty">Quantity</th>
 								<th className="total">Total</th>
@@ -79,13 +99,13 @@ const OrderDetail = () => {
 									<b>sub total</b>
 								</td>
 								<td className="qnty">
-									<b>12</b>
+									<b>{quantity}</b>
 								</td>
 								<td className="total">
-									<b>$755</b>
+									<b>${subTotal}</b>
 								</td>
 							</tr>
-							<tr>
+							{/* <tr>
 								<td className="package coupon" colSpan="3">
 									<b>(-) Discount coupon</b>
 								</td>
@@ -95,7 +115,7 @@ const OrderDetail = () => {
 								<td className="total coupon">
 									<b>$0.00</b>
 								</td>
-							</tr>
+							</tr> */}
 							<tr>
 								<td className="package coast" colSpan="3">
 									<b>(+) Shipping Cost</b>
@@ -115,17 +135,28 @@ const OrderDetail = () => {
 									<b></b>
 								</td>
 								<td className="total">
-									<b>$765</b>
+									<b>${subTotal - 10}</b>
 								</td>
 							</tr>
 						</tfoot>
 					</table>
 				</div>
 			</div>
-			<span className="print_btn common_btn">
-				<FontAwesomeIcon icon={faPrint} />print PDF</span>
+			<div>
+				<button className="common_btn">
+					<FontAwesomeIcon icon={faPrint} />
+					&nbsp;
+					print PDF
+				</button>
+				<button className='common_btn' style={{ marginRight: '20px' }} onClick={handleCloseOrder}>Cancel</button>
+			</div>
 		</div>
 	)
+}
+
+OrderDetail.propTypes = {
+	handleCloseOrder: PropTypes.func,
+	item: PropTypes.object 
 }
 
 export default OrderDetail

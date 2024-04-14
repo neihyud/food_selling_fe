@@ -59,6 +59,11 @@ const CartReducer = (state = initState, action) => {
 				...state,
 				infoCheckout: newInfoCheckout
 			}
+		case CartConstant.HANDLE_CHECKOUT_SUCCESS: 
+			return {
+				...state,
+				countCartItem: 0
+			}
 		default:
 			return state
 	}

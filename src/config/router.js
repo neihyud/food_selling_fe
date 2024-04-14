@@ -3,7 +3,8 @@ const routes = {
 	about: '/about',
 	dashboard: '/dashboard',
 	checkout: 'checkout',
-	order: 'order',
+	order: '/order/success',
+	orderSuccess: '/order/success',
 	login: 'login',
 	register: 'register',
   

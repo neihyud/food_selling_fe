@@ -106,6 +106,29 @@ const DashboardAction = {
 				showToast('success')
 			}
 		}
+	},
+	getListOrder(axiosJwt) {
+		return async dispatch => {
+			const response = await DashboardService.getListOrder(axiosJwt)
+
+			dispatch(this.getListOrderSuccess(response))
+		}
+	},
+	getListOrderSuccess(data) {
+		return { 
+			type: DashboardConstant.GET_LIST_ORDER_SUCCESS,
+			listOrder: data
+		}
+	},
+	getListOrderItem(axiosJwt, orderId) {
+		return async dispatch => {
+			const response = await DashboardService.getListOrderItem(axiosJwt, orderId)
+
+			dispatch({
+				type: DashboardConstant.GET_LIST_ORDER_ITEM_SUCCESS,
+				listOrderItem: response
+			})
+		}
 	}
 	
 }

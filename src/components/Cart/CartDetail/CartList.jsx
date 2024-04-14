@@ -14,7 +14,6 @@ const CartList = () => {
 		}
 		
 		dispatch(CartAction.getListCartItem())
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 	const totalItem = listCartItem.length !== 0 ? listCartItem.length.toString().padStart(2, '0') : 0 
 

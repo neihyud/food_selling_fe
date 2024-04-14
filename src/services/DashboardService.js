@@ -58,6 +58,24 @@ const DashboardService = {
 		} catch (error) {
 			return error.response.data
 		} 
+	},
+	async getListOrder(axiosJwt) {
+		try {
+			const response = await axiosJwt.get('/order')
+
+			return response.data
+		} catch (error) {
+			return error.response.data
+		} 
+	},
+	async getListOrderItem(axiosJwt, orderId) {
+		try {
+			const response = await axiosJwt.get(`/order/${orderId}/item`)
+
+			return response.data
+		} catch (error) {
+			return error.response.data
+		} 
 	}
 }
 

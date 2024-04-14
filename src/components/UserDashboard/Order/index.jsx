@@ -1,34 +1,56 @@
+import { useEffect, useState } from 'react'
 import OrderDetail from './OrderDetail'
 import './order.css'
+import { useDispatch, useSelector } from 'react-redux'
+import { createAxiosJwt } from '../../../../createInstance'
+import DashboardAction from '../../../redux/action/DashboardAction'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye } from '@fortawesome/free-solid-svg-icons'
 
 const Order = () => {
+	const dispatch = useDispatch()
+	const axiosJwt = createAxiosJwt()
 
-	const listOrder = [{
-		id: '1',
-		date: '22',
-		status: 'complete',
-		price: '5'
-	}]
+	const { listOrder } = useSelector(state => state.dashboardReducer)
+	const [currentOrder, setCurrentOrder] = useState()
+
+	useEffect(() => {
+		dispatch(DashboardAction.getListOrder(axiosJwt))
+	}, [])
 
 	const renderOrder = listOrder.map((item, index) => {
 		return (
 			<tr key={index}>
 				<td>
-					<h5>{item.id}</h5>
+					<h5>{index}</h5>
 				</td>
 				<td>
 					<p>{item.date}</p>
 				</td>
 				<td>
-					<span className={item.status}>{item.status}</span>
+					<span className={item.status}>{item.order_status}</span>
 				</td>
 				<td>
-					<h5>${item.price}</h5>
+					<h5>${item.sub_total}</h5>
 				</td>
-				<td><a className="view_invoice">View Details</a></td>
+				<td>		
+					<FontAwesomeIcon 
+						icon={faEye}
+						onClick={() => setCurrentOrder(item)}
+					/>
+				</td>
 			</tr>
 		)
 	})
+
+	const handleCloseOrder = () => {
+		setCurrentOrder(false)
+	}
+
+	if (currentOrder) {
+		return <OrderDetail item={currentOrder} handleCloseOrder={handleCloseOrder}/>
+	}
+	
 	return (
 		<div className="fp_dashboard_body">
 			<h3>order list</h3>
@@ -49,7 +71,7 @@ const Order = () => {
 				</div>
 			</div>
 
-			<OrderDetail />
+			{/* <OrderDetail /> */}
 		</div>
 	)
 }
