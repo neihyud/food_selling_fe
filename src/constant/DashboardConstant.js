@@ -4,7 +4,8 @@ const DashboardConstant = {
 		USER: 'user',
 		ORDER: 'order',
 		CHANGE_PASSWORD: 'change_password',
-		ADDRESS: 'address'
+		ADDRESS: 'address',
+		MESSAGE: 'message'
 	},
 	GET_LIST_ADDRESS_SUCCESS: '[USER_DASHBOARD] GET_LIST_ADDRESS_SUCCESS',
 	GET_USER: '[USER_DASHBOARD] GET_USER',

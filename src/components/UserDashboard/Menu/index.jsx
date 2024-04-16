@@ -34,6 +34,13 @@ const MenuDashboard = () => {
 		},
 		{
 			imgUrl: '',
+			icon: faBagShopping,
+			name: 'Message',
+			type: 'message'
+
+		},
+		{
+			imgUrl: '',
 			icon: faSignOutAlt,
 			name: 'log out'
 		}

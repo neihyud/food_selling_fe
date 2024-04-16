@@ -20,6 +20,7 @@ import StaffManagement from '../components/Admin/Account/Staff/StaffManagement.j
 import OrderStatus from '../components/Order/OrderStatus.jsx'
 import Login from '../components/Auth/Login.jsx'
 import Register from '../components/Auth/Register.jsx'
+import ChatBox from '../components/Admin/ChatBox/index.jsx'
 
 const { routes } = config
 
@@ -125,6 +126,11 @@ const adminPublicRouter = [
 	{ 
 		path: routes.admin.staffEdit,
 		component: StaffManagement,
+		layout: AdminDefaultLayout
+	},
+	{
+		path: routes.admin.chat,
+		component: ChatBox,
 		layout: AdminDefaultLayout
 	}
 ]

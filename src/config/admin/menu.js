@@ -1,4 +1,4 @@
-import { faCartShopping, faHome, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping, faHome, faMessage, faUser } from '@fortawesome/free-solid-svg-icons'
 import routes from '../router'
 
 const LIST_MENU = [
@@ -42,6 +42,12 @@ const LIST_MENU = [
 			}
 		]
 		
+	},
+	{
+		title: 'Chat',
+		path: '/admin/chat',
+		icon: faMessage,
+		key: '6'
 	}
 
 ]

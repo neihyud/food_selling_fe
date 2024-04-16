@@ -5,22 +5,25 @@ import Order from './Order'
 import ChangePassword from './ChangePassword'
 import DashboardConstant from '../../constant/DashboardConstant'
 import { useSelector } from 'react-redux'
+import Message from './Message'
 
 const Dashboard = () => {
 	const { typeContentComponent } = useSelector((state) => state.dashboardReducer)
 	
 	const renderContent = () => {
 		switch (typeContentComponent) {
-		case DashboardConstant.TYPE_CONTENT_COMPONENT.USER:
-			return (<User />)
-		case DashboardConstant.TYPE_CONTENT_COMPONENT.ORDER:
-			return <Order />
-		case DashboardConstant.TYPE_CONTENT_COMPONENT.CHANGE_PASSWORD:
-			return <ChangePassword />
-		case DashboardConstant.TYPE_CONTENT_COMPONENT.ADDRESS:
-			return <Address />
-		default:
-			return <User />
+			case DashboardConstant.TYPE_CONTENT_COMPONENT.USER:
+				return (<User />)
+			case DashboardConstant.TYPE_CONTENT_COMPONENT.ORDER:
+				return <Order />
+			case DashboardConstant.TYPE_CONTENT_COMPONENT.CHANGE_PASSWORD:
+				return <ChangePassword />
+			case DashboardConstant.TYPE_CONTENT_COMPONENT.ADDRESS:
+				return <Address />
+			case DashboardConstant.TYPE_CONTENT_COMPONENT.MESSAGE:
+				return <Message />
+			default:
+				return <User />
 		}
 	}
   

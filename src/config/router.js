@@ -21,7 +21,8 @@ const routes = {
 		profile: 'profile',
 		staff: 'account',
 		staffCreate: 'account/create',
-		staffEdit: 'account/:id/edit'
+		staffEdit: 'account/:id/edit',
+		chat: 'chat'
 	}
 }
 
