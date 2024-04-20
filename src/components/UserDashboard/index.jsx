@@ -28,7 +28,7 @@ const Dashboard = () => {
 	}
   
 	return (
-		<section className="fp__dashboard h-100">
+		<section className="fp__dashboard">
 			<div className="container h-100">
 				<div className="fp__dashboard_area h-100">
 					<div className="row h-100">

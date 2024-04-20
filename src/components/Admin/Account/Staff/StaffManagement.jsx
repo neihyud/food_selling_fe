@@ -9,7 +9,7 @@ import AccountService from '../../../../services/admin/AccountService'
 
 const StaffManagement = () => {
 	const { id } = useParams()
-	const axiosJwt = createAxiosJwt()
+	const axiosJwt = createAxiosJwt('admin')
 	const navigate = useNavigate()
 
 	const infoComponent = useMemo(() => {
@@ -94,7 +94,11 @@ const StaffManagement = () => {
 				showToast('success')
 				navigate('/admin/account')
 			} else if (response.errors) {
-				setError(response.errors)
+				const err = {}
+
+				err.username = response.errors.username
+				setError(err)
+				showToast('error', 'Create account fail!')
 			}
 		}
 	}	
@@ -106,6 +110,7 @@ const StaffManagement = () => {
 				showToast('success')
 			} else if (response.errors) {
 				setError(response.errors)
+				showToast('error', 'Update account fail!')
 			}
 		}
 	}
@@ -163,7 +168,7 @@ const StaffManagement = () => {
 						onBlur={handleBlur}
 						autoFocus
 					/>
-					<span className="form-message">{error?.name}</span>
+					<span className="form-message">{error?.username}</span>
 				</div>
 
 				{/* <div className="form-group">

@@ -7,6 +7,7 @@ import { createAxiosNoJwt } from '../../../../createInstance.js'
 import AuthService from '../../../services/admin/AuthService.js'
 import LocalStorageService from '../../../services/LocalStorageService.js'
 import useFormAuth from '../../../hooks/useFormAuth.jsx'
+import { showToast } from '../../../helper/toast.js'
 
 const Login = () => {
 	const axiosNoJwt = createAxiosNoJwt()
@@ -56,8 +57,19 @@ const Login = () => {
 				LocalStorageService.setTokenAdmin(response.accessToken)
 				setCredentials({})
 				navigate('/admin')
+				showToast('success', 'Login success!')
 			} else if (response.errors) {
-				setError(response.errors)
+				const message = response.errors[0].message
+
+				const err = {}
+				if (message.toLowerCase().includes('password')) {	
+					err.password = message
+				}
+
+				if (message.toLowerCase().includes('username')) {
+					err.username = message
+				}
+				setError(err)
 			}
 		}
 	}

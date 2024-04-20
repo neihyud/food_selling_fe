@@ -8,7 +8,7 @@ import { Button } from 'react-bootstrap'
 import { showToast } from '../../../../helper/toast'
 const CategoryManagement = () => {
 	const { id } = useParams()
-	const axiosJwt = createAxiosJwt()
+	const axiosJwt = createAxiosJwt('admin')
 
 	const infoComponent = useMemo(() => {
 		if (id) {
@@ -125,7 +125,7 @@ const CategoryManagement = () => {
 					<select 
 						name="status" 
 						className="form-control"
-						value={dataForm?.status || ''}
+						value={dataForm?.status ? '1' : '0'}
 						onChange={handleChange}
 					>
 						<option value="1">Active</option>

@@ -25,11 +25,11 @@ function DataTable({ columns, data }) {
 	// }
 
 	const getRow = (cell, id, productId) => {
-		switch (cell.column.id) {
+		switch (cell.column.type) {
 			case 'action':
 				return (
 					<td key={id} {...cell.getCellProps()}>
-						{cell.column.getComponent(productId)} 
+						{cell.column.getComponent(productId, cell.value)} 
 					</td>
 				)
 			case 'image':
@@ -38,7 +38,7 @@ function DataTable({ columns, data }) {
 				return (
 					<td key={id} {...cell.getCellProps()} width={80}>
 						{/* <img src={`https://drive.google.com/thumbnail?id=${idImg}`} alt="Not found image"></img> */}
-						<img src={cell.value} alt="Not found image" className='no-default' width={80} height={80} ></img>
+						<img src={cell.value} alt="Not found image" className='no-default' width={80} height={80} />
 					</td>
 				)
 			default:
@@ -65,7 +65,7 @@ function DataTable({ columns, data }) {
 					
 					return (
 						<tr key={index} {...row.getRowProps()}>
-							{row.cells.map((cell, id) => {	
+							{row.cells.map((cell, id) => {
 								{return getRow(cell, id, productId)}
 							})}
 						</tr>

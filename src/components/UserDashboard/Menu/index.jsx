@@ -1,59 +1,52 @@
 import { Image } from 'react-bootstrap'
 import './menu.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBagShopping, faCamera, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faAddressBook, faBagShopping, faCamera, faKey, faMessage, faSignOutAlt, faUser } from '@fortawesome/free-solid-svg-icons'
 import MenuItem from './MenuItem'
 import LocalStorageService from '../../../services/LocalStorageService'
 
 const MenuDashboard = () => {
 	const infoNav = [
 		{
-			imgUrl: '',
 			icon: faUser,
 			name: 'personal info',
 			type: 'user'
 		},
 		{
-			imgUrl: '',
-			icon: faUser,
+			icon: faAddressBook,
 			name: 'address',
 			type: 'address'
 		},
 		{
-			imgUrl: '',
 			icon: faBagShopping,
 			name: 'order',
 			type: 'order'
 		},
 		{
-			imgUrl: '',
-			icon: faBagShopping,
+			icon: faKey,
 			name: 'change password',
 			type: 'change_password'
 
 		},
 		{
-			imgUrl: '',
-			icon: faBagShopping,
+			icon: faMessage,
 			name: 'Message',
 			type: 'message'
 
-		},
-		{
-			imgUrl: '',
-			icon: faSignOutAlt,
-			name: 'log out'
 		}
-
-		// to do log out -> icon
 	]
 
 	const renderNav = infoNav.map((item, index) => {
 		return <MenuItem key={index} {...item} />
 	})
 
+	const handleLogout = () => {
+		LocalStorageService.removeToken()
+		window.location.replace('/login')
+	}
+
 	return (
-		<div className="fp__dashboard_menu">
+		<div className="fp__dashboard_menu" style={{ position: 'relative' }}>
 			<div className="dashboard_header">
 				<div className="dashboard_header_img">
 					<Image src={LocalStorageService.getUserImage()} className="img-fluid w-100" />
@@ -66,6 +59,13 @@ const MenuDashboard = () => {
 			</div>
 			<div className="nav flex-column nav-pills">
 				{renderNav}
+
+				<button className="nav-link" onClick={handleLogout} style={{ position: 'absolute', bottom: '0', left: '0', right: '0', outline: 'none', borderBottom: 'none' }}>
+					<span>
+						<FontAwesomeIcon icon={faSignOutAlt} />
+					</span>
+					{'Log out'}
+				</button>
 			</div>
 		</div >
 	)

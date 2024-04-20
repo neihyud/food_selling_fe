@@ -9,6 +9,7 @@ import LIST_MENU from '../config/admin/menu'
 import PageAction from '../redux/action/admin/PageAction'
 import { useDispatch } from 'react-redux'
 import ProtectedRoute from './ProtectRouter'
+import ProtectedRouteAdmin from './ProtectRouterAdmin'
 
 function App() {
 	const dispatch = useDispatch()
@@ -36,8 +37,7 @@ function App() {
 		if (keyPath) {
 			dispatch(PageAction.setKeyPathMenu([...keyPath]))
 		}
-		
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+
 	}, [])
 	
 	const renderPublicRoute = () => {
@@ -85,9 +85,14 @@ function App() {
 					key={index}
 					path={route.path}
 					element={
-						<Layout>
-							<Page />
-						</Layout>
+						<ProtectedRouteAdmin 
+							path={route.path} 
+							element={
+								<Layout>
+									<Page />
+								</Layout>
+							} 
+						/>
 					}
 				/>
 			)

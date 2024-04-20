@@ -2,8 +2,19 @@ import './menu.css'
 
 import SubMenu from './SubMenu'
 import LIST_MENU from '../../../config/admin/menu'
+import LocalStorageService from '../../../services/LocalStorageService'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+import { useNavigate } from 'react-router-dom'
 
 const Menu = () => {
+	const navigate = useNavigate()
+
+	const handleLogout = () => {
+		LocalStorageService.removeTokenAdmin()
+		navigate('/admin/login')
+	}
+
 	return (
 		<>
 			<div className='main-sidebar'>
@@ -13,6 +24,7 @@ const Menu = () => {
 				<ul className='sidebar-menu'>
 					{
 						LIST_MENU.map((item, index) => {
+							
 							return (
 								<SubMenu 
 									key={index} 
@@ -23,6 +35,14 @@ const Menu = () => {
 							)
 						})
 					}
+					<>
+						<li className={'dropdown active'} onClick={handleLogout}>
+							<div>
+								<FontAwesomeIcon icon={faSignOutAlt} />
+								<span className='nav-name'>{'Log out'}</span>
+							</div>
+						</li>
+					</>
 					
 				</ul>
 			</div>

@@ -54,7 +54,7 @@ const Message = () => {
 	}, [])
 
 	const renderChat = () => {
-		const userId = LocalStorageService.getUser().id
+		const userId = LocalStorageService?.getUser()?.id
 		
 		return listChat.map((chat) => {
 			return <Chat key={chat.id} chat ={chat} isOwner={userId === chat.sender_id} />
@@ -68,46 +68,19 @@ const Message = () => {
 					<div className="fp__message">
 						<h3>Message</h3>
 						<div className="fp__chat_area">
-							{/* <div className="fp__chat_body">
-								<div className="fp__chat">
-									<div className="fp__chat_img">
-										<img src="images/service_provider.png" alt="person"
-											className="img-fluid w-100" />
-									</div>
-									<div className="fp__chat_text">
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Pariatur qui amet aperiam, magni accusamus voluptatum
-                                neque
-                                aut tenetur odit officia fugit et sint harum inventore
-                                recusandae id quibusdam ducimus consequuntur.</p>
-										<span>15 Jun, 2023, 05:26 AM</span>
-									</div>
-								</div>
-								<div className="fp__chat tf_chat_right">
-									<div className="fp__chat_img">
-										<img src="images/client_img_1.jpg" alt="person"
-											className="img-fluid w-100"/ >
-									</div>
-									<div className="fp__chat_text">
-										<p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-										</p>
-										<span>15 Jun, 2023, 05:26 AM</span>
-									</div>
-								</div>
-							</div> */}
 							{renderChat()}
 							<p ref={lastChildBox}></p>
-							<div className="fp__single_chat_bottom">
-								<input 
-									type="text" placeholder="Type a message..."
-									value={message}
-									onChange={(event) => setMessage(event.target.value)}
-								/>
-								<button className="fp__massage_btn" style={{ border: 'none' }} onClick={handleSendMessage}>
+						</div>
+						<div className="fp__single_chat_bottom">
+							<input 
+								type="text" placeholder="Type a message..."
+								value={message}
+								onChange={(event) => setMessage(event.target.value)}
+							/>
+							<button className="fp__massage_btn" style={{ border: 'none' }} onClick={handleSendMessage}>
                   
-									<FontAwesomeIcon icon={faPaperPlane}/>
-								</button>
-							</div>
+								<FontAwesomeIcon icon={faPaperPlane}/>
+							</button>
 						</div>
 					</div>
 				</div>

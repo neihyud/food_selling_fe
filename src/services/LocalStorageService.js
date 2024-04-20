@@ -9,8 +9,12 @@ const LocalStorageService = {
 		localStorage.setItem('token_ad', JSON.stringify(token))
 	},
 
+	removeTokenAdmin() {
+		localStorage.removeItem('token_ad')
+	},
+
 	getTokenAdmin() {
-		return localStorage.getItem('token_ad', JSON.parse('toke_ad'))
+		return JSON.parse(localStorage.getItem('token_ad'))
 	},
 
 	removeToken() {
@@ -43,7 +47,6 @@ const LocalStorageService = {
 	
 	getUserImage() {
 		return JSON.parse(localStorage.getItem('user'))?.thumb_img || DashboardConstant.IMG_USER_DEFAULT
- 
 	}
 }
 

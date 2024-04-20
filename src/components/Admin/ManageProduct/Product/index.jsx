@@ -13,7 +13,7 @@ import ModalCustom from '../../../Modal/ModalCustom'
 
 const Product = () => {
 	const navigate = useNavigate()
-	const axiosJwt = createAxiosJwt()
+	const axiosJwt = createAxiosJwt('admin')
 	const dispatch = useDispatch()
 
 	const [isShowModal, setIsShowModal] = useState(false)
@@ -28,7 +28,7 @@ const Product = () => {
 		{
 			Header: 'Image',
 			accessor: 'thumb_img',
-			id: 'image'
+			type: 'image'
 		},
 		{
 			Header: 'Name',
@@ -44,16 +44,23 @@ const Product = () => {
 		},
 		{
 			Header: 'Offer Price',
-			accessor: 'offerPrice'
+			accessor: 'offer_price'
 		},
 		{
 			Header: 'Status',
-			accessor: 'status'
+			accessor: 'status',
+			type: 'action',
+			getComponent: (productId, value) => {
+				const content = Number(value) === 1 ? 'Active' : 'Inactive'
+				return (
+					<span>{content}</span>
+				)
+			}
 		},
 		{
 			Header: 'Action',
 			accessor: 'action',
-			id: 'action',
+			type: 'action',
 			getComponent: (productId) => {
 				return (
 					<>

@@ -1,6 +1,6 @@
 .fp__dashboard {
-  /* margin-top: 80px; */
   padding: 40px;
+  height: 90vh !important;
 }
 
 .fp__dashboard_area {
@@ -80,7 +80,7 @@
   background: none !important;
   color: var(--colorBlack) !important;
   border-radius: 0px !important;
-  border-bottom: 1px solid #d0d0d0 !important;
+  border-bottom: 1px solid #d0d0d0;
   padding: 0px 0px !important;
   text-transform: capitalize;
 }

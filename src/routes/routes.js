@@ -21,6 +21,8 @@ import OrderStatus from '../components/Order/OrderStatus.jsx'
 import Login from '../components/Auth/Login.jsx'
 import Register from '../components/Auth/Register.jsx'
 import ChatBox from '../components/Admin/ChatBox/index.jsx'
+import OrderPending from '../components/Admin/Order/OrderPending/index.jsx'
+import Order from '../components/Admin/Order/index.jsx'
 
 const { routes } = config
 
@@ -131,6 +133,16 @@ const adminPublicRouter = [
 	{
 		path: routes.admin.chat,
 		component: ChatBox,
+		layout: AdminDefaultLayout
+	},
+	{
+		path: routes.admin.orderPending,
+		component: OrderPending,
+		layout: AdminDefaultLayout
+	},
+	{
+		path: routes.admin.order,
+		component: Order,
 		layout: AdminDefaultLayout
 	}
 ]

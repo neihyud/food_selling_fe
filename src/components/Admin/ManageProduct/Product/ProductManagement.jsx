@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import WrapperContent from '../../WrapperContent'
 import useForm from '../../../../hooks/useForm'
@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from 'react-redux'
 const ProductManagement = () => {
 	const { id } = useParams()
 	const dispatch = useDispatch()
-	const axiosJwt = createAxiosJwt()
+	const axiosJwt = createAxiosJwt('admin')
 
 	const infoComponent = useMemo(() => {
 		if (id) {
@@ -74,6 +74,8 @@ const ProductManagement = () => {
 		validateForm, 
 		hasDisableBtnSubmit 
 	} = useForm(fieldsConfig)
+
+	const [isLoading, setIsLoading] = useState(false)
 	
 	const getCurrentProduct = async () => {
 		const response = await ManageProductService.getProduct(axiosJwt, id)
@@ -94,7 +96,6 @@ const ProductManagement = () => {
 
 		dispatch(ManageProductAction.getListCategory(axiosJwt))
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	const { listCategory } = useSelector((state) => state.admin.manageProductReducer)
@@ -110,11 +111,11 @@ const ProductManagement = () => {
 		})
 
 		return () => {}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [listCategory])
 
 	const handleCreateProduct = async () => { 
 		if (validateForm(dataForm)) {
+			setIsLoading(true)
 			const response = await ManageProductService.createProduct(axiosJwt, dataForm)
 			if (response.success) {
 				handleSetDataForm({})
@@ -123,6 +124,8 @@ const ProductManagement = () => {
 				setError(response.errors)
 			}
 		}
+		setIsLoading(false)
+
 	}
 
 	const handleUpdateProduct = async () => {
@@ -165,7 +168,7 @@ const ProductManagement = () => {
 	}
 
 	const isDisableBtn = hasDisableBtnSubmit()		
-
+	
 	return (
 		<WrapperContent
 			title='Product'
@@ -173,11 +176,11 @@ const ProductManagement = () => {
 		>
 			<div>
 				<div className="form-group">
-					<label>Image</label>
 					<div id="image-preview" className="image-preview">
 						<label htmlFor="image-upload" id="image-label">Choose File</label><br />
 						<div style={{ width: '200px', padding: '10px 0' }}>
-							<img src={`${dataForm?.img}`} alt="" />
+							{dataForm?.img && !id && <img src={`${URL.createObjectURL(dataForm?.img)}`} alt="" />}
+							{dataForm?.img && id && <img src={`${dataForm?.img}`} alt="" />}
 						</div>
 						<input 
 							type="file" 
@@ -300,10 +303,10 @@ const ProductManagement = () => {
 					type="button" 
 					className="btn btn-primary" 
 					onClick={handleAction}
-					disabled={isDisableBtn}
+					disabled={isDisableBtn || isLoading}
 					variant={ isDisableBtn ? 'secondary' : 'primary'}
 				>
-					{infoComponent.btnTitle}
+					{isLoading ? 'Loading ...' : infoComponent.btnTitle }	
 				</Button>
 			</div>
 		</WrapperContent>

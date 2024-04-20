@@ -45,7 +45,6 @@ const SubMenu = (props) => {
 		if (isClose) {
 			setIsShowDropDown(!isClose)
 		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isClose])
 
 	const openClassName = (keyPathMenu && keyPathMenu.includes(id)) ? 'open' : ''

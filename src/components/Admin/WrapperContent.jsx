@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 const WrapperContent = (props) => {
-	const { children, title, subTitle, action, isCloseHeader = false } = props
+	const { children, title, subTitle, action, isCloseHeader = false, isDisableScroll = false } = props
 
 	return (
 		<section className="section wrapper-content">
@@ -16,7 +16,7 @@ const WrapperContent = (props) => {
 						{action}
 					</div>
 				</div>}
-				<div className="card-body">
+				<div className={`card-body ${isDisableScroll && 'disable-scroll'}`}>
 					{children}
 				</div>
 			</div>
@@ -29,7 +29,8 @@ WrapperContent.propTypes = {
 	title: PropTypes.string.isRequired,
 	subTitle: PropTypes.string.isRequired,
 	action: PropTypes.node,
-	isCloseHeader: PropTypes.bool
+	isCloseHeader: PropTypes.bool,
+	isDisableScroll: PropTypes.bool
 }
 
 export default WrapperContent

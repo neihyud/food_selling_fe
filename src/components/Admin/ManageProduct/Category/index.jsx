@@ -13,8 +13,9 @@ import ModalCustom from '../../../Modal/ModalCustom'
 const Category = () => {
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
+	const { listCategory } = useSelector((state) => state.admin.manageProductReducer)
 	
-	const axiosJwt = createAxiosJwt()
+	const axiosJwt = createAxiosJwt('admin')
 	
 	const [isShowModal, setIsShowModal] = useState(false)
 	const [currentIdCategory, setCurrentIdCategory] = useState()
@@ -36,12 +37,19 @@ const Category = () => {
 			},
 			{
 				Header: 'Status',
-				accessor: 'status'
+				accessor: 'status',
+				type: 'action',
+				getComponent: (productId, value) => {
+					const content = Number(value) === 1 ? 'Active' : 'Inactive'
+					return (
+						<span>{content}</span>
+					)
+				}
 			},
 			{
 				Header: 'Action',
 				accessor: 'action',
-				id: 'action',
+				type: 'action',
 				getComponent: (productId) => {
 					return (
 						<>
@@ -61,14 +69,10 @@ const Category = () => {
 				}
 			}
 		]
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []) 
-
-	const { listCategory } = useSelector((state) => state.admin.manageProductReducer)
 
 	useEffect(() => {
 		dispatch(ManageProductAction.getListCategory(axiosJwt))
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	const handleRemoveCategory = () => {

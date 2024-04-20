@@ -22,7 +22,9 @@ const routes = {
 		staff: 'account',
 		staffCreate: 'account/create',
 		staffEdit: 'account/:id/edit',
-		chat: 'chat'
+		chat: 'chat',
+		order: 'order',
+		orderPending: 'order/pending'
 	}
 }
 

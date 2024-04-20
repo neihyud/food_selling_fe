@@ -16,7 +16,7 @@ const ChatBox = () => {
 
 	const lastChildBox = useRef()
 
-	const axiosJwt = createAxiosJwt()
+	const axiosJwt = createAxiosJwt('admin')
 	const handleSendMessage = async () => { 
 		if (!message) {
 			return undefined
@@ -96,38 +96,28 @@ const ChatBox = () => {
 		<WrapperContent
 			title='Chat Box'  
 			isCloseHeader={true}
+			isDisableScroll={true}
 		>
-			<div className="section-body">
-
-				<div className="row justify-content-center">
-					<div className="col-12 col-sm-6 col-lg-2">
-						<div className="">
-							<div className="card-header">
-								<h4>{'Who\'s Online?'}</h4>
-							</div>
-							<div className="card-body">
-								<ul className="list-unstyled list-unstyled-border">
-									{renderUserOnline()}
-									
-								</ul>
-							</div>
-						</div>
+			<div className="row">
+				<div className="col-12 col-sm-6 col-lg-3">
+					<div className="chat-box h-100" style={{ padding: '10px' }}>
+						<div className={'chat-content h-100'}>{renderUserOnline()}</div>
 					</div>
-					<div className="col-12 col-sm-6 col-lg-10">
-						<div className=" chat-box">
-							<div className="card-header">
-								<h4>Chat with {currentUser?.username}</h4>
-							</div>
-							<div className="card-body chat-content h-100">
+				</div>
+				<div className="col-12 col-sm-6 col-lg-9">
+					<div className="chat-box h-100">
+						<h4>Chat with {currentUser?.username}</h4>
+						<div className="chat-content"> 
+							<div className={'custom-scroll'} style={{ height: '620px', overflow: 'auto' }}>
 								{renderChat()}
 								<p ref={lastChildBox}></p>
-								<div className="card-footer chat-form">
-									<div>
-										<input type="text" className="form-control" placeholder="Type a message" value={message} onChange={(event) => setMessage(event.target.value)}/>
-										<button className="btn btn-primary" onClick={handleSendMessage}>
-											<FontAwesomeIcon icon={faPaperPlane}/>
-										</button>
-									</div>
+							</div>
+							<div className="card-footer chat-form">
+								<div>
+									<input type="text" className="form-control" placeholder="Type a message" value={message} onChange={(event) => setMessage(event.target.value)}/>
+									<button className="btn btn-primary" onClick={handleSendMessage}>
+										<FontAwesomeIcon icon={faPaperPlane}/>
+									</button>
 								</div>
 							</div>
 						</div>

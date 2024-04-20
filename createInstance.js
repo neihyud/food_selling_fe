@@ -4,7 +4,7 @@ import LocalStorageService from './src/services/LocalStorageService'
 
 const BASE_URL = 'http://127.0.0.1:8080'
 
-const createAxiosJwt = () => {
+const createAxiosJwt = (type = '') => {
 	const instance = axios.create({
 		baseURL: BASE_URL,
 		timeout: 10000
@@ -12,7 +12,12 @@ const createAxiosJwt = () => {
 
 	instance.interceptors.request.use(
 		(config) => {
-			const token = LocalStorageService.getToken()
+			let token = LocalStorageService.getToken()
+
+			if (type === 'admin') {
+				token = LocalStorageService.getTokenAdmin()
+			}
+			
 			if (token) {
 				config.headers.Authorization = `Bearer ${token}`
 			}
@@ -30,12 +35,15 @@ const createAxiosJwt = () => {
 		(error) => {
 			if (error.response) {
 				if (error.response.status === 401 || error.response.status === 403) {
-					// To do force sign out
-					console.error('Forbidden: You do not have permission to access this resource.')
-					LocalStorageService.removeToken()
-					window.location.href('/login')
+					if (type === 'admin') {
+						LocalStorageService.removeTokenAdmin()
+						window.location.replace('/admin/login')
+					} else {
+						LocalStorageService.removeToken()
+						window.location.replace('/login')
+					}
+
 				} else {
-					console.error('Error:', error?.response?.data)
 					console.log('error === ', error)
 				}
 			}

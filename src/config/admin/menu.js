@@ -9,9 +9,31 @@ const LIST_MENU = [
 		key: '1'
 	},
 	{
-		title: 'Manage Products',
+		title: 'Orders',
 		icon: faCartShopping,
 		key: 'sub1',
+		children: [
+			{
+				title: 'All Order',
+				path: `/admin/${routes.admin.order}`,
+				key: '7'
+			},
+			{
+				title: 'Order Pending',
+				path: `/admin/${routes.admin.orderPending}`,
+				key: '8'
+			},
+			{
+				title: 'Order Success',
+				path: `/admin/${routes.admin.product}`,
+				key: '9'
+			}
+		]
+	},
+	{
+		title: 'Manage Products',
+		icon: faCartShopping,
+		key: 'sub2',
 		children: [
 			{
 				title: 'Product Categories',
@@ -28,13 +50,13 @@ const LIST_MENU = [
 	{
 		title: 'Account',
 		icon: faUser,	
-		key: 'sub2',
+		key: 'sub3',
 		children: [
-			{
-				title: 'Profile',
-				path: `/admin/${routes.admin.profile}`,
-				key: '4'
-			},
+			// {
+			// 	title: 'Profile',
+			// 	path: `/admin/${routes.admin.profile}`,
+			// 	key: '4'
+			// },
 			{
 				title: 'Staff',
 				path: `/admin/${routes.admin.staff}`,
@@ -48,7 +70,7 @@ const LIST_MENU = [
 		path: '/admin/chat',
 		icon: faMessage,
 		key: '6'
-	}
+	}	
 
 ]
 

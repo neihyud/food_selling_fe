@@ -59,12 +59,8 @@ const FoodMenu = () => {
 					<div className="row wow fadeInUp" data-wow-duration="1s">
 						<div className="col-12">
 							<div className="menu_filter d-flex flex-wrap justify-content-center">
-								<button className=" active" data-filter="*">all menu</button>
+								<button className=" active" data-filter="*">all</button>
 								{renderCategory()}
-								<button data-filter=".burger">A</button>
-								<button data-filter=".chicken">A</button>
-								<button data-filter=".pizza">A</button>
-								<button data-filter=".dresserts">A</button>
 							</div>
 						</div>
 					</div>
