@@ -57,7 +57,7 @@ const MenuDashboard = () => {
 				</div>
 				<h2>{LocalStorageService.getUserName()}</h2>
 			</div>
-			<div className="nav flex-column nav-pills">
+			<div className="nav flex-column">
 				{renderNav}
 
 				<button className="nav-link" onClick={handleLogout} style={{ position: 'absolute', bottom: '0', left: '0', right: '0', outline: 'none', borderBottom: 'none' }}>

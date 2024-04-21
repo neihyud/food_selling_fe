@@ -64,9 +64,18 @@ const ChatBox = () => {
 
 	const renderUserOnline = () => {
 		return listChatUser?.map((user, index) => {
+
+			const isActive = currentUser?.id === user?.id
+
+			const customStyle = isActive ? {
+				display: 'flex',
+				padding: '2px',
+				backgroundColor: '#78bcf0'				
+			} : { display: 'flex' }
+			
 			return (
-				<li className="media" key={index} style={{ display: 'flex' }} onClick={() => handleChooseChat(user)}>
-					<div style={{ width: '50px', marginRight: '10px' }}>
+				<li className="media" key={index} style={customStyle} onClick={() => handleChooseChat(user)}>
+					<div style={{ width: '50px', marginRight: '10px', borderRadius: '50%' }}>
 						<img src={DashboardConstant.IMG_USER_DEFAULT} alt="person" className="img-fluid w-100"/>
 					</div>
 					<div className="media-body">

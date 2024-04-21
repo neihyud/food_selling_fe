@@ -36,7 +36,6 @@ const Header = () => {
 	useEffect(() => {
 		dispatch(CartAction.countCartItem())
 
-	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [])
 
 	return (
@@ -50,10 +49,10 @@ const Header = () => {
 					<Menu items={config.menu} />
 
 					<ul className="menu_icon d-flex flex-wrap">
-						<li >
+						{/* <li >
 							<FontAwesomeIcon icon={faMagnifyingGlass} />
 							
-						</li>
+						</li> */}
 						<li onClick={handleOpenCartCheckout}>
 							<FontAwesomeIcon icon={faCartShopping}/>
 							<span className='badge'>{countCartItem}</span>

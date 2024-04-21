@@ -99,11 +99,6 @@
   /* border-right: 1px solid black; */
 }
 
-.nav-pills .nav-link.active,
-.nav-pills .nav-link:hover {
-  background: #292b750a !important;
-}
-
 .fp__dashboard_menu button.active::after {
   position: absolute;
   content: "";
@@ -117,4 +112,8 @@
 
 .fp__dashboard_content {
   padding: 25px 25px 25px 0px;
+}
+
+.nav-link.nav-active {
+  background-color: var(--colorPrimary) !important;
 }

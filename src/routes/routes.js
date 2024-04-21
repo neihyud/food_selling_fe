@@ -23,6 +23,7 @@ import Register from '../components/Auth/Register.jsx'
 import ChatBox from '../components/Admin/ChatBox/index.jsx'
 import OrderPending from '../components/Admin/Order/OrderPending/index.jsx'
 import Order from '../components/Admin/Order/index.jsx'
+import MenuFoodPage from '../components/MenuFoodPage/index.jsx'
 
 const { routes } = config
 
@@ -59,6 +60,10 @@ const publicRoutes = [
 	{
 		path: routes.register,
 		component: Register,
+		layout: DefaultLayout
+	}, {
+		path: routes.menu,
+		component: MenuFoodPage,
 		layout: DefaultLayout
 	}
 ]

@@ -20,7 +20,7 @@ const HomeReducer = (state = initState, action) => {
 				...state,
 				isOpenFoodDetail: action.isOpenFoodDetail
 			}
-		case HomeConstant.GET_CATEGORY_SUCCESS:
+		case HomeConstant.GET_LIST_CATEGORY_SUCCESS:
 			return {
 				...state,
 				listCategory: action.listCategory

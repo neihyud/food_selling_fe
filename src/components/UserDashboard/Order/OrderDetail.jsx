@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import DashboardAction from '../../../redux/action/DashboardAction'
 import { createAxiosJwt } from '../../../../createInstance'
+import moment from 'moment'
 
 const OrderDetail = (props) => {
 	const { item, handleCloseOrder } = props
@@ -74,7 +75,7 @@ const OrderDetail = (props) => {
 				</div>
 				<div className="header_address">
 					<p><b>invoice no: </b><span>123</span></p>
-					<p><b>date:</b> <span>{item.createdAt}</span></p>
+					<p><b>date:</b> <span>{item?.createdAt && moment(item?.createdAt).format('YYYY-MM-DD')}</span></p>
 				</div>
 			</div>
 			<div className="fp__invoice_body">

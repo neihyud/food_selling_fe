@@ -22,7 +22,7 @@ const SliderItem = (props) => {
 						<h3>{subTitle}</h3>
 						<p>{content}</p>
 						<li className="d-flex flex-wrap">
-							<a className="common_btn" href="#">shop now</a>
+							<button className="common_btn">shop now</button>
 						</li>
 					</div>
 				</div>

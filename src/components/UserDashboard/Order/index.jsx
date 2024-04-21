@@ -6,6 +6,7 @@ import { createAxiosJwt } from '../../../../createInstance'
 import DashboardAction from '../../../redux/action/DashboardAction'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEye } from '@fortawesome/free-solid-svg-icons'
+import moment from 'moment/moment'
 
 const Order = () => {
 	const dispatch = useDispatch()
@@ -25,7 +26,7 @@ const Order = () => {
 					<h5>{index}</h5>
 				</td>
 				<td>
-					<p>{item.date}</p>
+					<p>{item?.createdAt && moment(item?.createdAt).format('YYYY-MM-DD')}</p>
 				</td>
 				<td>
 					<span className={item.status}>{item.order_status}</span>

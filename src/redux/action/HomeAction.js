@@ -40,8 +40,9 @@ const HomeAction = {
 	},
 	getProductByCategoryId(axiosJwt, categoryId) {
 		return async dispatch => {
-			const data = await HomeService.getProductByCategoryId(axiosJwt, categoryId)
+			const response = await HomeService.getProductByCategoryId(axiosJwt, categoryId)
 			
+			dispatch(this.getListProductSuccess(response.data))
 		}
 	},
 	getListCategory(axiosJwt) {
@@ -56,8 +57,29 @@ const HomeAction = {
 	 */
 	getListCategorySuccess(data) {
 		return {
-			type: HomeConstant.GET_CATEGORY_SUCCESS,
+			type: HomeConstant.GET_LIST_CATEGORY_SUCCESS,
 			listCategory: data
+		}
+	},
+	getListProduct(axiosJwt) {
+		return async dispatch => {
+			const data = await HomeService.getListProduct(axiosJwt)
+			dispatch(this.getListProductSuccess(data))
+		}	
+	},
+	getListProductSuccess(data) {
+		return {
+			type: HomeConstant.GET_LIST_PRODUCT_SUCCESS,
+			listProduct: data
+		}
+	},
+	searchFood(axiosJwt, dataForm) {
+		return async dispatch => {
+			const data = await HomeService.getListProduct(axiosJwt, dataForm)
+
+			console.log('Data search =================== ', data)
+			dispatch(this.getListProductSuccess(data))
+
 		}
 	}
 	

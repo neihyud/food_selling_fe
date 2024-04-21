@@ -29,16 +29,12 @@ const EditUser = ({ user }) => {
 		dataForm, 
 		handleBlur, 
 		handleChange, 
-		handleSetDataForm, 
-		error, 
-		setError, 
-		validateForm, 
-		hasDisableBtnSubmit 
+		handleSetDataForm,
+		validateForm
 	} = useForm(fieldsConfig)
 
 	useEffect(() => {
 		handleSetDataForm({ ...user })
-		
 	}, [])
 
 	const handleSubmit = () => {
@@ -56,19 +52,18 @@ const EditUser = ({ user }) => {
 						<input 
 							className="form-control"
 							type="text" 
-							placeholder="User Name" 
+							placeholder="Name" 
 							style={{ marginBottom: '10px' }}
-							name='username'
-							value={dataForm.username}
+							name='name'
+							value={dataForm.name}
 							onBlur={handleBlur}
 							onChange={handleChange}
 						/>
-						<span className="form-message">{error?.username}</span>
 					</div>
 				</div>
 				<div className="col-12">
 					<div className="form-group" >
-						<label className='form-label' style={{ marginBottom: 0 }}></label>
+						<label className='form-label' style={{ marginBottom: 0 }}>Email</label>
 						<input 
 							type="email" 
 							placeholder="Email" 

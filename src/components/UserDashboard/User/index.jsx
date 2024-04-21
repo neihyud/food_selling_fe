@@ -51,7 +51,7 @@ const User = () => {
 				return (
 					<DefaultUser handleActionChange={handleActionChange} isEdit={isEdit}>
 						<div className="personal_info_text">
-							<p><span>Name:</span> {infoUser?.username}</p>
+							<p><span>Name:</span> {infoUser?.name}</p>
 							<p><span>Email:</span> {infoUser?.email ? infoUser.email : '<empty>'}</p>
 						</div>
 					</DefaultUser>

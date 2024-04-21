@@ -1,10 +1,11 @@
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import DataTable from '../../DataTable'
 import WrapperContent from '../WrapperContent'
 import { createAxiosJwt } from '../../../../createInstance'
+import moment from 'moment'
 
 const Order = () => {
 	const [listOrder, setListOrder] = useState([])  
@@ -12,12 +13,8 @@ const Order = () => {
 	const axiosJwt = createAxiosJwt('admin')
 	const columns = [
 		{
-			Header: 'Username',
-			accessor: 'username'
-		},
-		{
 			Header: 'Grand Total',
-			accessor: 'grand_total'	
+			accessor: 'sub_total'	
 		},
 		{
 			Header: 'Order Status',
@@ -29,12 +26,18 @@ const Order = () => {
 		},
 		{
 			Header: 'Created At',
-			accessor: 'created_at'
+			accessor: 'createdAt',
+			type: 'action',
+			getComponent: (productId, value) => {
+				return (
+					<span>{moment(value).format('YYYY-MM-DD')}</span>
+				)
+			}
 		},
 		{
 			Header: 'Action',
 			accessor: 'action',
-			id: 'action',
+			type: 'action',
 			getComponent: (productId) => {
 				return (
 					<>

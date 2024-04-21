@@ -4,17 +4,19 @@ import WrapperSection from '../Wrapper/WrapperSection.jsx'
 import FoodCardDetail from './Food/FoodCardDetail.jsx'
 import ListFoodCard from './Food/ListFoodCard.jsx'
 import './foodMenu.css'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { createAxiosJwt } from '../../../createInstance.js'
-import ManageProductAction from '../../redux/action/admin/ManageProductAction.js'
 import HomeAction from '../../redux/action/HomeAction.js'
 
 const FoodMenu = () => {
 	const { isOpenFoodDetail } = useSelector((state) => state.homeReducer)
+
+	const [currentCategoryId, setCurrentCategoryId] = useState()
+
 	const dispatch = useDispatch()
 	const axiosJwt = createAxiosJwt()
 
-	const { listProduct, listCategory } = useSelector((state) => state.admin.manageProductReducer)
+	const { listCategory } = useSelector((state) => state.homeReducer)
 
 	const content = (
 		<>
@@ -32,19 +34,34 @@ const FoodMenu = () => {
 	}
 
 	const renderCategory = () => {
-		return listCategory.map((category) => {
-			<button data-filter=".burger">{category.title}</button>
-
+		return listCategory?.map((category, index) => {
+			return (
+				<button 
+					key={index} 
+					onClick={() => setCurrentCategoryId(category.id)} 
+					className={currentCategoryId === category.id ? 'active' : ''}
+				>
+					{category.name}
+				</button>
+			)
 		})
 	}
 
-	const getProductByCategoryId = (categoryId) => {
-		dispatch(HomeAction.getProductByCategoryId(axiosJwt, categoryId))
+	const getProductByCategoryId = () => {
+		dispatch(HomeAction.getProductByCategoryId(axiosJwt, currentCategoryId))
 	}
 	
 	useEffect(() => {
 		dispatch(HomeAction.getListCategory(axiosJwt))
 	}, [])
+
+	useEffect(() => {
+		if (currentCategoryId) {
+			getProductByCategoryId()
+		} else {
+			dispatch(HomeAction.getListProduct(axiosJwt))
+		}
+	}, [currentCategoryId])
 
 	return (
 		<WrapperSection>
@@ -59,7 +76,7 @@ const FoodMenu = () => {
 					<div className="row wow fadeInUp" data-wow-duration="1s">
 						<div className="col-12">
 							<div className="menu_filter d-flex flex-wrap justify-content-center">
-								<button className=" active" data-filter="*">all</button>
+								<button className={currentCategoryId ? '' : 'active' } onClick={() => setCurrentCategoryId('')}>all</button>
 								{renderCategory()}
 							</div>
 						</div>

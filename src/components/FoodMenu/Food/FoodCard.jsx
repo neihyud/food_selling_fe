@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux'
 import HomeAction from '../../../redux/action/HomeAction'
 import { randomText } from '../../../../mock/mock'
 
-const FoodCard = ({ id, imgUrl, price, title }) => {
+const FoodCard = ({ id, thumb_img: imgUrl, price, name: title, category_id: category, offer_price }) => {
 	const dispatch = useDispatch()
 
 	const handleOpenFoodDetail = () => {
@@ -26,7 +26,16 @@ const FoodCard = ({ id, imgUrl, price, title }) => {
 			quantity: 1
 		}
 		
-		dispatch(HomeAction.addToCart(mockData))
+		const infoProduct = {
+			id: id,
+			name: title, 
+			price: price, 
+			offer_price: offer_price, 
+			thumb_img: imgUrl, 
+			quantity: 1
+		}
+		
+		dispatch(HomeAction.addToCart(infoProduct))
 	}
 
 	return (
@@ -34,35 +43,27 @@ const FoodCard = ({ id, imgUrl, price, title }) => {
 			<div className="fp__menu_item">
 				<div className="fp__menu_item_img" onClick={handleOpenFoodDetail}>
 					<Image src={imgUrl} alt="menu" className="img-fluid w-100" rounded style={{ cursor: 'pointer' }}/>
-					<a className="category" href="#">Burger</a>
+					<a className="category" >{category?.name}</a>
 				</div>
 				<div className="fp__menu_item_text">
-					<p className="rating">
+					{/* <p className="rating">
 						<FontAwesomeIcon icon={faStar} />
 						<FontAwesomeIcon icon={faStar} />
 						<FontAwesomeIcon icon={faStar} />
 						<FontAwesomeIcon icon={faStarHalfAlt} />
 						<FontAwesomeIcon icon={faStar} />
 						<span>5</span>
-					</p>
+					</p> */}
 					<a className="title">
 						{title}
 					</a>
-					<h5 className="price">${price}</h5>
+					<h5 className="price">${offer_price} 
+						<del style={{ fontSize: '15px' }}>${price}</del>
+					
+					</h5>
 					<div className='d-flex flex-wrap justify-content-center'>
 						<button className='common_btn' onClick={handleAddToCard}>Add to cart</button>
 					</div>
-					{/* <ul className="d-flex flex-wrap justify-content-center">
-						<li onClick={handleOpenFoodDetail}>
-							<FontAwesomeIcon icon={faShoppingBasket} />
-						</li>
-						<li>
-							<FontAwesomeIcon icon={faHeart} />
-						</li>
-						<li>
-							<FontAwesomeIcon icon={faEye} />
-						</li>
-					</ul> */}
 				</div>
 			</div>
 		</div >
@@ -72,8 +73,10 @@ const FoodCard = ({ id, imgUrl, price, title }) => {
 FoodCard.propTypes = {
 	id: PropTypes.string,
 	price: PropTypes.number,
-	imgUrl: PropTypes.string,
-	title: PropTypes.string
+	thumb_img: PropTypes.string,
+	name: PropTypes.string,
+	category_id: PropTypes.object,
+	offer_price: PropTypes.number
 }
 
 export default FoodCard

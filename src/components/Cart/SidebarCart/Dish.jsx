@@ -73,7 +73,6 @@ const Dish = (props) => {
 				<a className="title">{name}</a>
 				<p className="price">
 					${offer_price} 
-					<del>${price}</del>
 				</p>
 				<div className='menu_cart_amount'>
 					<span className='btn-quantity' onClick={() => updateQuantity('decrease')}>

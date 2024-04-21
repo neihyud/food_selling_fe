@@ -1,7 +1,7 @@
 import DashboardConstant from '../../constant/DashboardConstant'
 
 const initState = {
-	typeContentComponent: '',
+	typeContentComponent: DashboardConstant.TYPE_CONTENT_COMPONENT.USER,
 	listAddress: [],
 	infoUser: null,
 	isEdit: false,

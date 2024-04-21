@@ -16,6 +16,22 @@ const HomeService = {
 		} catch (error) {
 			return error.response.data
 		}
+	},
+	async getListProduct(axiosJwt, data = '') {
+		let query = ''
+		if (data) {
+			query = Object.keys(data).map((q) => {
+				return `${q}=${data[q]}`
+			}).join('&')
+		}
+		
+		try {
+			const response = await axiosJwt.get(`/category/product?${query}`)
+
+			return response.data
+		} catch (error) {
+			return error.response.data
+		}
 	}
 }
 

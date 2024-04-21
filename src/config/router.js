@@ -7,6 +7,7 @@ const routes = {
 	orderSuccess: '/order/success',
 	login: 'login',
 	register: 'register',
+	menu: 'menu',
   
 	admin: {
 		home: '',

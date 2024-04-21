@@ -125,7 +125,7 @@ const CategoryManagement = () => {
 					<select 
 						name="status" 
 						className="form-control"
-						value={dataForm?.status ? '1' : '0'}
+						value={Number(dataForm?.status) ? '1' : '0'}
 						onChange={handleChange}
 					>
 						<option value="1">Active</option>

@@ -27,7 +27,7 @@ const WrapperContent = (props) => {
 WrapperContent.propTypes = {
 	children: PropTypes.node.isRequired,
 	title: PropTypes.string.isRequired,
-	subTitle: PropTypes.string.isRequired,
+	subTitle: PropTypes.string,
 	action: PropTypes.node,
 	isCloseHeader: PropTypes.bool,
 	isDisableScroll: PropTypes.bool
