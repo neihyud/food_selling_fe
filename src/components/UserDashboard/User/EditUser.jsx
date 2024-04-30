@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types'
 import useForm from '../../../hooks/useForm'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import { useDispatch } from 'react-redux'
 import { createAxiosJwt } from '../../../../createInstance'
 import DashboardAction from '../../../redux/action/DashboardAction'
 
 const EditUser = ({ user }) => {
+	const [isChangeFile, setIsChangeFile] = useState(false)
 	const dispatch = useDispatch()
 
 	const axiosJwt = createAxiosJwt()
@@ -71,6 +72,23 @@ const EditUser = ({ user }) => {
 							name='email'
 							value={dataForm.email}
 							onChange={handleChange}
+						/>
+					</div>
+				</div>
+				<div className="col-12">
+					<div className="form-group" >
+						<label className='form-label' style={{ marginBottom: 0 }}>Image</label>
+						<div style={{ width: '200px', padding: '10px 0' }}>
+							{dataForm?.img && isChangeFile && <img src={`${URL.createObjectURL(dataForm?.img)}`} alt="" />}
+							{dataForm?.img && !isChangeFile && <img src={`${dataForm?.img}`} alt="" />}
+						</div>
+						<input 
+							type="file" 
+							name="img" 
+							onChange={(event) => { 
+								setIsChangeFile(true)
+								handleChange(event, 'file')
+							}}
 						/>
 					</div>
 				</div>

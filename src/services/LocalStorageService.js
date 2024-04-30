@@ -42,11 +42,11 @@ const LocalStorageService = {
 	},
 
 	getUserName() {
-		return JSON.parse(localStorage.getItem('user'))?.username
+		return JSON.parse(localStorage.getItem('user'))?.name
 	},
 	
 	getUserImage() {
-		return JSON.parse(localStorage.getItem('user'))?.thumb_img || DashboardConstant.IMG_USER_DEFAULT
+		return JSON.parse(localStorage.getItem('user'))?.img || DashboardConstant.IMG_USER_DEFAULT
 	}
 }
 

@@ -7,7 +7,8 @@ const initState = {
 	isEdit: false,
 	typeUIAddress: '',
 	currentAddress: {},
-	listOrder: [] 
+	listOrder: [],
+	currentOrder: ''
 }
 
 const DashboardReducer = (state = initState, action) => {
@@ -82,6 +83,11 @@ const DashboardReducer = (state = initState, action) => {
 			return {
 				...state,
 				listOrderItem: action.listOrderItem
+			}
+		case DashboardConstant.GET_ORDER_SUCCESS: 
+			return {
+				...state,
+				currentOrder: action.currentOrder
 			}
 		default:
 			return state

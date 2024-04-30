@@ -1,13 +1,13 @@
-import moment from 'moment'
-import WrapperContent from '../../WrapperContent'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEye, faTrash } from '@fortawesome/free-solid-svg-icons'
-import { useEffect, useState } from 'react'
-import DataTable from '../../../DataTable'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { createAxiosJwt } from '../../../../../createInstance'
+import moment from 'moment'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEye, faTrash } from '@fortawesome/free-solid-svg-icons'
+import WrapperContent from '../../WrapperContent'
+import DataTable from '../../../DataTable'
 
-const OrderPending = () => {
+const OrderInProcess = () => {
 	const [listOrder, setListOrder] = useState([]) 
 	const navigate = useNavigate()
 	const axiosJwt = createAxiosJwt('admin')
@@ -68,13 +68,14 @@ const OrderPending = () => {
 
 	useEffect(() => {
 		const getListOrder = async () => {
-			const response = await axiosJwt.get('/admin/order/pending')
+			const response = await axiosJwt.get('/admin/order/in-process')
 
 			setListOrder(response.data)
 		} 
 
 		getListOrder()
 	}, [])
+
 	return (
 		<WrapperContent 
 			title='Orders'
@@ -87,4 +88,4 @@ const OrderPending = () => {
 	)
 }
 
-export default OrderPending
+export default OrderInProcess

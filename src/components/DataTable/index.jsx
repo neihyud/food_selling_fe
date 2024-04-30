@@ -24,12 +24,12 @@ function DataTable({ columns, data }) {
 	// 	return pathGDrive.replace('file/d', 'thumbnail?id=')
 	// }
 
-	const getRow = (cell, id, productId) => {
+	const getRow = (cell, id, productId, values) => {
 		switch (cell.column.type) {
 			case 'action':
 				return (
 					<td key={id} {...cell.getCellProps()}>
-						{cell.column.getComponent(productId, cell.value)} 
+						{cell.column.getComponent(productId, cell.value, values)} 
 					</td>
 				)
 			case 'image':
@@ -46,33 +46,41 @@ function DataTable({ columns, data }) {
 
 		}
 	}
-	return (
-		<table {...getTableProps()} className="table">
-			<thead>
-				{headerGroups.map((headerGroup, index) => (
-					<tr key={index} {...headerGroup.getHeaderGroupProps()}>
-						{headerGroup.headers.map((column, idx) => (
-							<th key={idx} {...column.getHeaderProps()}>{column.render('Header')}</th>
-						))}
-					</tr>
-				))}
-			</thead>
-			<tbody {...getTableBodyProps()}>
-				{rows.map((row, index) => {
-					prepareRow(row)
 
-					const productId = row.original.id
-					
-					return (
-						<tr key={index} {...row.getRowProps()}>
-							{row.cells.map((cell, id) => {
-								{return getRow(cell, id, productId)}
-							})}
+	const getEmptyTable = () => {
+		if (!rows?.length) {
+			return <p><b>No data</b></p>
+		}
+	}
+	return (
+		<div>
+			<table {...getTableProps()} className="table">
+				<thead>
+					{headerGroups.map((headerGroup, index) => (
+						<tr key={index} {...headerGroup.getHeaderGroupProps()}>
+							{headerGroup.headers.map((column, idx) => (
+								<th key={idx} {...column.getHeaderProps()}>{column.render('Header')}</th>
+							))}
 						</tr>
-					)
-				})}
-			</tbody>
-		</table>
+					))}
+				</thead>
+				<tbody {...getTableBodyProps()}>
+					{rows.map((row, index) => {
+						prepareRow(row)
+	
+						const productId = row.original.id
+						return (
+							<tr key={index} {...row.getRowProps()}>
+								{row.cells.map((cell, id) => {
+									{return getRow(cell, id, productId, row.values)}
+								})}
+							</tr>
+						)
+					})}
+				</tbody>
+			</table>
+			{getEmptyTable()}
+		</div>
 	)
 }
 

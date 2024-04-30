@@ -43,7 +43,7 @@ const Header = () => {
 			<nav className='navbar navbar-expand-lg main_menu'>
 				<div className='container'>
 					<a className='navbar-brand'>
-						<Image src="src/assets/images/logo.png" className='img-fluid' alt='Food Logo' />
+						<Image src="/src/assets/images/logo.png" className='img-fluid' alt='Food Logo' />
 					</a>
 
 					<Menu items={config.menu} />

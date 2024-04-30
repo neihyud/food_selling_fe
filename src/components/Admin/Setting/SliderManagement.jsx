@@ -1,36 +1,32 @@
 import { useEffect, useMemo, useState } from 'react'
+import WrapperContent from '../WrapperContent'
 import { useParams } from 'react-router-dom'
-import WrapperContent from '../../WrapperContent'
-import useForm from '../../../../hooks/useForm'
+import useForm from '../../../hooks/useForm'
+import { createAxiosJwt } from '../../../../createInstance'
+import { showToast } from '../../../helper/toast'
 import { Button } from 'react-bootstrap'
-import ManageProductService from '../../../../services/admin/ManageProductService'
-import { createAxiosJwt } from '../../../../../createInstance'
-import { showToast } from '../../../../helper/toast'
-import ManageProductAction from '../../../../redux/action/admin/ManageProductAction'
-import { useDispatch, useSelector } from 'react-redux'
 
-const ProductManagement = () => {
+const SliderManagement = () => {
 	const { id } = useParams()
-	const dispatch = useDispatch()
-	const axiosJwt = createAxiosJwt('admin')
 	const [isChangeFile, setIsChangeFile] = useState(false)
+	const axiosJwt = createAxiosJwt('admin')
 
 	const infoComponent = useMemo(() => {
 		if (id) {
 			return {
-				title: 'Edit Product',
+				title: 'Edit Slider',
 				btnTitle: 'Edit'
 			}
 		}
 
 		return {
-			title: 'Create Product',
+			title: 'Create Slider',
 			btnTitle: 'Create'
 		}
 	}, [id])
 
 	const fieldsConfig = {
-		name: {
+		offer: {
 			validates: [
 				(value) => {
 					if (value) {
@@ -41,7 +37,7 @@ const ProductManagement = () => {
 				}
 			]
 		},
-		price: {
+		title: {
 			validates: [
 				(value) => {
 					if (value) {
@@ -52,7 +48,18 @@ const ProductManagement = () => {
 				}
 			]
 		},
-		category_id: {
+		sub_title: {
+			validates: [
+				(value) => {
+					if (value) {
+						return ''
+					}
+
+					return 'Field is required'
+				}
+			]
+		},
+		short_description: {
 			validates: [
 				(value) => {
 					if (value) {
@@ -77,52 +84,39 @@ const ProductManagement = () => {
 	} = useForm(fieldsConfig, { status: '1' })
 
 	const [isLoading, setIsLoading] = useState(false)
-	
-	const getCurrentProduct = async () => {
-		const response = await ManageProductService.getProduct(axiosJwt, id)
 
-		if (response.success) {	
-			handleSetDataForm({
-				...response.data, 
-				img: response.data?.thumb_img
-			})
-		}
+	const getCurrentSlider = async () => {
+		// const response = await ManageProductService.getProduct(axiosJwt, id)
+		const response = await axiosJwt.get(`/admin/setting/slider/${id}`)
+
+		handleSetDataForm({
+			...response.data 
+		})
+
 	}
 
 	useEffect(() => {
 		if (id) {
 			// to do load current product
-			getCurrentProduct()
+			getCurrentSlider()
 		}
-
-		dispatch(ManageProductAction.getListCategory(axiosJwt))
 
 	}, [])
-
-	const { listCategory } = useSelector((state) => state.admin.manageProductReducer)
-
-	useEffect(() => {
-		if (id || !listCategory.length) {
-			return undefined
-		}
-		
-		handleSetDataForm({
-			...dataForm,
-			category_id: listCategory && listCategory[0]?.id
-		})
-
-		return () => {}
-	}, [listCategory])
 
 	const handleCreateProduct = async () => { 
 		if (validateForm(dataForm)) {
 			setIsLoading(true)
-			const response = await ManageProductService.createProduct(axiosJwt, dataForm)
+			const response = await axiosJwt.post('/admin/setting/slider', dataForm, {
+				headers: {
+					'Content-Type': 'multipart/form-data'
+				}
+			})
 			if (response.success) {
 				handleSetDataForm({})
 				showToast('success')
 			} else if (response.errors) {
 				setError(response.errors)
+				setIsLoading(false)
 			}
 		}
 		setIsLoading(false)
@@ -131,8 +125,11 @@ const ProductManagement = () => {
 
 	const handleUpdateProduct = async () => {
 		if (validateForm(dataForm)) {
-			const response = await ManageProductService.updateProduct(axiosJwt, id, dataForm)
-			if (response.success) {
+			if (!isChangeFile) {
+				delete dataForm.img
+			}
+			const response = await axiosJwt.put(`/admin/setting/slider/${id}`, dataForm)
+			if (response.data.success) {
 				showToast('success')
 				
 			} else if (response.errors) {
@@ -149,30 +146,11 @@ const ProductManagement = () => {
 		}
 	}
 
-	const getCategories = () => {
-		return (
-			<>
-				<select 
-					name="category_id" 	
-					className="form-control select"
-					onChange={handleChange}
-					value={dataForm?.category_id || ''}
-				>
-					{listCategory?.map((item) => {
-						return (<option key={item.id} value={item.id}>{item.name}</option>)
-					})}
-				</select>
-				<span className="form-message">{error?.category_id}</span>
-			</>
-
-		)
-	}
-
 	const isDisableBtn = hasDisableBtnSubmit()		
-	
+  
 	return (
 		<WrapperContent
-			title='Product'
+			title='Slider'
 			subTitle={infoComponent.title}
 		>
 			<div>
@@ -193,53 +171,47 @@ const ProductManagement = () => {
 						/>
 					</div>
 					<span className="form-message">{error?.image}</span>
-					
+        
 				</div>
-
+              
 				<div className="form-group">
-					<label>Name</label>
+					<label>Offer</label>
 					<input 
 						type="text" 
-						name="name" 
+						name="offer" 
 						className="form-control input-primary" 
 						onChange={handleChange}
 						onBlur={handleBlur}
-						value={dataForm.name || ''}
+						value={dataForm.offer || ''}
 					/>
-					<span className="form-message">{error?.name}</span>
+					<span className="form-message">{error?.offer}</span>
 
 				</div>
-
 				<div className="form-group">
-					<label>Category</label>
-					{getCategories()}
-				</div>
-
-				<div className="form-group">
-					<label>Price</label>
+					<label>Title</label>
 					<input 
 						type="text" 
-						name="price" 
+						name="title" 
 						className="form-control input-primary" 
 						onChange={handleChange}
 						onBlur={handleBlur}
-						value={dataForm?.price || ''}
+						value={dataForm?.title || ''}
 					/>
-					<span className="form-message">{error?.price}</span>
+					<span className="form-message">{error?.title}</span>
 
 				</div>
 
 				<div className="form-group">
-					<label>Offer Price</label>
+					<label>Sub Title</label>
 					<input 
 						type="text" 
-						name="offer_price" 
+						name="sub_title" 
 						className="form-control input-primary" 
 						onChange={handleChange}
 						onBlur={handleBlur}
-						value={dataForm?.offer_price || ''}
+						value={dataForm?.sub_title || ''}
 					/>
-					<span className="form-message">{error?.offer_price}</span>
+					<span className="form-message">{error?.sub_title}</span>
 
 				</div>
 				<div className="form-group">
@@ -252,42 +224,8 @@ const ProductManagement = () => {
 						value={dataForm?.short_description || ''}
 					>
 					</textarea>
-				</div>
+					<span className="form-message">{error?.short_description}</span>
 
-				<div className="form-group">
-					<label>Long Description</label>
-					<textarea 
-						name="long_description" 
-						className="form-control input-primary" 
-						onChange={handleChange}
-						onBlur={handleBlur}
-						value={dataForm?.long_description || ''}	
-					></textarea>
-
-				</div>
-
-				<div className="form-group">
-					<label>Sku</label>
-					<input 
-						type="text" 
-						name="sku" 
-						className="form-control input-primary" 
-						onChange={handleChange}
-						onBlur={handleBlur}
-						value={dataForm?.sku || ''}	
-					/>
-				</div>
-
-				<div className="form-group">
-					<label>Status</label>
-					<select 
-						name="status" 
-						className="form-control input-primary" 
-						defaultValue={'1'}
-					>
-						<option value="1">Active</option>
-						<option value="0">Inactive</option>
-					</select>
 				</div>
 
 				<Button 
@@ -304,4 +242,4 @@ const ProductManagement = () => {
 	)
 }
 
-export default ProductManagement
+export default SliderManagement

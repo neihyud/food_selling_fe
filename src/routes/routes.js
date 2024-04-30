@@ -7,13 +7,11 @@ import UserDashboard from '../pages/UserDashboard'
 import Checkout from '../components/Checkout'
 import DefaultLayout from '../layouts/DefaultLayout/DefaultLayout.jsx'
 import Auth from '../pages/Admin/Auth.jsx'
-import Dashboard from '../pages/Admin/Dashboard.jsx'
 
 import CategoryManagement from '../components/Admin/ManageProduct/Category/CategoryManagement.jsx'
 import Category from '../components/Admin/ManageProduct/Category/index.jsx'
 import ProductManagement from '../components/Admin/ManageProduct/Product/ProductManagement.jsx'
 import Product from '../components/Admin/ManageProduct/Product/index.jsx'
-import Overview from '../components/Admin/Overview/Overview.jsx'
 import AdminDefaultLayout from '../layouts/DefaultLayout/AdminDefaultLayout.jsx'
 import Staff from '../components/Admin/Account/Staff/index.jsx'
 import StaffManagement from '../components/Admin/Account/Staff/StaffManagement.jsx'
@@ -24,6 +22,13 @@ import ChatBox from '../components/Admin/ChatBox/index.jsx'
 import OrderPending from '../components/Admin/Order/OrderPending/index.jsx'
 import Order from '../components/Admin/Order/index.jsx'
 import MenuFoodPage from '../components/MenuFoodPage/index.jsx'
+import OrderDetail from '../components/Admin/Order/OrderDetail.jsx'
+import OrderDelivered from '../components/Admin/Order/OrderDelivered/index.jsx'
+import OrderDeclined from '../components/Admin/Order/OrderDeclined/index.jsx'
+import OrderInProcess from '../components/Admin/Order/OrderInProcess/index.jsx'
+import Dashboard from '../components/Admin/Dashboard/Dashboard.jsx'
+import Slider from '../components/Admin/Setting/Slider.jsx'
+import SliderManagement from '../components/Admin/Setting/SliderManagement.jsx'
 
 const { routes } = config
 
@@ -77,14 +82,9 @@ const adminPublicRouter = [
 	},
 	{
 		path: routes.admin.home,
-		component: Overview,
-		layout: AdminDefaultLayout
-	},
-	{
-		path: routes.admin.dashboard,
 		component: Dashboard,
 		layout: AdminDefaultLayout
-	},
+	},	
 	{
 		path: routes.admin.category,
 		component: Category,
@@ -148,6 +148,41 @@ const adminPublicRouter = [
 	{
 		path: routes.admin.order,
 		component: Order,
+		layout: AdminDefaultLayout
+	},
+	{
+		path: routes.admin.orderDetail,
+		component: OrderDetail,
+		layout: AdminDefaultLayout
+	},
+	{
+		path: routes.admin.orderInProcess,
+		component: OrderInProcess,
+		layout: AdminDefaultLayout
+	},
+	{
+		path: routes.admin.orderDelivered,
+		component: OrderDelivered,
+		layout: AdminDefaultLayout
+	},
+	{
+		path: routes.admin.orderDeclined,
+		component: OrderDeclined,
+		layout: AdminDefaultLayout
+	},
+	{
+		path: routes.admin.slider,
+		component: Slider,
+		layout: AdminDefaultLayout
+	},
+	{
+		path: routes.admin.sliderCreate,
+		component: SliderManagement,
+		layout: AdminDefaultLayout
+	},
+	{
+		path: routes.admin.sliderEdit,
+		component: SliderManagement,
 		layout: AdminDefaultLayout
 	}
 ]

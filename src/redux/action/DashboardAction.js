@@ -129,6 +129,16 @@ const DashboardAction = {
 				listOrderItem: response
 			})
 		}
+	},
+	getOrder(axiosJwt, orderId) {
+		return async dispatch => {
+			const response = await DashboardService.getOrder(axiosJwt, orderId)
+
+			dispatch({
+				type: DashboardConstant.GET_ORDER_SUCCESS,
+				currentOrder: response
+			})
+		}
 	}
 	
 }

@@ -1,4 +1,4 @@
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faEye, faTrash } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -11,6 +11,7 @@ const Order = () => {
 	const [listOrder, setListOrder] = useState([])  
 	const navigate = useNavigate()
 	const axiosJwt = createAxiosJwt('admin')
+	
 	const columns = [
 		{
 			Header: 'Grand Total',
@@ -18,7 +19,13 @@ const Order = () => {
 		},
 		{
 			Header: 'Order Status',
-			accessor: 'order_status'
+			accessor: 'order_status',
+			type: 'action',
+			getComponent: (_, value) => {
+				return (
+					<span>{value.split('_').join(' ')}</span>
+				)
+			}
 		},
 		{
 			Header: 'Payment Status',
@@ -28,7 +35,7 @@ const Order = () => {
 			Header: 'Created At',
 			accessor: 'createdAt',
 			type: 'action',
-			getComponent: (productId, value) => {
+			getComponent: (orderId, value) => {
 				return (
 					<span>{moment(value).format('YYYY-MM-DD')}</span>
 				)
@@ -38,19 +45,19 @@ const Order = () => {
 			Header: 'Action',
 			accessor: 'action',
 			type: 'action',
-			getComponent: (productId) => {
+			getComponent: (orderId) => {
 				return (
 					<>
 						<FontAwesomeIcon 
-							icon={faEdit} 
-							onClick={() => navigate(`/admin/product/${productId}/edit`)} 
+							icon={faEye} 
+							onClick={() => navigate(`/admin/order/${orderId}`)} 
 							className='animation-icon'
 						/>
 			
 						<FontAwesomeIcon 
 							icon={faTrash} 
 							className='animation-icon' 
-							// onClick={() => handleOpenModal(productId)}
+							// onClick={() => handleOpenModal(orderId)}
 
 						/>
 					</>

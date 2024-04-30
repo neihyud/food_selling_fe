@@ -69,9 +69,12 @@ const ChatBox = () => {
 
 			const customStyle = isActive ? {
 				display: 'flex',
-				padding: '2px',
-				backgroundColor: '#78bcf0'				
-			} : { display: 'flex' }
+				padding: '8px',
+				backgroundColor: '#78bcf0'
+			} : { 
+				display: 'flex', 
+				padding: '8px'
+			}
 			
 			return (
 				<li className="media" key={index} style={customStyle} onClick={() => handleChooseChat(user)}>
@@ -121,9 +124,15 @@ const ChatBox = () => {
 								{renderChat()}
 								<p ref={lastChildBox}></p>
 							</div>
-							<div className="card-footer chat-form">
+							<div className="card-footer chat-form" style={{ border: 'none' }}>
 								<div>
-									<input type="text" className="form-control" placeholder="Type a message" value={message} onChange={(event) => setMessage(event.target.value)}/>
+									<input 
+										type="text" 
+										className="form-control input-primary" 
+										placeholder="Type a message" 
+										value={message} 
+										onChange={(event) => setMessage(event.target.value)}
+									/>
 									<button className="btn btn-primary" onClick={handleSendMessage}>
 										<FontAwesomeIcon icon={faPaperPlane}/>
 									</button>

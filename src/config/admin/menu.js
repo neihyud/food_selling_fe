@@ -1,9 +1,9 @@
-import { faCartShopping, faHome, faMessage, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping, faGear, faHome, faMessage, faUser } from '@fortawesome/free-solid-svg-icons'
 import routes from '../router'
 
 const LIST_MENU = [
 	{
-		title: 'Overview',
+		title: 'Dashboard',
 		path: '/admin',
 		icon: faHome,
 		key: '1'
@@ -24,9 +24,19 @@ const LIST_MENU = [
 				key: '8'
 			},
 			{
-				title: 'Order Success',
-				path: `/admin/${routes.admin.product}`,
+				title: 'Order In Process',
+				path: `/admin/${routes.admin.orderInProcess}`,
 				key: '9'
+			},
+			{
+				title: 'Order Delivered',
+				path: `/admin/${routes.admin.orderDelivered}`,
+				key: '10'
+			},
+			{
+				title: 'Order Declined',
+				path: `/admin/${routes.admin.orderDeclined}`,
+				key: '11'
 			}
 		]
 	},
@@ -63,14 +73,25 @@ const LIST_MENU = [
 				key: '5'
 			}
 		]
-		
 	},
 	{
 		title: 'Chat',
 		path: '/admin/chat',
 		icon: faMessage,
 		key: '6'
-	}	
+	},
+	{
+		title: 'Setting',
+		icon: faGear,	
+		key: 'sub4',
+		children: [
+			{
+				title: 'Slider',
+				path: `/admin/${routes.admin.slider}`,
+				key: '12'
+			}
+		]
+	}
 
 ]
 

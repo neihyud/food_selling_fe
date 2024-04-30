@@ -207,7 +207,7 @@
   font-size: 16px;
   font-family: var(--headingFont);
   text-transform: capitalize;
-  width: 95px;
+  width: 60px;
 }
 
 .fp__invoice_header .header_address p {
@@ -250,6 +250,11 @@
   padding: 10px;
   border-right: 0.5px solid #ddd;
   text-align: center;
+}
+
+.fp__invoice.admin table tr th {
+  background-color: rgb(182, 182, 182);
+
 }
 
 .fp__invoice table tr:last-child td {

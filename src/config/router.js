@@ -25,7 +25,14 @@ const routes = {
 		staffEdit: 'account/:id/edit',
 		chat: 'chat',
 		order: 'order',
-		orderPending: 'order/pending'
+		orderDetail: 'order/:id/',
+		orderPending: 'order/pending',
+		orderInProcess: 'order/in-process',
+		orderDelivered: 'order/order-delivered',
+		orderDeclined: 'order/order-declined',
+		slider: 'setting/slider',
+		sliderCreate: 'setting/slider/create',
+		sliderEdit: 'setting/slider/:id/edit'
 	}
 }
 

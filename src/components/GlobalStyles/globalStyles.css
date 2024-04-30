@@ -306,3 +306,14 @@ td {
     padding-left: 35px;
     padding-right: 35px;
 }
+
+table td,
+th,
+tr {
+    text-transform: capitalize;
+}
+
+tr td:last-child {
+    width: 10%;
+    white-space: nowrap;
+}

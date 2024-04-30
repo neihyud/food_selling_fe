@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-const useForm = (fieldsConfig) => {
+const useForm = (fieldsConfig, defaultValue = {}) => {
 	const [error, setError] = useState({})
-	const [dataForm, setDataForm] = useState({})
+	const [dataForm, setDataForm] = useState(defaultValue)
 
 	const validateField = (field, value, object) => {
 		let errorMessage = ''

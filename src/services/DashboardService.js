@@ -21,6 +21,10 @@ const DashboardService = {
 		try {
 			const response = await axiosJwt.post('/user', {
 				...data
+			}, {
+				headers: {
+					'Content-Type': 'multipart/form-data'
+				}
 			})
 
 			return response.data
@@ -71,6 +75,15 @@ const DashboardService = {
 	async getListOrderItem(axiosJwt, orderId) {
 		try {
 			const response = await axiosJwt.get(`/order/${orderId}/item`)
+
+			return response.data
+		} catch (error) {
+			return error.response.data
+		} 
+	},
+	async getOrder(axiosJwt, orderId) {
+		try {
+			const response = await axiosJwt.get(`/order/${orderId}`)
 
 			return response.data
 		} catch (error) {

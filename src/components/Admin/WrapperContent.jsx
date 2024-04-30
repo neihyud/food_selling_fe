@@ -5,9 +5,12 @@ const WrapperContent = (props) => {
 
 	return (
 		<section className="section wrapper-content">
-			<div className="section-header">
+			{title && <div className="section-header">
 				<h1>{title}</h1>
 			</div>
+			}
+
+			{!title && <p style={{ paddingTop: '50px' }}></p>}
 
 			<div className="card card-primary">
 				{!isCloseHeader && <div className="card-header">

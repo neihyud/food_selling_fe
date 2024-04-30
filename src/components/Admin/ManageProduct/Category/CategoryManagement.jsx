@@ -38,7 +38,7 @@ const CategoryManagement = () => {
 		}
 	}
 
-	const { dataForm, handleBlur, handleChange, handleSetDataForm, error, setError, validateForm, hasDisableBtnSubmit } = useForm(fieldsConfig)
+	const { dataForm, handleBlur, handleChange, handleSetDataForm, error, setError, validateForm, hasDisableBtnSubmit } = useForm(fieldsConfig, { status: '1' })
 	
 	const getCurrentCategory = async () => {
 		const response = await ManageProductService.getCategory(axiosJwt, id)
@@ -125,6 +125,7 @@ const CategoryManagement = () => {
 					<select 
 						name="status" 
 						className="form-control"
+						defaultValue={'1'}
 						value={Number(dataForm?.status) ? '1' : '0'}
 						onChange={handleChange}
 					>

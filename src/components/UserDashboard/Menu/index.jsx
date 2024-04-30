@@ -50,9 +50,9 @@ const MenuDashboard = () => {
 			<div className="dashboard_header">
 				<div className="dashboard_header_img">
 					<Image src={LocalStorageService.getUserImage()} className="img-fluid w-100" />
-					<label htmlFor="upload">
+					{/* <label htmlFor="upload">
 						<FontAwesomeIcon icon={faCamera} />
-					</label>
+					</label> */}
 					<input type="file" hidden />
 				</div>
 				<h2>{LocalStorageService.getUserName()}</h2>
