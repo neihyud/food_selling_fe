@@ -29,6 +29,7 @@ import OrderInProcess from '../components/Admin/Order/OrderInProcess/index.jsx'
 import Dashboard from '../components/Admin/Dashboard/Dashboard.jsx'
 import Slider from '../components/Admin/Setting/Slider.jsx'
 import SliderManagement from '../components/Admin/Setting/SliderManagement.jsx'
+import FoodDetail from '../components/FoodDetail/index.jsx'
 
 const { routes } = config
 
@@ -69,6 +70,11 @@ const publicRoutes = [
 	}, {
 		path: routes.menu,
 		component: MenuFoodPage,
+		layout: DefaultLayout
+	},
+	{
+		path: routes.foodDetail,
+		component: FoodDetail,
 		layout: DefaultLayout
 	}
 ]

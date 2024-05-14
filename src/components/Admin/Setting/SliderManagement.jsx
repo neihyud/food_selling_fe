@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
 import WrapperContent from '../WrapperContent'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import useForm from '../../../hooks/useForm'
 import { createAxiosJwt } from '../../../../createInstance'
 import { showToast } from '../../../helper/toast'
@@ -10,6 +10,7 @@ const SliderManagement = () => {
 	const { id } = useParams()
 	const [isChangeFile, setIsChangeFile] = useState(false)
 	const axiosJwt = createAxiosJwt('admin')
+	const navigate = useNavigate()
 
 	const infoComponent = useMemo(() => {
 		if (id) {
@@ -111,12 +112,14 @@ const SliderManagement = () => {
 					'Content-Type': 'multipart/form-data'
 				}
 			})
-			if (response.success) {
+			if (response?.data?.success) {
 				handleSetDataForm({})
 				showToast('success')
+				navigate('/admin/setting/slider')
 			} else if (response.errors) {
 				setError(response.errors)
 				setIsLoading(false)
+				navigate('/admin/setting/slider')
 			}
 		}
 		setIsLoading(false)
@@ -128,12 +131,18 @@ const SliderManagement = () => {
 			if (!isChangeFile) {
 				delete dataForm.img
 			}
-			const response = await axiosJwt.put(`/admin/setting/slider/${id}`, dataForm)
-			if (response.data.success) {
+			const response = await axiosJwt.put(`/admin/setting/slider/${id}`, dataForm, {
+				headers: {
+					'Content-Type': 'multipart/form-data'
+				}
+			})
+			if (response?.data?.success) {
 				showToast('success')
+				navigate('/admin/setting/slider')
 				
 			} else if (response.errors) {
 				setError(response.errors)
+				navigate('/admin/setting/slider')
 			}
 		}
 	}
@@ -158,8 +167,8 @@ const SliderManagement = () => {
 					<div id="image-preview" className="image-preview">
 						<label htmlFor="image-upload" id="image-label">Choose File</label><br />
 						<div style={{ width: '200px', padding: '10px 0' }}>
-							{dataForm?.img && !id && isChangeFile && <img src={`${URL.createObjectURL(dataForm?.img)}`} alt="" />}
-							{dataForm?.img && id && !isChangeFile && <img src={`${dataForm?.img}`} alt="" />}
+							{dataForm?.img && isChangeFile && <img src={`${URL.createObjectURL(dataForm?.img)}`} alt="" />}
+							{dataForm?.img && !isChangeFile && <img src={`${dataForm?.img}`} alt="" />}
 						</div>
 						<input 
 							type="file" 

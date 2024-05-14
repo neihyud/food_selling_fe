@@ -76,8 +76,6 @@ const HomeAction = {
 	searchFood(axiosJwt, dataForm) {
 		return async dispatch => {
 			const data = await HomeService.getListProduct(axiosJwt, dataForm)
-
-			console.log('Data search =================== ', data)
 			dispatch(this.getListProductSuccess(data))
 
 		}

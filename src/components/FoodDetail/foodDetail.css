@@ -1,0 +1,313 @@
+.fp__menu_details_images {
+  border: 1px solid #eee;
+  border-radius: 10px;
+  background: #faf6f3fa;
+}
+
+.fp__menu_details_text h2 {
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.fp__menu_details_text .rating {
+  color: #ff9933;
+  font-size: 14px;
+  text-align: left;
+  display: block;
+  margin: 17px 0px 25px 0px;
+}
+
+.fp__menu_details_text .rating span {
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.fp__menu_details_text .price {
+  font-size: 25px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.fp__menu_details_text .price del {
+  font-size: 18px;
+  color: var(--colorPrimary);
+  font-weight: 500;
+  margin-left: 10px;
+}
+
+.fp__menu_details_text .short_description {
+  margin-bottom: 25px;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.details_size,
+.details_extra_item,
+.details_quantity {
+  margin-bottom: 30px;
+}
+
+.details_size h5,
+.details_extra_item h5,
+.details_quantity h5 {
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--colorBlack);
+  margin-bottom: 15px;
+}
+
+.details_size .form-check input {
+  padding: 0;
+}
+
+.details_extra_item h5 span {
+  text-transform: capitalize;
+}
+
+.details_extra_item .form-check {
+  margin-bottom: 10px;
+}
+
+.details_extra_item .form-check input {
+  padding: 0;
+  border-radius: 2px;
+}
+
+.details_size .form-check input:checked,
+.details_extra_item .form-check input:checked {
+  background-color: var(--colorPrimary);
+  border-color: var(--colorPrimary);
+}
+
+.details_size .form-check label,
+.details_extra_item .form-check label {
+  text-transform: capitalize;
+  color: var(--colorBlack);
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 25%;
+}
+
+.quantity_btn {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.quantity_btn button {
+  width: 35px;
+  height: 35px;
+  font-size: 15px;
+  color: #fff;
+  padding: 0;
+  border-radius: 3px;
+}
+
+.quantity_btn input {
+  width: 60px;
+  text-align: center;
+  height: 35px;
+  border-radius: 3px;
+  border: 1px solid #ddd;
+  margin: 0px 5px;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--colorBlack);
+}
+
+.quantity_btn_area h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-left: 10px;
+  margin-top: 0;
+}
+
+.details_button_area li a {
+  margin-right: 10px;
+}
+
+.details_button_area .wishlist {
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  line-height: 45px;
+  margin-right: 0;
+  background: var(--gradiantBg);
+  color: var(--colorWhite);
+  border-radius: 50%;
+  transition: all linear 0.3s;
+}
+
+.details_button_area .wishlist:hover {
+  background: var(--gradiantHoverBg);
+}
+
+.fp__menu_description_area .nav {
+  background: #faf6f3fa;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 25px;
+}
+
+.fp__menu_description_area .nav .nav-item {
+  width: 50%;
+  border-right: 1px solid var(--colorPrimary);
+}
+
+.fp__menu_description_area .nav .nav-item:last-child {
+  border: 0;
+}
+
+.fp__menu_description_area .nav .nav-item .nav-link {
+  width: 100%;
+  border-radius: 0;
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--colorBlack);
+  transition: all linear 0.3s;
+}
+
+.fp__menu_description_area .nav .nav-item .nav-link:hover,
+.fp__menu_description_area .nav .nav-item .nav-link.active {
+  background: none !important;
+  color: var(--colorPrimary);
+}
+
+.menu_det_description p {
+  margin-top: 25px;
+}
+
+.menu_det_description ul,
+.menu_det_description ol {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.menu_det_description ul li,
+.menu_det_description ol li {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--paraColor);
+  margin-top: 10px;
+  position: relative;
+  padding-left: 30px;
+  width: 49%;
+}
+
+.menu_det_description ul li::after,
+.menu_det_description ol li::after {
+  position: absolute;
+  content: "\f00c";
+  color: var(--colorWhite);
+  font-family: "Font Awesome 5 Free";
+  font-weight: 600;
+  top: 2px;
+  left: 0;
+  font-size: 10px;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  background: var(--colorPrimary);
+}
+
+.fp__review_area h4,
+.fp__post_review h4 {
+  text-transform: capitalize;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.fp__comment {
+  overflow: hidden;
+  background: var(--colorWhite);
+  box-shadow: var(--boxShadow);
+  border-radius: 5px;
+  padding: 25px;
+  height: 670px;
+  overflow: auto;
+}
+
+.fp__comment h4 {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--colorBlack);
+  font-family: var(--headingFont);
+}
+
+.fp__comment .load_more,
+.fp__review_area .load_more {
+  float: right;
+  text-transform: capitalize;
+  color: var(--colorPrimary);
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 10px;
+  border: 1px solid var(--colorPrimary);
+  padding: 3px 15px 4px 15px;
+  border-radius: 30px;
+  transition: all linear 0.3s;
+}
+
+.fp__comment .load_more:hover,
+.fp__review_area .load_more:hover {
+  background: var(--colorPrimary);
+  color: var(--colorWhite);
+}
+
+.fp__post_review form {
+  background: var(--colorWhite);
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 10px;
+  box-shadow: var(--boxShadow);
+}
+
+.fp__post_review form .rating {
+  text-transform: capitalize;
+  color: var(--colorBlack);
+  font-size: 15px;
+}
+
+.fp__post_review form .rating i {
+  color: #ff9933;
+  cursor: pointer;
+  transition: all linear 0.3s;
+}
+
+.fp__post_review form .rating i:hover {
+  color: var(--colorPrimary);
+}
+
+.fp__post_review form input,
+.fp__post_review form textarea {
+  margin-top: 20px;
+}
+
+.fp__post_review form button {
+  margin-top: 15px;
+}
+
+.fp__related_menu h2 {
+  text-transform: capitalize;
+  font-size: 35px;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+.fp__related_menu .fp__menu_item {
+  margin: 0px 12px 20px 12px;
+}

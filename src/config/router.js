@@ -8,6 +8,7 @@ const routes = {
 	login: 'login',
 	register: 'register',
 	menu: 'menu',
+	foodDetail: '/food/:id/',
   
 	admin: {
 		home: '',

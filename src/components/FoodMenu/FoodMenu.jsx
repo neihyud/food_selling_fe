@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux'
 import IntroductionSection from '../Introduction/IntroductionSection'
 import WrapperSection from '../Wrapper/WrapperSection.jsx'
-import FoodCardDetail from './Food/FoodCardDetail.jsx'
 import ListFoodCard from './Food/ListFoodCard.jsx'
 import './foodMenu.css'
 import { useEffect, useState } from 'react'
@@ -9,7 +8,6 @@ import { createAxiosJwt } from '../../../createInstance.js'
 import HomeAction from '../../redux/action/HomeAction.js'
 
 const FoodMenu = () => {
-	const { isOpenFoodDetail } = useSelector((state) => state.homeReducer)
 
 	const [currentCategoryId, setCurrentCategoryId] = useState()
 
@@ -24,14 +22,6 @@ const FoodMenu = () => {
       Dramatically recaptiualize multifunctional materials.
 		</>
 	)
-
-	const getFoodCartDetail = () => {
-		if (!isOpenFoodDetail) {
-			return null
-		}
-
-		return <FoodCardDetail />
-	}
 
 	const renderCategory = () => {
 		return listCategory?.map((category, index) => {
@@ -82,9 +72,6 @@ const FoodMenu = () => {
 						</div>
 					</div>
 					<ListFoodCard />
-					{/* <FoodCardDetail /> */}
-					{/* to do  */}
-					{/* {getFoodCartDetail()} */}
 
 				</div>
 			</section>

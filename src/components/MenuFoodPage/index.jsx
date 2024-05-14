@@ -3,7 +3,7 @@ import ListFoodCard from '../FoodMenu/Food/ListFoodCard'
 import './menuFoodPage.css'
 import HomeAction from '../../redux/action/HomeAction'
 import { createAxiosJwt } from '../../../createInstance'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import useForm from '../../hooks/useForm'
 const MenuFoodPage = () => {
 	const { listCategory } = useSelector((state) => state.homeReducer)

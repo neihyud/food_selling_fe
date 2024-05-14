@@ -1,8 +1,14 @@
 import './slider.css'
 import Slider from 'react-slick'
 import SliderItem from './SliderItem'
+import { createAxiosJwt } from '../../../createInstance'
+import { useEffect, useState } from 'react'
 
 const SliderComponent = () => {
+	const axiosJwt = createAxiosJwt()
+	const [slider, setSlider] = useState()
+
+	console.log('slider === ', slider)
 
 	const settings = {
 		slidesToShow: 1,
@@ -33,19 +39,42 @@ const SliderComponent = () => {
 		}
 	]
 
-	const renderSlider = config.map((data, index) => {
-		return (
-			<div key={index}>
-				<SliderItem key={index} {...data} />
-			</div>)
-	})
+	const getSlider = async () => {
+		const response = await axiosJwt.get('/setting/slider')
+
+		setSlider(response?.data)
+	}
+
+	useEffect(() => {
+		getSlider()
+	}, [])
+	
+	// const renderSlider = config.map((data, index) => {
+	// 	return (
+	// 		<div key={index}>
+	// 			<SliderItem key={index} {...data} />
+	// 		</div>)
+	// })
+
+	const renderSlider = () =>{ 
+		if (slider) {
+			return slider.map((data, index) => {
+				return (	
+					<div key={index}>
+						<SliderItem key={index} {...data} />
+					</div>)
+			})
+		}
+
+		return []
+	}
 
 	return (
 		<section className="fp__banner" style={{ backgroundImage: `url(${'/src/assets/images/banner_bg.jpg'})` }}>
 			<div className="fp__banner_overlay">
 				<div className=''>
 					<Slider {...settings}>
-						{renderSlider}
+						{renderSlider()}
 					</Slider>
 				</div>
 			</div >
