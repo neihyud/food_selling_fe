@@ -1,12 +1,12 @@
 import { useEffect, useMemo, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import WrapperContent from '../../WrapperContent'
-import useForm from '../../../../hooks/useForm'
+import WrapperContent from '../WrapperContent'
+import useForm from '../../../hooks/useForm'
 import { Button } from 'react-bootstrap'
-import ManageProductService from '../../../../services/admin/ManageProductService'
-import { createAxiosJwt } from '../../../../../createInstance'
-import { showToast } from '../../../../helper/toast'
-import ManageProductAction from '../../../../redux/action/admin/ManageProductAction'
+import ManageProductService from '../../../services/admin/ManageProductService'
+import { createAxiosJwt } from '../../../../createInstance'
+import { showToast } from '../../../helper/toast'
+import ManageProductAction from '../../../redux/action/admin/ManageProductAction'
 import { useDispatch, useSelector } from 'react-redux'
 
 const ProductManagement = () => {
@@ -245,15 +245,27 @@ const ProductManagement = () => {
 
 				</div>
 				<div className="form-group">
-					<label>Description</label>
+					<label>Short Description</label>
 					<textarea 
-						name="description" 
+						name="short_description" 
 						className="form-control input-primary" 
 						onChange={handleChange}
 						onBlur={handleBlur}
-						value={dataForm?.description || ''}
+						value={dataForm?.short_description || ''}
 					>
 					</textarea>
+				</div>
+
+				<div className="form-group">
+					<label>Long Description</label>
+					<textarea 
+						name="long_description" 
+						className="form-control input-primary" 
+						onChange={handleChange}
+						onBlur={handleBlur}
+						value={dataForm?.long_description || ''}	
+					></textarea>
+
 				</div>
 
 				<div className="form-group">

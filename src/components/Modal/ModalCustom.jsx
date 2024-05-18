@@ -2,7 +2,7 @@ import { Button, Modal } from 'react-bootstrap'
 import PropTypes from 'prop-types'
 
 const ModalCustom = (props) => {
-	const { handleActionPrimary, handleActionSecondary, isShow, content, title } = props
+	const { handleActionPrimary, handleActionSecondary, isShow, content, title, isDisablePrimaryAction = false } = props
 	return (
 		<>
 			<Modal 
@@ -21,7 +21,7 @@ const ModalCustom = (props) => {
 					<Button variant="secondary" onClick={handleActionSecondary}>
             Close
 					</Button>
-					<Button variant="primary" onClick={handleActionPrimary}>
+					<Button variant="primary" onClick={handleActionPrimary} disabled={isDisablePrimaryAction}>
             OK
 					</Button>
 				</Modal.Footer>
@@ -36,7 +36,8 @@ ModalCustom.propTypes = {
 	handleActionSecondary: PropTypes.func,
 	isShow: PropTypes.bool,
 	content: PropTypes.string,
-	title: PropTypes.string
+	title: PropTypes.string,
+	isDisablePrimaryAction: PropTypes.bool
 }
 
 export default ModalCustom

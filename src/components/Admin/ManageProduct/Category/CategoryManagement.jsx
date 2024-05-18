@@ -1,5 +1,5 @@
 import { useEffect, useMemo } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import WrapperContent from '../../WrapperContent'
 import useForm from '../../../../hooks/useForm'
 import { createAxiosJwt } from '../../../../../createInstance'
@@ -88,6 +88,8 @@ const CategoryManagement = () => {
 
 	const isDisableBtn = hasDisableBtnSubmit()
 
+	const navigate = useNavigate()
+
 	return (
 		<WrapperContent
 			title='Category'
@@ -136,10 +138,23 @@ const CategoryManagement = () => {
 
 				<Button 
 					type="button" 
+					className="btn btn-second" 
+					onClick={() => {
+						navigate('/admin/product')
+					}}
+					variant={'secondary'}
+					style={{ marginRight: '10px', minWidth: '96px' }}
+				>
+					{'Cancel'	}
+				</Button>
+
+				<Button 
+					type="button" 
 					className="btn btn-primary" 
 					onClick={handleAction}
 					disabled={isDisableBtn}
 					variant={ isDisableBtn ? 'secondary' : 'primary'}
+					style={{ marginRight: '10px', minWidth: '96px' }}
 				>
 					{infoComponent.btnTitle}
 				</Button>

@@ -14,7 +14,13 @@ const ManageProductReducer = (state = initState, action) => {
 				listCategory: action.listCategory
 			}
 		case MangeProductConstant.DELETE_CATEGORY_SUCCESS:
-			const newListDataCategory = state?.listCategory.filter((item) => item.id !== action.id)
+			const newListDataCategory = state?.listCategory.filter((item) => {
+				
+				if (item._id) {
+					return item._id !== action.id
+				}
+				return	item.id !== action.id
+			})
 			
 			return {
 				...state,
@@ -26,7 +32,12 @@ const ManageProductReducer = (state = initState, action) => {
 				listProduct: action.listProduct
 			}
 		case MangeProductConstant.DELETE_PRODUCT_SUCCESS:
-			const newListDataProduct = state?.listProduct.filter((item) => item.id !== action.id)
+			const newListDataProduct = state?.listProduct.filter((item) => {
+				if (item._id) {
+					return item._id !== action.id
+				}
+				return	item.id !== action.id
+			})
 			
 			return {
 				...state,

@@ -4,7 +4,6 @@ import { Image } from 'react-bootstrap'
 
 import { useDispatch } from 'react-redux'
 import HomeAction from '../../../redux/action/HomeAction'
-import { useNavigate } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faStarHalfAlt } from '@fortawesome/free-regular-svg-icons'
 import { faStar as faStarBold } from '@fortawesome/free-solid-svg-icons'
@@ -12,11 +11,10 @@ import { faStar as faStarBold } from '@fortawesome/free-solid-svg-icons'
 const FoodCard = (props) => {
 	const { _id, thumb_img, price, name: title, category, offer_price, type, average_rating, reviews_count } = props
 	const dispatch = useDispatch()
-	const navigate = useNavigate()
 
 	const handleOpenFoodDetail = () => {
 		dispatch(HomeAction.setIsOpenFoodDetail(true))
-		navigate(`/food/${_id}?categoryId=${category.id}`)
+		window.location.replace(`/food/${_id}?categoryId=${category.id}`)
 	}
 
 	const handleAddToCard = async () => {
@@ -54,13 +52,13 @@ const FoodCard = (props) => {
 			<div className="fp__menu_item">
 				<div className="fp__menu_item_img" onClick={handleOpenFoodDetail}>
 					<Image src={thumb_img} alt="menu" className="img-fluid w-100" rounded style={{ cursor: 'pointer' }}/>
-					<a className="category" >{category?.name}</a>
+					<span className="category" >{category?.name}</span>
 				</div>
 				<div className="fp__menu_item_text">
 					<div className='rating'>{renderRate()} {` (${reviews_count})`}</div>
-					<a className="title">
+					<span className="title">
 						{title}
-					</a>
+					</span>
 					<h5 className="price">${offer_price} 
 						<del style={{ fontSize: '15px' }}>${price}</del>
 					</h5>

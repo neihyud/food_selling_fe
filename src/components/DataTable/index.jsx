@@ -68,7 +68,7 @@ function DataTable({ columns, data }) {
 					{rows.map((row, index) => {
 						prepareRow(row)
 	
-						const productId = row.original.id
+						const productId = row.original.id || row.original._id
 						return (
 							<tr key={index} {...row.getRowProps()}>
 								{row.cells.map((cell, id) => {
