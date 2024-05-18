@@ -60,7 +60,7 @@ const FoodCard = (props) => {
 						{title}
 					</span>
 					<h5 className="price">${offer_price} 
-						<del style={{ fontSize: '15px' }}>${price}</del>
+						<del style={{ fontSize: '15px' }}>đ{price}</del>
 					</h5>
 					<div className='d-flex flex-wrap justify-content-center'>
 						<button className='common_btn' onClick={handleAddToCard}>Add to cart</button>

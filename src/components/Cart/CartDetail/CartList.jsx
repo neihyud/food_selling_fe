@@ -8,6 +8,8 @@ const CartList = () => {
 	
 	const { listCartItem } = useSelector((state) => state.cartReducer)
 
+	console.log('listCartItem == ', listCartItem)
+
 	useEffect(() => {
 		if (listCartItem.length) {
 			return undefined

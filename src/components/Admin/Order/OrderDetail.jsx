@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { useParams } from 'react-router-dom'
+import { Navigate, useNavigate, useParams } from 'react-router-dom'
 import DataTable from '../../DataTable'
 import { useDispatch, useSelector } from 'react-redux'
 import DashboardAction from '../../../redux/action/DashboardAction'
@@ -10,6 +10,7 @@ import useForm from '../../../hooks/useForm'
 import { showToast } from '../../../helper/toast'
 import { useReactToPrint } from 'react-to-print'
 import OrderPrint from '../Print/OrderPrint'
+import { Button } from 'react-bootstrap'
 
 const OPTION_STATUS_PAYMENT = {
 	pending: 1,
@@ -29,7 +30,16 @@ const OrderDetail = () => {
 		dispatch(DashboardAction.getOrder(axiosJwt, id))
 	}, [])
 
-	const { dataForm, handleBlur, handleChange, handleSetDataForm, error, setError, validateForm, hasDisableBtnSubmit } = useForm({})
+	const { 
+		dataForm, 
+		handleBlur, 
+		handleChange, 
+		handleSetDataForm, 
+		error, 
+		setError, 
+		validateForm, 
+		hasDisableBtnSubmit 
+	} = useForm({})
 
 	useEffect(() => {
 		handleSetDataForm({ ...currentOrder })
@@ -62,11 +72,10 @@ const OrderDetail = () => {
 			type: 'action',
 			getComponent: (productId, value, values) => {
 				return (
-					<span>${values.price * values.qty}</span>
+					<span>{values.price * values.qty}đ</span>
 				)
 			}
 		}
-    
 	]
 
 	const area = currentOrder.address ? JSON.parse(currentOrder?.address) : {}
@@ -105,6 +114,15 @@ const OrderDetail = () => {
 	const handlePrint = useReactToPrint({
 		content: () => componentRef.current
 	})
+
+	const navigate = useNavigate()
+	const handleCancel = () => {
+		navigate('/admin/order')
+	}
+
+	const isShowStatus = (status) =>{
+		return ['pending', 'in-in_process'].includes(status)
+	}
 	
 	return (
 		<div ref={componentRef} style={{ padding: '20px' }}>
@@ -134,38 +152,50 @@ const OrderDetail = () => {
 				<div style={{ display: 'flex', justifyContent: 'space-between', width: '100%' }}>
 
 					<div>
-						<label>Payment status</label>
-						<select 
-							name="payment_status" 
-							className="form-control"
-							defaultValue={'pending'}
-							value={dataForm?.payment_status}
-							onChange={handleChange}
-						>
-							<option value="pending">Pending</option>
-							<option value="complete">Completed</option>
-						</select>
-						<br/>
-						<label>Order status</label>
-						<select 
-							name="order_status" 
-							className="form-control"
-							defaultValue={'pending'}
-							value={dataForm?.order_status}
-							onChange={handleChange}
-						>
-							<option value="pending">Pending</option>
-							<option value="in_process">In process</option>
-							<option value="complete">Complete</option>
-						</select>
+						{isShowStatus(currentOrder?.order_status) && (
+							<>
+								<label>Payment status</label>
+								<select 
+									name="payment_status" 
+									className="form-control"
+									defaultValue={'pending'}
+									value={dataForm?.payment_status}
+									onChange={handleChange}
+								>
+									<option value="pending">Pending</option>
+									<option value="complete">Completed</option>
+								</select>
+								<br/>
+								<label>Order status</label>
+								<select 
+									name="order_status" 
+									className="form-control"
+									defaultValue={'pending'}
+									value={dataForm?.order_status}
+									onChange={handleChange}
+								>
+									<option value="pending">Pending</option>
+									<option value="in_process">In process</option>
+									<option value="complete">Complete</option>
+								</select>
+							</>
+						)}
 						<br/>
 
-						<button className='btn btn-primary' onClick={handleUpdateOrder}>Update</button>
+						<Button 
+							className='btn btn-primary' 
+							onClick={handleCancel} 
+							variant='secondary' 
+							style={{ marginRight: '20px' }}
+						>
+							Cancel
+						</Button>
+						{isShowStatus(currentOrder?.order_status) &&	<button className='btn btn-primary' onClick={handleUpdateOrder}>Update</button>}
 
 					</div>
 					<div style={{ display: 'flex', justifyContent: 'space-between', flexDirection: 'column' }}>
 						<span>
-							<b>Total: </b> ${subTotal}
+							<b>Total: </b> {subTotal}đ
 						</span>
 						<button className='btn btn-primary' onClick={handlePrint}>Print</button>
 					</div>

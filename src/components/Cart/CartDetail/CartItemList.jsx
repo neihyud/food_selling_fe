@@ -11,7 +11,7 @@ import '../SidebarCart/sidebarCart.css'
 const CartItemList = (props) => {
 	const { 
 		id, 
-		imgUrl: thumb_img, 
+		thumb_img: thumb_img, 
 		price = 1, 
 		quantity: defaultQuantity, 
 		offer_price = 1, 
@@ -86,7 +86,7 @@ const CartItemList = (props) => {
 			<td className="fp__pro_status td-center">
 				<p className="price" style={{ color: 'var(--colorPrimary)' }}>
 					${offer_price}
-					<del style={{ marginLeft: '10px', color: '#747272' }}>${price}</del>
+					<del style={{ marginLeft: '10px', color: '#747272' }}>đ{price}</del>
 				</p>
 			</td>
 
@@ -122,7 +122,7 @@ const CartItemList = (props) => {
 
 CartItemList.propTypes = {
 	id: PropTypes.string,
-	imgUrl: PropTypes.string,
+	thumb_img: PropTypes.string,
 	price: PropTypes.number,
 	quantity: PropTypes.number,
 	total: PropTypes.number,

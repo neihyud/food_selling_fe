@@ -121,18 +121,6 @@ const FoodDetail = () => {
 		dispatch(HomeAction.addToCart(infoProduct))
 	}
 
-	// const [currentTab, setCurrenTab] = useState('description')
-
-	// const getContentTab = () => {
-	// 	switch (currentTab) {
-	// 		case 'description':
-	// 			return <Review id={id}/>
-	// 		default:
-	// 			return <Review id={id}/>
-
-	// 	}
-	// }
-
 	const renderRate = () => {
 		return new Array(5).fill(0).map((_, index) => {
 			if (average_rating && average_rating > index && average_rating < index + 1) {
@@ -161,7 +149,7 @@ const FoodDetail = () => {
 								{renderRate()}
 								<span>{`(${reviews_count})`}</span>
 							</p>
-							<h3 className="price">${offer_price} <del>${price}</del> </h3>
+							<h3 className="price">${offer_price} <del>đ{price}</del> </h3>
 							<p className="short_description">{short_description}</p>
 
 							<div className="details_quantity">
