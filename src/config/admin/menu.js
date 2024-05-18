@@ -6,6 +6,7 @@ const LIST_MENU = [
 		title: 'Dashboard',
 		path: '/admin',
 		icon: faHome,
+		isAdmin: true,
 		key: '1'
 	},
 	{
@@ -44,6 +45,7 @@ const LIST_MENU = [
 		title: 'Manage Products',
 		icon: faCartShopping,
 		key: 'sub2',
+		isAdmin: true,
 		children: [
 			{
 				title: 'Product Categories',
@@ -61,6 +63,7 @@ const LIST_MENU = [
 		title: 'Account',
 		icon: faUser,	
 		key: 'sub3',
+		isAdmin: true,
 		children: [
 			// {
 			// 	title: 'Profile',

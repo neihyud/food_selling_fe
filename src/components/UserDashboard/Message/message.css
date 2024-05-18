@@ -8,26 +8,26 @@
   top: -14px;
 }
 
-  .fp__dashboard_menu button b {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 20px;
-    height: 20px;
-    line-height: 20px;
-    border-radius: 50%;
-    background: var(--colorPrimary);
-    text-align: center;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--colorWhite);
-  }
+.fp__dashboard_menu button b {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 50%;
+  background: var(--colorPrimary);
+  text-align: center;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--colorWhite);
+}
 
-  .fp__chat_area {
-    border: 1px solid #eee;
-    border-radius: 10px;
-    overflow: auto;
-  height: 625px;
+.fp__chat_area {
+  border-radius: 10px;
+  overflow: auto;
+  height: 600px;
+  padding: 10px;
 }
 
 .fp__chat_body {
@@ -54,13 +54,10 @@
 }
 
 .fp__chat_img {
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
+  overflow: hidden;
 }
 
 .fp__chat_text {
@@ -71,7 +68,7 @@
 .fp__chat_text p {
   background: #F5F9FF;
   color: var(--colorBlack);
-  padding: 15px;
+  padding: 8px;
   border-radius: 10px;
   margin-bottom: 5px;
   border: 1px solid #eeeeee73;
@@ -96,9 +93,9 @@
 }
 
 .fp__single_chat_bottom {
-  border-top: 1px solid #5e5b5b17;
   position: relative;
   background: var(--colorWhite);
+  margin: 20px 10px;
 }
 
 .fp__single_chat_bottom label {
@@ -126,6 +123,7 @@
 .fp__single_chat_bottom input {
   width: 100%;
   border: none;
+  border-radius: 10px !important;
   padding: 20px 80px 20px 75px;
 }
 
@@ -147,4 +145,13 @@
 
 .fp__massage_btn:hover {
   background: var(--colorBlack);
+}
+
+.fp__chat_text .color-gray {
+  background-color: #eee;
+  padding: 8px 10px;
+}
+
+.wrapper-area-message {
+  border: 1px solid #eee;
 }

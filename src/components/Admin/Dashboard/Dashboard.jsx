@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './dashboard.css'
-import { faDollar, faEye, faNewspaper, faTrash, faUser } from '@fortawesome/free-solid-svg-icons'
+import { faDollar, faEye, faTrash, faUser } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { createAxiosJwt } from '../../../../createInstance'

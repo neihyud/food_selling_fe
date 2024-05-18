@@ -11,7 +11,11 @@ const ProtectedRouteAdmin = ({ element, path }) => {
 	}
 
 	if (token && pathRestrict2.includes(path)) {
-		return <Navigate to="/admin" />
+		if (LocalStorageService.getInfoStaffStore().role === 'admin') {
+			return <Navigate to="/admin" />
+		} 
+		
+		return <Navigate to="/admin/order/pending" />
 	}
 
 	return element

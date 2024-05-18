@@ -55,8 +55,13 @@ const Login = () => {
 
 			if (response.success) {
 				LocalStorageService.setTokenAdmin(response.accessToken)
+				LocalStorageService.setInfoStaffStore(response.user)
 				setCredentials({})
-				navigate('/admin')
+				if (response.user.role === 'staff') {
+					navigate('/admin/order')
+				} else {
+					navigate('/admin')
+				}
 				showToast('success', 'Login success!')
 			} else if (response.errors) {
 				const message = response.errors[0].message

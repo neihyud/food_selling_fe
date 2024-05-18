@@ -4,18 +4,21 @@
 }
 
 .chat-box .chat-content .chat-item {
-  display: inline-block;
+  display: flex;
+  align-items: center;
   width: 100%;
   margin-bottom: 25px;
 }
 
-.chat-box .chat-content .chat-item.chat-right img {
-  float: right;
+.chat-box .chat-content .chat-item.chat-right {
+  align-items: start;
+  flex-direction: row-reverse;
+  margin-right: -20px;
+  padding-right: 20px;
 }
 
 .chat-box .chat-content .chat-item.chat-right .chat-details {
   margin-left: 0;
-  margin-right: 70px;
   text-align: right;
 }
 
@@ -32,7 +35,7 @@
 }
 
 .chat-box .chat-content .chat-item .chat-details {
-  margin-left: 70px;
+  margin: 0 20px;
 }
 
 .chat-box .chat-content .chat-item .chat-details .chat-text {
@@ -42,7 +45,7 @@
   border-radius: 3px;
   width: auto;
   display: inline-block;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .chat-box .chat-content .chat-item .chat-details .chat-text img {
@@ -61,7 +64,7 @@
 
 .chat-box .chat-content .chat-item .chat-details .chat-time {
   margin-top: 5px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
   opacity: 0.6;
 }
@@ -76,7 +79,7 @@
   padding: 15px;
   height: 50px;
   padding-right: 70px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   box-shadow: none;
   outline: none;
@@ -100,4 +103,18 @@
 
 .wrapper-content .card-body.disable-scroll {
   overflow: hidden;
+}
+
+.custom-scroll::-webkit-scrollbar {
+  scrollbar-width: thin !important;
+  background: var(--colorWhite);
+  height: 4px;
+  width: 2px;
+  border-radius: 4px;
+  margin-left: 50px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: var(--paraColor);
+  border-radius: 8px;
 }

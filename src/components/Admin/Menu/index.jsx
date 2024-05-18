@@ -24,7 +24,15 @@ const Menu = () => {
 				<ul className='sidebar-menu'>
 					{
 						LIST_MENU.map((item, index) => {
-							
+
+							if (item?.isAdmin) {
+								const current = LocalStorageService.getInfoStaffStore()
+				
+								if (current?.role !== 'admin') {
+									return undefined
+								}
+							}
+
 							return (
 								<SubMenu 
 									key={index} 
@@ -33,7 +41,7 @@ const Menu = () => {
 									keyPath={[item.key]}
 								/>
 							)
-						})
+						}).filter(Boolean)
 					}
 					<>
 						<li className={'dropdown active'} onClick={handleLogout}>

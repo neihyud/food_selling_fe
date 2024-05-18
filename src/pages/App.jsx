@@ -10,6 +10,7 @@ import PageAction from '../redux/action/admin/PageAction'
 import { useDispatch } from 'react-redux'
 import ProtectedRoute from './ProtectRouter'
 import ProtectedRouteAdmin from './ProtectRouterAdmin'
+import LocalStorageService from '../services/LocalStorageService'
 
 function App() {
 	const dispatch = useDispatch()
@@ -74,6 +75,14 @@ function App() {
 		return adminPublicRouter.map((route, index) => {
 			const Page = route.component
 			let Layout = AdminDefaultLayout
+			
+			if (route.isAdmin) {
+				const current = LocalStorageService.getInfoStaffStore()
+
+				if (current?.role !== 'admin') {
+					return undefined
+				}
+			}
 
 			if (route.layout) {
 				Layout = route.layout
@@ -96,7 +105,7 @@ function App() {
 					}
 				/>
 			)
-		})
+		}).filter(Boolean)
 	}
 
 	return (

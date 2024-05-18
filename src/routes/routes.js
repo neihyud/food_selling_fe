@@ -89,57 +89,68 @@ const adminPublicRouter = [
 	{
 		path: routes.admin.home,
 		component: Dashboard,
-		layout: AdminDefaultLayout
+		layout: AdminDefaultLayout,
+		isAdmin: true
 	},	
 	{
 		path: routes.admin.category,
 		component: Category,
-		layout: AdminDefaultLayout
+		layout: AdminDefaultLayout,
+		isAdmin: true
 	},
 	{ 
 		path: routes.admin.categoryEdit,
 		component: CategoryManagement,
-		layout: AdminDefaultLayout
+		layout: AdminDefaultLayout,
+		isAdmin: true
 	},
 	{ 
 		path: routes.admin.categoryCreate,
 		component: CategoryManagement,
-		layout: AdminDefaultLayout
+		layout: AdminDefaultLayout,
+		isAdmin: true
 	},
 	{
 		path: routes.admin.product,
 		component: Product,
-		layout: AdminDefaultLayout
+		layout: AdminDefaultLayout,
+		isAdmin: true
 	},
 	{ 
 		path: routes.admin.productEdit,
 		component: ProductManagement,
-		layout: AdminDefaultLayout
+		layout: AdminDefaultLayout,
+		isAdmin: true
 	},
 	{ 
 		path: routes.admin.productCreate,
 		component: ProductManagement,
-		layout: AdminDefaultLayout
+		layout: AdminDefaultLayout,
+		isAdmin: true
 	},
 	{
 		path: routes.admin.profile,
 		component: Product,
-		layout: AdminDefaultLayout
+		layout: AdminDefaultLayout,
+		isAdmin: true
 	},
 	{ 
 		path: routes.admin.staff,
 		component: Staff,
-		layout: AdminDefaultLayout
+		layout: AdminDefaultLayout,
+		isAdmin: true
 	},
 	{ 
 		path: routes.admin.staffCreate,
 		component: StaffManagement,
-		layout: AdminDefaultLayout
+		layout: AdminDefaultLayout,
+		isAdmin: true
 	},
 	{ 
 		path: routes.admin.staffEdit,
 		component: StaffManagement,
-		layout: AdminDefaultLayout
+		layout: AdminDefaultLayout,
+		isAdmin: true
 	},
 	{
 		path: routes.admin.chat,

@@ -47,7 +47,16 @@ const LocalStorageService = {
 	
 	getUserImage() {
 		return JSON.parse(localStorage.getItem('user'))?.img || DashboardConstant.IMG_USER_DEFAULT
+	},
+	
+	setInfoStaffStore(user) {
+		return localStorage.setItem('user_store', JSON.stringify(user))
+	},
+
+	getInfoStaffStore() {
+		return JSON.parse(localStorage.getItem('user_store')) 
 	}
+	
 }
 
 export default LocalStorageService

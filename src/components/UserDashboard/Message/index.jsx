@@ -67,20 +67,21 @@ const Message = () => {
 				<div className="fp_dashboard_body fp__change_password">
 					<div className="fp__message">
 						<h3>Message</h3>
-						<div className="fp__chat_area">
-							{renderChat()}
-							<p ref={lastChildBox}></p>
-						</div>
-						<div className="fp__single_chat_bottom">
-							<input 
-								type="text" placeholder="Type a message..."
-								value={message}
-								onChange={(event) => setMessage(event.target.value)}
-							/>
-							<button className="fp__massage_btn" style={{ border: 'none' }} onClick={handleSendMessage}>
-                  
-								<FontAwesomeIcon icon={faPaperPlane}/>
-							</button>
+						<div className='wrapper-area-message'>
+							<div className="fp__chat_area">
+								{renderChat()}
+								<p ref={lastChildBox}></p>
+							</div>
+							<div className="fp__single_chat_bottom">
+								<input 
+									type="text" placeholder="Type a message..."
+									value={message}
+									onChange={(event) => setMessage(event.target.value)}
+								/>
+								<button className="fp__massage_btn" style={{ border: 'none' }} onClick={handleSendMessage}>
+									<FontAwesomeIcon icon={faPaperPlane}/>
+								</button>
+							</div>
 						</div>
 					</div>
 				</div>
