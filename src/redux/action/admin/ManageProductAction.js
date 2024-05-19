@@ -50,9 +50,9 @@ const ManageProductAction = {
 		} 
 	},
 
-	getListProduct(axiosJwt) {
+	getListProduct(axiosJwt, search) {
 		return async dispatch => {
-			const response = await ManageProductService.getListProduct(axiosJwt)
+			const response = await ManageProductService.getListProduct(axiosJwt, search)
 
 			dispatch(this.getListProductSuccess(response))
 		}

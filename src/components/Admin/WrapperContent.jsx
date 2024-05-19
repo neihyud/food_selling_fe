@@ -15,7 +15,7 @@ const WrapperContent = (props) => {
 			<div className="card card-primary">
 				{!isCloseHeader && <div className="card-header">
 					<h4>{subTitle}</h4>
-					<div className="card-header-action">
+					<div className="card-header-action" >
 						{action}
 					</div>
 				</div>}

@@ -106,9 +106,7 @@ const ManageProductService = {
 
 	async getListProduct(axiosJwt, data) {
 		try {
-			const response = await axiosJwt.get('/admin/manage-product/product', {
-				...data
-			})
+			const response = await axiosJwt.get(`/admin/manage-product/product?categoryId=${data}`)
 
 			return response.data
 		} catch (error) {

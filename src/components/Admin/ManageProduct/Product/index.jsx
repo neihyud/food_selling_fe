@@ -89,10 +89,16 @@ const Product = () => {
 	]
 	
 	useEffect(() => {
-		dispatch(ManageProductAction.getListProduct(axiosJwt))
 		dispatch(ManageProductAction.getListCategory(axiosJwt))
 
 	}, [])
+
+	const [search, setSearch] = useState('')
+
+	useEffect(() => {
+		dispatch(ManageProductAction.getListProduct(axiosJwt, search))
+
+	}, [search])
 
 	const { 
 		dataForm, 
@@ -160,16 +166,6 @@ const Product = () => {
 		)
 	}
 
-	const action = (
-		<>
-			{btnImport()}
-			<button className="btn btn-primary" onClick={() => navigate('/admin/product/create')}>
-				Create new
-			</button>
-		
-		</>
-	)
-
 	useEffect(() => {		
 		handleSetDataForm({
 			...dataForm,
@@ -178,6 +174,47 @@ const Product = () => {
 
 		return () => {}
 	}, [listCategory])
+
+	const handleChangeSelect = (event) => {
+		const value = event.target.value
+
+		setSearch(value)
+	}
+
+	const getSelectCategory = () => {
+		return (
+			<div style={{
+				'position': ' absolute',
+				'maxWidth': '200px',
+				'top': '16px',
+				'right': '250px'
+			}} >
+				<select 
+					name="category_id" 	
+					className="form-control select"
+					onChange={(event) => handleChangeSelect(event)}
+					value={search || ''}
+				>
+					<option value={''}>{'All'}</option>
+					{listCategory?.map((item) => {
+						return (<option key={item.id} value={item.id}>{item.name}</option>)
+					})}
+				</select>
+			</div>
+		)
+	}
+
+	const action = (
+		<>
+			{getSelectCategory()}
+			<div>
+				{btnImport()}
+				<button className="btn btn-primary" onClick={() => navigate('/admin/product/create')}>
+							Create new
+				</button>
+			</div>
+		</>
+	)
 
 	const bodyModalImport = () => {
 		return (
