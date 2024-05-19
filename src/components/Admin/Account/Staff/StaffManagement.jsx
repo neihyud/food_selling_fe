@@ -112,6 +112,8 @@ const StaffManagement = () => {
 				setError(response.errors)
 				showToast('error', 'Update account fail!')
 			}
+
+			navigate('/admin/account')
 		}
 	}
 
@@ -197,6 +199,16 @@ const StaffManagement = () => {
 						<option value="0">Inactive</option>
 					</select>
 				</div>
+
+				<Button 
+					type="button" 
+					className="btn btn-primary" 
+					onClick={() => navigate('/admin/account')}
+					variant={'secondary' }
+					style={{ marginRight: '20px' }}
+				>
+					Cancel
+				</Button>
 
 				<Button 
 					type="button" 

@@ -78,17 +78,30 @@ const EditUser = ({ user }) => {
 				<div className="col-12">
 					<div className="form-group" >
 						<label className='form-label' style={{ marginBottom: 0 }}>Image</label>
-						<div style={{ width: '200px', padding: '10px 0' }}>
+						<div style={{ width: '200px', padding: '10px 0', height: '100px' }}>
 							{dataForm?.img && isChangeFile && <img src={`${URL.createObjectURL(dataForm?.img)}`} alt="" />}
 							{dataForm?.img && !isChangeFile && <img src={`${dataForm?.img}`} alt="" />}
 						</div>
+						<label htmlFor="upload-file-user" 
+							style={{ 
+								padding: '7px 12px', 
+								background: 'var(--colorPrimary)', 
+								color: 'white', 
+								borderRadius: '6px', 
+								margin: '0 8px', 
+								cursor: 'pointer', 
+								width: '120px'
+							}}
+						>Choose File</label>
 						<input 
 							type="file" 
 							name="img" 
+							hidden
 							onChange={(event) => { 
 								setIsChangeFile(true)
 								handleChange(event, 'file')
 							}}
+							id='upload-file-user'
 						/>
 					</div>
 				</div>

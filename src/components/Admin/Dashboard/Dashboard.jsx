@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { createAxiosJwt } from '../../../../createInstance'
 import moment from 'moment'
-import DataTable from '../../DataTable'
 import WrapperContent from '../WrapperContent'
 import DashboardConstant from '../../../constant/DashboardConstant'
 import { faStar } from '@fortawesome/free-regular-svg-icons'
@@ -111,7 +110,6 @@ const Dashboard = () => {
 
 	const getTopPopularProduct = async () => {
 		const response = await axiosJwt.get('/common/top-popular-product')
-
 		setTopPopularProduct(response?.data?.data || [])
 		
 	}
@@ -129,13 +127,13 @@ const Dashboard = () => {
 	}
 
 	useEffect(() => {
-		const getListOrder = async () => {
-			const response = await axiosJwt.get('/admin/order/today')
+		// const getListOrder = async () => {
+		// 	const response = await axiosJwt.get('/admin/order/today')
 
-			setListOrder(response.data)
-		} 
+		// 	setListOrder(response.data)
+		// } 
 
-		getListOrder()
+		// getListOrder()
 		getTopRateProduct()
 		getTopPopularProduct()
 		totalProduct()

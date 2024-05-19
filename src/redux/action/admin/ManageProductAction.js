@@ -35,6 +35,9 @@ const ManageProductAction = {
 			if (response.success) {
 				dispatch(this.deleteCategorySuccess(id))
 				showToast('success', `Delete category '${response.data?.name}' success?`)
+			} else if (response.type === 'exist') {
+				showToast('error', 'Delete category fail because exist product?')
+				
 			}
 			
 		}

@@ -56,6 +56,26 @@
   color: #4caf50;
 }
 
+.fp__dashboard_overview_item.blue .icon {
+  background: #73b7ff;
+}
+
+.fp__dashboard_overview_item.blue h4,
+.fp__dashboard_overview_item.blue h4 span {
+  color: #73b7ff;
+}
+
+
+.fp__dashboard_overview_item.yellow .icon {
+  background: #ffc107;
+}
+
+.fp__dashboard_overview_item.yellow h4,
+.fp__dashboard_overview_item.yellow h4 span {
+  color: #ffc107;
+}
+
+
 .fp_dash_personal_info {
   background: #faf6f3fa;
   border-radius: 5px;

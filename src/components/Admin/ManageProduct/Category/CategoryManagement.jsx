@@ -8,6 +8,7 @@ import { Button } from 'react-bootstrap'
 import { showToast } from '../../../../helper/toast'
 const CategoryManagement = () => {
 	const { id } = useParams()
+	const navigate = useNavigate()
 	const axiosJwt = createAxiosJwt('admin')
 
 	const infoComponent = useMemo(() => {
@@ -71,6 +72,7 @@ const CategoryManagement = () => {
 			const response = await ManageProductService.updateCategory(axiosJwt, id, dataForm)
 			if (response.success) {
 				showToast('success')
+				navigate('/admin/category')
 				
 			} else if (response.errors) {
 				setError(response.errors)
@@ -87,8 +89,6 @@ const CategoryManagement = () => {
 	}
 
 	const isDisableBtn = hasDisableBtnSubmit()
-
-	const navigate = useNavigate()
 
 	return (
 		<WrapperContent

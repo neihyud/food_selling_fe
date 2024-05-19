@@ -1,11 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux'
 import IntroductionSection from '../Introduction/IntroductionSection'
 import WrapperSection from '../Wrapper/WrapperSection.jsx'
-import ListFoodCard from './Food/ListFoodCard.jsx'
 import './foodMenu.css'
 import { useEffect, useState } from 'react'
 import { createAxiosJwt } from '../../../createInstance.js'
 import HomeAction from '../../redux/action/HomeAction.js'
+import FoodCard from './Food/FoodCard.jsx'
 
 const FoodMenu = () => {
 
@@ -15,6 +15,8 @@ const FoodMenu = () => {
 	const axiosJwt = createAxiosJwt()
 
 	const { listCategory } = useSelector((state) => state.homeReducer)
+
+	const [listProduct, setListProduct] = useState()
 
 	const content = (
 		<>
@@ -37,8 +39,33 @@ const FoodMenu = () => {
 		})
 	}
 
-	const getProductByCategoryId = () => {
-		dispatch(HomeAction.getProductByCategoryId(axiosJwt, currentCategoryId))
+	const renderFood = () => {
+		if (listProduct && listProduct.length) {
+			return listProduct.map((item, index) => {
+			
+				return (<FoodCard key={index} {...item} />)
+			})
+		}
+
+		return (<h2 style={{ display: 'flex', justifyContent: 'center', marginTop: '50px' }}>Not found food</h2>)
+	}
+
+	// const getProductByCategoryId = () => {
+	// 	dispatch(HomeAction.getProductByCategoryId(axiosJwt, currentCategoryId))
+	// }
+
+	const getProductByCategoryId = async () => {
+		const response = await axiosJwt.get(`/common/top-popular-product-category-id?categoryId=${currentCategoryId}`)
+		setListProduct(response?.data?.data)
+
+	}
+
+	const getProductAll = async () => {
+		// const response = await axiosJwt.get('/common/top-popular-product?type=custom?limit=10')
+		const response = await axiosJwt.get('/common/top-popular-product-user')
+
+		setListProduct(response?.data?.data)
+
 	}
 	
 	useEffect(() => {
@@ -49,7 +76,7 @@ const FoodMenu = () => {
 		if (currentCategoryId) {
 			getProductByCategoryId()
 		} else {
-			dispatch(HomeAction.getListProduct(axiosJwt))
+			getProductAll()
 		}
 	}, [currentCategoryId])
 
@@ -71,7 +98,11 @@ const FoodMenu = () => {
 							</div>
 						</div>
 					</div>
-					<ListFoodCard />
+					{/* <ListFoodCard /> */}
+					<div className='row grid'>
+						{renderFood()}
+						<p style={{ paddingBottom: '30px' }}></p>	
+					</div>
 
 				</div>
 			</section>
@@ -80,3 +111,4 @@ const FoodMenu = () => {
 }
 
 export default FoodMenu
+ 
