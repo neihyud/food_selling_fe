@@ -163,6 +163,19 @@ const StaffManagement = () => {
 					<label>Name</label>
 					<input 
 						type="text" 
+						name="name" 
+						className="form-control input-primary"
+						value={dataForm?.name}
+						onChange={handleChange}
+						onBlur={handleBlur}
+						autoFocus
+					/>
+					<span className="form-message">{error?.name}</span>
+				</div>
+				<div className="form-group">
+					<label>User name</label>
+					<input 
+						type="text" 
 						name="username" 
 						className="form-control input-primary"
 						value={dataForm?.username || ''}

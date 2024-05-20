@@ -54,12 +54,12 @@ const OrderDelivered = () => {
 							className='animation-icon'
 						/>
 			
-						<FontAwesomeIcon 
+						{/* <FontAwesomeIcon 
 							icon={faTrash} 
 							className='animation-icon' 
 							// onClick={() => handleOpenModal(orderId)}
 
-						/>
+						/> */}
 					</>
 				)
 			}
@@ -78,7 +78,7 @@ const OrderDelivered = () => {
 	return (
 		<WrapperContent 
 			title='Orders'
-			subTitle='Pending Order'
+			subTitle='Delivered Order'
 			// action={action}
 		>
 			<DataTable columns={columns} data={listOrder} />

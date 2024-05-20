@@ -42,7 +42,7 @@ const Order = () => {
 	
 	const columns = [
 		{
-			Header: 'User Name',
+			Header: 'Name',
 			accessor: 'user_id',
 			type: 'action',
 			getComponent: (_, _value) => {

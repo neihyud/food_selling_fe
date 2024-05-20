@@ -165,11 +165,21 @@ const SliderManagement = () => {
 			<div>
 				<div className="form-group">
 					<div id="image-preview" className="image-preview">
-						<label htmlFor="image-upload" id="image-label">Choose File</label><br />
+						{/* <label htmlFor="image-upload" >Choose File</label><br /> */}
 						<div style={{ width: '200px', padding: '10px 0' }}>
 							{dataForm?.img && isChangeFile && <img src={`${URL.createObjectURL(dataForm?.img)}`} alt="" />}
 							{dataForm?.img && !isChangeFile && <img src={`${dataForm?.img}`} alt="" />}
 						</div>
+						<label htmlFor="image-upload" 
+							style={{ 
+								padding: '7px 12px', 
+								background: '#3a83f0', 
+								color: 'white', 
+								borderRadius: '6px', 
+								cursor: 'pointer', 
+								width: '120px'
+							}}
+						>Choose File</label>
 						<input 
 							type="file" 
 							name="img" 
@@ -177,6 +187,8 @@ const SliderManagement = () => {
 								setIsChangeFile(true) 
 								handleChange(event, 'file')
 							}}
+							id="image-upload"
+							hidden
 						/>
 					</div>
 					<span className="form-message">{error?.image}</span>

@@ -29,13 +29,13 @@ const OrderDetail = (props) => {
 					<span className="">{orderItem.product_name}</span>
 				</td>
 				<td className="price">
-					<b>${orderItem.price}</b>
+					<b style={{ textTransform: 'lower' }}>đ{orderItem.price}</b>
 				</td>
 				<td className="qnty">
 					<b>{orderItem.qty}</b>
 				</td>
 				<td className="total">
-					<b>${orderItem.qty * orderItem.price}</b>
+					<b style={{ textTransform: 'lower' }}>đ{orderItem.qty * orderItem.price}</b>
 				</td>
 			</tr>
 		)
@@ -121,7 +121,7 @@ const OrderDetail = (props) => {
 										<b></b>
 									</td>
 									<td className="total">
-										<b>${subTotal}</b>
+										<b>đ{subTotal}</b>
 									</td>
 								</tr>
 							</tfoot>

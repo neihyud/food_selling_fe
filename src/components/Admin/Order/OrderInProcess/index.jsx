@@ -79,7 +79,7 @@ const OrderInProcess = () => {
 	return (
 		<WrapperContent 
 			title='Orders'
-			subTitle='Pending Order'
+			subTitle='In Process Order'
 			// action={action}
 		>
 			<DataTable columns={columns} data={listOrder} />

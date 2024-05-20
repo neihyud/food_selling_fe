@@ -53,13 +53,13 @@ const OrderDeclined = () => {
 							onClick={() => navigate(`/admin/order/${orderId}`)} 
 							className='animation-icon'
 						/>
-			
+						{/* 			
 						<FontAwesomeIcon 
 							icon={faTrash} 
 							className='animation-icon' 
 							// onClick={() => handleOpenModal(orderId)}
 
-						/>
+						/> */}
 					</>
 				)
 			}
@@ -78,7 +78,7 @@ const OrderDeclined = () => {
 	return (
 		<WrapperContent 
 			title='Orders'
-			subTitle='Pending Order'
+			subTitle='Declined Order'
 			// action={action}
 		>
 			<DataTable columns={columns} data={listOrder} />

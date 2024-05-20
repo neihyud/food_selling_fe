@@ -85,7 +85,7 @@ const EditUser = ({ user }) => {
 						<label htmlFor="upload-file-user" 
 							style={{ 
 								padding: '7px 12px', 
-								background: 'var(--colorPrimary)', 
+								background: '#3a83f0',
 								color: 'white', 
 								borderRadius: '6px', 
 								margin: '0 8px', 

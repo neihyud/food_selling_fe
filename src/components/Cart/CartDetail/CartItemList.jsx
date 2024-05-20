@@ -85,7 +85,7 @@ const CartItemList = (props) => {
 
 			<td className="fp__pro_status td-center">
 				<p className="price" style={{ color: 'var(--colorPrimary)' }}>
-					${offer_price}
+				đ{offer_price}
 					<del style={{ marginLeft: '10px', color: '#747272' }}>đ{price}</del>
 				</p>
 			</td>

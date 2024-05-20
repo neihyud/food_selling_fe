@@ -34,6 +34,8 @@ const Review = ({ id }) => {
 		await axiosJwt.post('/user/review', { ...dataForm, product_id: id })
 
 		getListReview()
+
+		handleSetDataForm({})
 	}
 
 	useEffect(() => {

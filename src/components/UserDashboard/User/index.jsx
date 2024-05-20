@@ -109,7 +109,7 @@ const User = () => {
 										<span className="icon">
 											<FontAwesomeIcon icon={faShoppingBasket} />
 										</span>
-										<h4>pending <span>{infoUserStatus?.orderCountDeclined}</span></h4>
+										<h4>pending <span>{infoUserStatus?.orderCountInProcess}</span></h4>
 									</div>
 								</div>
 								<div className="col-xl-3">

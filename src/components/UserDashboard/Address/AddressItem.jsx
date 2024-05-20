@@ -11,9 +11,9 @@ const AddressItem = (props) => {
 		<div className={'col-md-6'} >
 			<div className={`fp__checkout_single_address ${selected ? 'selected' : ''}`} onClick={handleAction}>
 				<div className="form-check">
-					<p>{`${first_name} ${last_name}`}</p>
-					<p>{phone}</p>
-					<p>{address}</p>
+					<p><b>Name:</b> {`${first_name} ${last_name}`}</p>
+					<p><b>Phone:</b> {phone}</p>
+					<p><b>Address:</b> {address}</p>
 				</div>
 				{type !== 'checkout' && (
 					<ul>

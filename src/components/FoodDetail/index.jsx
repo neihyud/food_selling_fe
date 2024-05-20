@@ -149,7 +149,7 @@ const FoodDetail = () => {
 								{renderRate()}
 								<span>{`(${reviews_count})`}</span>
 							</p>
-							<h3 className="price">${offer_price} <del>đ{price}</del> </h3>
+							<h3 className="price">đ{offer_price} <del>đ{price}</del> </h3>
 							<p className="short_description">{short_description}</p>
 
 							<div className="details_quantity">

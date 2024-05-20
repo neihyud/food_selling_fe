@@ -59,7 +59,7 @@ const FoodCard = (props) => {
 					<span className="title">
 						{title}
 					</span>
-					<h5 className="price">${offer_price} 
+					<h5 className="price">đ{offer_price} 
 						<del style={{ fontSize: '15px' }}>đ{price}</del>
 					</h5>
 					<div className='d-flex flex-wrap justify-content-center'>

@@ -32,7 +32,7 @@ const Order = () => {
 					<span className={item.status}>{item.order_status}</span>
 				</td>
 				<td>
-					<h5>${item.sub_total}</h5>
+					<h5>đ {item.sub_total}</h5>
 				</td>
 				<td>		
 					<FontAwesomeIcon 

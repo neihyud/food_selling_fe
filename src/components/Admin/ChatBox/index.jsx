@@ -68,7 +68,7 @@ const ChatBox = () => {
 
 		if (isAdmin) {
 			
-			return LocalStorageService.getInfoStaffStore()?.img || DashboardConstant.IMG_USER_DEFAULT
+			return LocalStorageService.getInfoStaffStore()?.img || DashboardConstant.IMG_STORE_DEFAULT
 		}
 
 		return currentUser?.img || DashboardConstant.IMG_USER_DEFAULT
@@ -144,7 +144,7 @@ const ChatBox = () => {
 					<div className="chat-box h-100">
 						<h4>Chat with {currentUser?.username}</h4>
 						<div className="chat-content"> 
-							<div className={'custom-scroll'} style={{ height: '620px', overflow: 'auto' }}>
+							<div className={'custom-scroll'} style={{ height: '600px', overflow: 'auto' }}>
 								{renderChat()}
 								<p ref={lastChildBox}></p>
 							</div>

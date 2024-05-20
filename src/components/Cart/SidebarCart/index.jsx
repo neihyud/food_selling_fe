@@ -61,7 +61,7 @@ const SideBarCart = () => {
 					{renderList()}
 				</ul>
 				<div>
-					<p className="subtotal">subtotal <span>${subTotal}</span></p>
+					<p className="subtotal">subtotal <span>đ{subTotal}</span></p>
 					<button 
 						className="common_btn w-100" 
 						onClick={() => handleNavToPath('/checkout')}

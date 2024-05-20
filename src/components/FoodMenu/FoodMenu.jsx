@@ -20,8 +20,7 @@ const FoodMenu = () => {
 
 	const content = (
 		<>
-      Objectively pontificate quality models before intuitive information.<br />
-      Dramatically recaptiualize multifunctional materials.
+    Discover our crowd-favorite delights. Indulge in delicious foods that keep our customers coming back for more.
 		</>
 	)
 
